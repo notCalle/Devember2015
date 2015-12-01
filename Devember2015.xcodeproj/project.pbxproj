@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */; };
+		EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC21C0E3A9500A63ED3 /* main.m */; };
+		EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC51C0E3A9500A63ED3 /* GameScene.m */; };
+		EB20BEC81C0E3A9500A63ED3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB20BEC71C0E3A9500A63ED3 /* GameScene.sks */; };
+		EB20BECA1C0E3A9500A63ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB20BEC91C0E3A9500A63ED3 /* Assets.xcassets */; };
+		EB20BECD1C0E3A9500A63ED3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */; };
+		EB20BED81C0E3A9500A63ED3 /* Devember2015Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */; };
+		EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB20BED41C0E3A9500A63ED3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB20BEB31C0E3A9500A63ED3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB20BEBA1C0E3A9500A63ED3;
+			remoteInfo = Devember2015;
+		};
+		EB20BEDF1C0E3A9500A63ED3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB20BEB31C0E3A9500A63ED3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB20BEBA1C0E3A9500A63ED3;
+			remoteInfo = Devember2015;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EB20BEBB1C0E3A9500A63ED3 /* Devember2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devember2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB20BEBE1C0E3A9500A63ED3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EB20BEC21C0E3A9500A63ED3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EB20BEC41C0E3A9500A63ED3 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		EB20BEC51C0E3A9500A63ED3 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		EB20BEC71C0E3A9500A63ED3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		EB20BEC91C0E3A9500A63ED3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB20BECC1C0E3A9500A63ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		EB20BECE1C0E3A9500A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB20BED31C0E3A9500A63ED3 /* Devember2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Devember2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Devember2015Tests.m; sourceTree = "<group>"; };
+		EB20BED91C0E3A9500A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB20BEDE1C0E3A9500A63ED3 /* Devember2015UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Devember2015UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Devember2015UITests.m; sourceTree = "<group>"; };
+		EB20BEE41C0E3A9600A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB20BEB81C0E3A9500A63ED3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20BED01C0E3A9500A63ED3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20BEDB1C0E3A9500A63ED3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB20BEB21C0E3A9500A63ED3 = {
+			isa = PBXGroup;
+			children = (
+				EB20BEBD1C0E3A9500A63ED3 /* Devember2015 */,
+				EB20BED61C0E3A9500A63ED3 /* Devember2015Tests */,
+				EB20BEE11C0E3A9600A63ED3 /* Devember2015UITests */,
+				EB20BEBC1C0E3A9500A63ED3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EB20BEBC1C0E3A9500A63ED3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB20BEBB1C0E3A9500A63ED3 /* Devember2015.app */,
+				EB20BED31C0E3A9500A63ED3 /* Devember2015Tests.xctest */,
+				EB20BEDE1C0E3A9500A63ED3 /* Devember2015UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB20BEBD1C0E3A9500A63ED3 /* Devember2015 */ = {
+			isa = PBXGroup;
+			children = (
+				EB20BEBE1C0E3A9500A63ED3 /* AppDelegate.h */,
+				EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */,
+				EB20BEC41C0E3A9500A63ED3 /* GameScene.h */,
+				EB20BEC51C0E3A9500A63ED3 /* GameScene.m */,
+				EB20BEC71C0E3A9500A63ED3 /* GameScene.sks */,
+				EB20BEC91C0E3A9500A63ED3 /* Assets.xcassets */,
+				EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */,
+				EB20BECE1C0E3A9500A63ED3 /* Info.plist */,
+				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
+			);
+			path = Devember2015;
+			sourceTree = "<group>";
+		};
+		EB20BEC11C0E3A9500A63ED3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EB20BEC21C0E3A9500A63ED3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EB20BED61C0E3A9500A63ED3 /* Devember2015Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */,
+				EB20BED91C0E3A9500A63ED3 /* Info.plist */,
+			);
+			path = Devember2015Tests;
+			sourceTree = "<group>";
+		};
+		EB20BEE11C0E3A9600A63ED3 /* Devember2015UITests */ = {
+			isa = PBXGroup;
+			children = (
+				EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */,
+				EB20BEE41C0E3A9600A63ED3 /* Info.plist */,
+			);
+			path = Devember2015UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB20BEBA1C0E3A9500A63ED3 /* Devember2015 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB20BEE71C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015" */;
+			buildPhases = (
+				EB20BEB71C0E3A9500A63ED3 /* Sources */,
+				EB20BEB81C0E3A9500A63ED3 /* Frameworks */,
+				EB20BEB91C0E3A9500A63ED3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Devember2015;
+			productName = Devember2015;
+			productReference = EB20BEBB1C0E3A9500A63ED3 /* Devember2015.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EB20BED21C0E3A9500A63ED3 /* Devember2015Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB20BEEA1C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015Tests" */;
+			buildPhases = (
+				EB20BECF1C0E3A9500A63ED3 /* Sources */,
+				EB20BED01C0E3A9500A63ED3 /* Frameworks */,
+				EB20BED11C0E3A9500A63ED3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB20BED51C0E3A9500A63ED3 /* PBXTargetDependency */,
+			);
+			name = Devember2015Tests;
+			productName = Devember2015Tests;
+			productReference = EB20BED31C0E3A9500A63ED3 /* Devember2015Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EB20BEDD1C0E3A9500A63ED3 /* Devember2015UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB20BEED1C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015UITests" */;
+			buildPhases = (
+				EB20BEDA1C0E3A9500A63ED3 /* Sources */,
+				EB20BEDB1C0E3A9500A63ED3 /* Frameworks */,
+				EB20BEDC1C0E3A9500A63ED3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB20BEE01C0E3A9500A63ED3 /* PBXTargetDependency */,
+			);
+			name = Devember2015UITests;
+			productName = Devember2015UITests;
+			productReference = EB20BEDE1C0E3A9500A63ED3 /* Devember2015UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EB20BEB31C0E3A9500A63ED3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Calle Englund";
+				TargetAttributes = {
+					EB20BEBA1C0E3A9500A63ED3 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					EB20BED21C0E3A9500A63ED3 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = EB20BEBA1C0E3A9500A63ED3;
+					};
+					EB20BEDD1C0E3A9500A63ED3 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = EB20BEBA1C0E3A9500A63ED3;
+					};
+				};
+			};
+			buildConfigurationList = EB20BEB61C0E3A9500A63ED3 /* Build configuration list for PBXProject "Devember2015" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EB20BEB21C0E3A9500A63ED3;
+			productRefGroup = EB20BEBC1C0E3A9500A63ED3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EB20BEBA1C0E3A9500A63ED3 /* Devember2015 */,
+				EB20BED21C0E3A9500A63ED3 /* Devember2015Tests */,
+				EB20BEDD1C0E3A9500A63ED3 /* Devember2015UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB20BEB91C0E3A9500A63ED3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20BECA1C0E3A9500A63ED3 /* Assets.xcassets in Resources */,
+				EB20BEC81C0E3A9500A63ED3 /* GameScene.sks in Resources */,
+				EB20BECD1C0E3A9500A63ED3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20BED11C0E3A9500A63ED3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20BEDC1C0E3A9500A63ED3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB20BEB71C0E3A9500A63ED3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
+				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
+				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20BECF1C0E3A9500A63ED3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20BED81C0E3A9500A63ED3 /* Devember2015Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20BEDA1C0E3A9500A63ED3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB20BED51C0E3A9500A63ED3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB20BEBA1C0E3A9500A63ED3 /* Devember2015 */;
+			targetProxy = EB20BED41C0E3A9500A63ED3 /* PBXContainerItemProxy */;
+		};
+		EB20BEE01C0E3A9500A63ED3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB20BEBA1C0E3A9500A63ED3 /* Devember2015 */;
+			targetProxy = EB20BEDF1C0E3A9500A63ED3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB20BECC1C0E3A9500A63ED3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EB20BEE51C0E3A9600A63ED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EB20BEE61C0E3A9600A63ED3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EB20BEE81C0E3A9600A63ED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Devember2015/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EB20BEE91C0E3A9600A63ED3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Devember2015/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EB20BEEB1C0E3A9600A63ED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = Devember2015Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Devember2015.app/Contents/MacOS/Devember2015";
+			};
+			name = Debug;
+		};
+		EB20BEEC1C0E3A9600A63ED3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Devember2015Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Devember2015.app/Contents/MacOS/Devember2015";
+			};
+			name = Release;
+		};
+		EB20BEEE1C0E3A9600A63ED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = Devember2015UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Devember2015;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		EB20BEEF1C0E3A9600A63ED3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Devember2015UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Devember2015;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB20BEB61C0E3A9500A63ED3 /* Build configuration list for PBXProject "Devember2015" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB20BEE51C0E3A9600A63ED3 /* Debug */,
+				EB20BEE61C0E3A9600A63ED3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB20BEE71C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB20BEE81C0E3A9600A63ED3 /* Debug */,
+				EB20BEE91C0E3A9600A63ED3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EB20BEEA1C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB20BEEB1C0E3A9600A63ED3 /* Debug */,
+				EB20BEEC1C0E3A9600A63ED3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EB20BEED1C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB20BEEE1C0E3A9600A63ED3 /* Debug */,
+				EB20BEEF1C0E3A9600A63ED3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EB20BEB31C0E3A9500A63ED3 /* Project object */;
+}
