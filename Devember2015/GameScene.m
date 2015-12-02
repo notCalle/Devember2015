@@ -12,6 +12,27 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+
+#define W 5
+#define H 5
+    NSInteger map[H][W] = {
+        {1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 0, 0, 0, 1},
+        {1, 0, 0, 0, 1},
+        {1, 1, 1, 1, 1}
+    };
+    
+    NSArray *tiles = @[@"Tiles/black", @"Tiles/blue"];
+    _tileMap = [[IsoTileMap alloc] initWithTiles:tiles mapSize:CGSizeMake(W,H)];
+    
+    NSInteger x, y;
+    for (y=0; y<H; y++) {
+        for (x=0; x<W; x++) {
+            [_tileMap setTile:map[y][x] at:CGPointMake(x, y)];
+        }
+    }
+
     SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
     myLabel.text = @"Hello, World!";

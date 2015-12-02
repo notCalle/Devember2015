@@ -15,9 +15,7 @@
 		EB20BECD1C0E3A9500A63ED3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */; };
 		EB20BED81C0E3A9500A63ED3 /* Devember2015Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */; };
 		EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */; };
-		EB20BEF51C0E437A00A63ED3 /* TileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* TileMap.m */; };
-		EB20BEF81C0E46B500A63ED3 /* IsoTileScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF71C0E46B500A63ED3 /* IsoTileScene.m */; };
-		EB20BF001C0E4D5300A63ED3 /* IsoTileSceneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEFF1C0E4D5300A63ED3 /* IsoTileSceneTests.m */; };
+		EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +52,8 @@
 		EB20BEDE1C0E3A9500A63ED3 /* Devember2015UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Devember2015UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Devember2015UITests.m; sourceTree = "<group>"; };
 		EB20BEE41C0E3A9600A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB20BEF31C0E437A00A63ED3 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
-		EB20BEF41C0E437A00A63ED3 /* TileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMap.m; sourceTree = "<group>"; };
-		EB20BEF61C0E46B500A63ED3 /* IsoTileScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileScene.h; sourceTree = "<group>"; };
-		EB20BEF71C0E46B500A63ED3 /* IsoTileScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileScene.m; sourceTree = "<group>"; };
-		EB20BEFF1C0E4D5300A63ED3 /* IsoTileSceneTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IsoTileSceneTests.m; path = Devember2015Tests/IsoTileSceneTests.m; sourceTree = SOURCE_ROOT; };
+		EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileMap.h; sourceTree = "<group>"; };
+		EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +113,8 @@
 				EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */,
 				EB20BECE1C0E3A9500A63ED3 /* Info.plist */,
 				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
-				EB20BEF31C0E437A00A63ED3 /* TileMap.h */,
-				EB20BEF41C0E437A00A63ED3 /* TileMap.m */,
-				EB20BEF61C0E46B500A63ED3 /* IsoTileScene.h */,
-				EB20BEF71C0E46B500A63ED3 /* IsoTileScene.m */,
+				EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */,
+				EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -139,7 +132,6 @@
 			children = (
 				EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */,
 				EB20BED91C0E3A9500A63ED3 /* Info.plist */,
-				EB20BEFF1C0E4D5300A63ED3 /* IsoTileSceneTests.m */,
 			);
 			path = Devember2015Tests;
 			sourceTree = "<group>";
@@ -285,9 +277,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
-				EB20BEF81C0E46B500A63ED3 /* IsoTileScene.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
-				EB20BEF51C0E437A00A63ED3 /* TileMap.m in Sources */,
+				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +287,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB20BF001C0E4D5300A63ED3 /* IsoTileSceneTests.m in Sources */,
 				EB20BED81C0E3A9500A63ED3 /* Devember2015Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

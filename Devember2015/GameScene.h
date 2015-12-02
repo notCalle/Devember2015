@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "IsoTileMap.h"
 
 @interface GameScene : SKScene
+
+@property IsoTileMap *tileMap;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GameScene.h"
+#import "IsoTileMap.h"
 
 @implementation SKScene (Unarchive)
 
@@ -34,7 +35,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-
+    
     /* Set the scale mode to scale to fit the window */
     scene.scaleMode = SKSceneScaleModeAspectFit;
 
