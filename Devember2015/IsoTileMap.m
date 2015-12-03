@@ -20,7 +20,10 @@
         
         _width = (NSInteger)size.width;
         _height = (NSInteger)size.height;
-
+        _position = CGPointMake(0, 0);
+        _centerTile = CGPointMake(0, 0);
+        _gridsize = 0.0;
+        
         for (row = 0; row < _height; row++) {
             _map[row] = [NSMutableArray arrayWithCapacity:_width];
         }
@@ -28,20 +31,66 @@
     return self;
 }
 
-- (SKSpriteNode *)tileAt:(CGPoint)position {
-    return _map[(NSInteger)position.y][(NSInteger)position.x];
+- (SKSpriteNode *)tileAt:(CGPoint)grid {
+    return _map[(NSInteger)grid.y][(NSInteger)grid.x];
 }
 
-- (void)setTile:(NSInteger)index at:(CGPoint)position {
-    _map[(NSInteger)position.y][(NSInteger)position.x] = [SKSpriteNode spriteNodeWithImageNamed:_tiles[index]];
+- (void)setTile:(NSInteger)index at:(CGPoint)grid {
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:_tiles[index]];
+    
+    if (sprite.size.width > _gridsize)
+        _gridsize = sprite.size.width;
+    
+    _map[(NSInteger)grid.y][(NSInteger)grid.x] = sprite;
 }
 
-+ (CGPoint)isometric:(CGPoint)cartesian {
-    return CGPointMake(cartesian.x + cartesian.y, cartesian.y - cartesian.x/2.0);
+- (CGPoint)position {
+    return _position;
 }
 
-+ (CGPoint)cartesian:(CGPoint)isometric {
-    return CGPointMake((isometric.x - isometric.y)/1.5, isometric.y/1.5 + isometric.x/3.0);
+- (void)setPosition:(CGPoint)position {
+    _position = position;
+    [self repositionTiles];
+}
+
+- (CGPoint)centerTile {
+    return _centerTile;
+}
+
+- (void)setCenterTile:(CGPoint)centerTile {
+    _centerTile = centerTile;
+    [self repositionTiles];
+}
+
+- (void)repositionTiles {
+    NSInteger x,y;
+    
+    for (y=0; y<_height; y++) {
+        for (x=0; x<_width; x++) {
+            CGPoint cartesian = CGPointMake((x - _centerTile.x) * _gridsize, (_centerTile.y - y) * _gridsize);
+            CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
+            SKSpriteNode *sprite = _map[y][x];
+            sprite.position = CGPointMake(isometric.x+_position.x, isometric.y+_position.y);
+            sprite.zPosition = x+y;
+        }
+    }
+}
+
+- (CGPoint)gridAtLocation:(CGPoint)location {
+    CGPoint isometric = CGPointMake((location.x - _position.x)/_gridsize, (_position.y - location.y)/_gridsize*2);
+    CGPoint cartesian = CGPointMake(round(isometric.x + isometric.y + _centerTile.x),
+                                    round(isometric.y - isometric.x + _centerTile.y));
+    return cartesian;
+}
+
+- (void)addAsChildOf:(SKScene *)theScene {
+    NSInteger x,y;
+    
+    for (y=0; y<_height; y++) {
+        for (x=0; x<_width; x++) {
+            [theScene addChild:_map[y][x]];
+        }
+    }
 }
 
 @end

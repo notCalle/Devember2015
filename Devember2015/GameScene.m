@@ -17,10 +17,10 @@
 #define H 5
     NSInteger map[H][W] = {
         {1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 1},
-        {1, 0, 0, 0, 1},
-        {1, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1}
+        {1, 0, 0, 0, 0},
+        {1, 0, 0, 1, 0},
+        {1, 0, 1, 1, 0},
+        {1, 0, 0, 0, 0}
     };
     
     NSArray *tiles = @[@"Tiles/black", @"Tiles/blue"];
@@ -30,34 +30,25 @@
     for (y=0; y<H; y++) {
         for (x=0; x<W; x++) {
             [_tileMap setTile:map[y][x] at:CGPointMake(x, y)];
+            
         }
     }
 
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 45;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+    _tileMap.position = CGPointMake(CGRectGetMidX(self.frame),
+                                    CGRectGetMidY(self.frame));
+    _tileMap.centerTile = CGPointMake(3, 3);
+    [_tileMap addAsChildOf:self];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
      /* Called when a mouse click occurs */
     
     CGPoint location = [theEvent locationInNode:self];
+
+    CGPoint grid = [_tileMap gridAtLocation:location];
     
-    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-    
-    sprite.position = location;
-    sprite.scale = 0.5;
-    
-    SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-    
-    [sprite runAction:[SKAction repeatActionForever:action]];
-    
-    [self addChild:sprite];
+    SKSpriteNode *sprite = [_tileMap tileAt:grid];
+    sprite.alpha *= 0.9;
 }
 
 -(void)update:(CFTimeInterval)currentTime {
