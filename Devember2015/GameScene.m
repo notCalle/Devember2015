@@ -46,9 +46,8 @@
     CGPoint location = [theEvent locationInNode:self];
 
     CGPoint grid = [_tileMap gridAtLocation:location];
-    
-    SKSpriteNode *sprite = [_tileMap tileAt:grid];
-    sprite.alpha *= 0.9;
+
+    _tileMap.centerTile = grid;
 }
 
 -(void)update:(CFTimeInterval)currentTime {

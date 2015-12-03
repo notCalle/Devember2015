@@ -71,6 +71,7 @@
             CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
             SKSpriteNode *sprite = _map[y][x];
             sprite.position = CGPointMake(isometric.x+_position.x, isometric.y+_position.y);
+            sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
             sprite.zPosition = x+y;
         }
     }
