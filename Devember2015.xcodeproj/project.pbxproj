@@ -11,11 +11,11 @@
 		EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC21C0E3A9500A63ED3 /* main.m */; };
 		EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC51C0E3A9500A63ED3 /* GameScene.m */; };
 		EB20BEC81C0E3A9500A63ED3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB20BEC71C0E3A9500A63ED3 /* GameScene.sks */; };
-		EB20BECA1C0E3A9500A63ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB20BEC91C0E3A9500A63ED3 /* Assets.xcassets */; };
 		EB20BECD1C0E3A9500A63ED3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */; };
 		EB20BED81C0E3A9500A63ED3 /* Devember2015Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */; };
 		EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */; };
 		EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */; };
+		EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4A0B491C12512E00D5C043 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 		EB20BEC41C0E3A9500A63ED3 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		EB20BEC51C0E3A9500A63ED3 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		EB20BEC71C0E3A9500A63ED3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		EB20BEC91C0E3A9500A63ED3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB20BECC1C0E3A9500A63ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		EB20BECE1C0E3A9500A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB20BED31C0E3A9500A63ED3 /* Devember2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Devember2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +53,7 @@
 		EB20BEE41C0E3A9600A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileMap.h; sourceTree = "<group>"; };
 		EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileMap.m; sourceTree = "<group>"; };
+		EB4A0B491C12512E00D5C043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 				EB20BEC41C0E3A9500A63ED3 /* GameScene.h */,
 				EB20BEC51C0E3A9500A63ED3 /* GameScene.m */,
 				EB20BEC71C0E3A9500A63ED3 /* GameScene.sks */,
-				EB20BEC91C0E3A9500A63ED3 /* Assets.xcassets */,
+				EB4A0B491C12512E00D5C043 /* Assets.xcassets */,
 				EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */,
 				EB20BECE1C0E3A9500A63ED3 /* Info.plist */,
 				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
@@ -249,8 +249,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB20BECA1C0E3A9500A63ED3 /* Assets.xcassets in Resources */,
 				EB20BEC81C0E3A9500A63ED3 /* GameScene.sks in Resources */,
+				EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */,
 				EB20BECD1C0E3A9500A63ED3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +502,7 @@
 				EB20BEE91C0E3A9600A63ED3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB20BEEA1C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015Tests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +511,7 @@
 				EB20BEEC1C0E3A9600A63ED3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB20BEED1C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015UITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +520,7 @@
 				EB20BEEF1C0E3A9600A63ED3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

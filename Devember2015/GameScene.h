@@ -12,5 +12,6 @@
 @interface GameScene : SKScene
 
 @property IsoTileMap *tileMap;
+@property SKSpriteNode *player;
 
 @end

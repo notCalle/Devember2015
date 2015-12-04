@@ -13,17 +13,27 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
 
-#define W 5
-#define H 5
+#define W 15
+#define H 15
     NSInteger map[H][W] = {
-        {1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 0},
-        {1, 0, 0, 1, 0},
-        {1, 0, 1, 1, 0},
-        {1, 0, 0, 0, 0}
+        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2},
+        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2}
     };
     
-    NSArray *tiles = @[@"Tiles/black", @"Tiles/blue"];
+    NSArray *tiles = @[@"Tiles/White", @"Tiles/Gray", @"Walls/WhiteWall"];
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles mapSize:CGSizeMake(W,H)];
     
     NSInteger x, y;
@@ -36,8 +46,12 @@
 
     _tileMap.position = CGPointMake(CGRectGetMidX(self.frame),
                                     CGRectGetMidY(self.frame));
-    _tileMap.centerTile = CGPointMake(3, 3);
+    _tileMap.centerTile = CGPointMake(8, 8);
     [_tileMap addAsChildOf:self];
+    
+    _player = [SKSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
+    [_tileMap positionSprite:_player at:_tileMap.centerTile];
+    [self addChild:_player];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
@@ -47,7 +61,7 @@
 
     CGPoint grid = [_tileMap gridAtLocation:location];
 
-    _tileMap.centerTile = grid;
+    [_tileMap positionSprite:_player at:grid];
 }
 
 -(void)update:(CFTimeInterval)currentTime {

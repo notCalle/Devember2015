@@ -26,6 +26,8 @@
 - (SKSpriteNode *)tileAt:(CGPoint)grid;
 - (void)setTile:(NSInteger)index at:(CGPoint)grid;
 
+- (void)positionSprite:(SKSpriteNode *)sprite at:(CGPoint)grid;
+
 - (void)repositionTiles;
 - (void)addAsChildOf:(SKScene *)theScene;
 

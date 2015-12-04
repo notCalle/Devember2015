@@ -62,17 +62,22 @@
     [self repositionTiles];
 }
 
+- (void)positionSprite:(SKSpriteNode *)sprite at:(CGPoint)grid {
+    CGPoint cartesian = CGPointMake((grid.x - _centerTile.x) * _gridsize, (_centerTile.y - grid.y) * _gridsize);
+    CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
+
+    sprite.position = CGPointMake(isometric.x+_position.x, isometric.y+_position.y);
+    sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
+    sprite.zPosition = grid.x+grid.y+sprite.size.height/1000;
+}
+
 - (void)repositionTiles {
     NSInteger x,y;
     
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
-            CGPoint cartesian = CGPointMake((x - _centerTile.x) * _gridsize, (_centerTile.y - y) * _gridsize);
-            CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
             SKSpriteNode *sprite = _map[y][x];
-            sprite.position = CGPointMake(isometric.x+_position.x, isometric.y+_position.y);
-            sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
-            sprite.zPosition = x+y;
+            [self positionSprite:sprite at:CGPointMake(x, y)];
         }
     }
 }
