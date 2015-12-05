@@ -41,6 +41,8 @@
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
     
+    sprite.lightingBitMask |= 0x1;
+    
     _map[(NSInteger)grid.y][(NSInteger)grid.x] = sprite;
 }
 

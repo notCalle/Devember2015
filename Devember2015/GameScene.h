@@ -13,5 +13,8 @@
 
 @property IsoTileMap *tileMap;
 @property SKSpriteNode *player;
+@property NSPoint myPosition;
+@property SKLightNode *light;
+@property NSTimeInterval lighttime;
 
 @end

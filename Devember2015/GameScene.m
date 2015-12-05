@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import <Carbon/Carbon.h>
 
 @implementation GameScene
 
@@ -49,8 +50,18 @@
     _tileMap.centerTile = CGPointMake(8, 8);
     [_tileMap addAsChildOf:self];
     
+    _myPosition = _tileMap.centerTile;
+    
+    _light = [[SKLightNode alloc] init];
+    _light.ambientColor = [NSColor blueColor];
+    _light.lightColor = [NSColor yellowColor];
+    _light.falloff = 1.0;
+    _light.categoryBitMask = 0x1;
+    _lighttime = 0.0;
+    
     _player = [SKSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
-    [_tileMap positionSprite:_player at:_tileMap.centerTile];
+    [_player addChild:_light];
+    [_tileMap positionSprite:_player at:_myPosition];
     [self addChild:_player];
 }
 
@@ -61,11 +72,44 @@
 
     CGPoint grid = [_tileMap gridAtLocation:location];
 
-    [_tileMap positionSprite:_player at:grid];
+    _tileMap.centerTile = grid;
+}
+
+-(void)keyDown:(NSEvent *)theEvent {
+    UInt16 keycode = [theEvent keyCode];
+    
+    switch (keycode) {
+        case kVK_ANSI_W:
+            _myPosition.y -= 1;
+            break;
+        case kVK_ANSI_S:
+            _myPosition.y += 1;
+            break;
+        case kVK_ANSI_A:
+            _myPosition.x -= 1;
+            break;
+        case kVK_ANSI_D:
+            _myPosition.x += 1;
+            break;
+        case kVK_Tab:
+            _lighttime = theEvent.timestamp;
+            break;
+        default:
+            break;
+    }
+    [_tileMap positionSprite:_player at:_myPosition];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    CFTimeInterval burntime = (currentTime - _lighttime);
+    if (burntime < 10.0) {
+        NSColor *lightcolor = [NSColor blackColor];
+        _light.lightColor = [lightcolor blendedColorWithFraction:(burntime * burntime)/100.0
+                                                         ofColor:[NSColor yellowColor]];
+    } else {
+//        _light.lightColor = [NSColor blackColor];
+    }
 }
 
 @end
