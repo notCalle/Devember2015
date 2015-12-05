@@ -8,13 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "IsoTileMap.h"
+#import "PlayerSpriteNode.h"
 
 @interface GameScene : SKScene
 
 @property IsoTileMap *tileMap;
-@property SKSpriteNode *player;
-@property NSPoint myPosition;
-@property SKLightNode *light;
-@property NSTimeInterval lighttime;
+@property PlayerSpriteNode *player;
 
 @end

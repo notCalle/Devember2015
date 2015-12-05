@@ -10,6 +10,16 @@
 
 @implementation IsoTileMap
 
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        _tiles = nil;
+        _map = nil;
+        self.lightingBitMask = 0x1;
+    }
+    return self;
+}
+
 - (instancetype)initWithTiles:(NSArray<NSString *> *)tiles mapSize:(CGSize)size {
     NSInteger row;
     
@@ -41,18 +51,10 @@
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
     
-    sprite.lightingBitMask |= 0x1;
+    sprite.lightingBitMask = 0x1;
+    [self addChild:sprite];
     
     _map[(NSInteger)grid.y][(NSInteger)grid.x] = sprite;
-}
-
-- (CGPoint)position {
-    return _position;
-}
-
-- (void)setPosition:(CGPoint)position {
-    _position = position;
-    [self repositionTiles];
 }
 
 - (CGPoint)centerTile {
@@ -68,7 +70,7 @@
     CGPoint cartesian = CGPointMake((grid.x - _centerTile.x) * _gridsize, (_centerTile.y - grid.y) * _gridsize);
     CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
 
-    sprite.position = CGPointMake(isometric.x+_position.x, isometric.y+_position.y);
+    sprite.position = CGPointMake(isometric.x, isometric.y);
     sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
     sprite.zPosition = grid.x+grid.y+sprite.size.height/1000;
 }
@@ -89,16 +91,6 @@
     CGPoint cartesian = CGPointMake(round(isometric.x + isometric.y + _centerTile.x),
                                     round(isometric.y - isometric.x + _centerTile.y));
     return cartesian;
-}
-
-- (void)addAsChildOf:(SKScene *)theScene {
-    NSInteger x,y;
-    
-    for (y=0; y<_height; y++) {
-        for (x=0; x<_width; x++) {
-            [theScene addChild:_map[y][x]];
-        }
-    }
 }
 
 @end

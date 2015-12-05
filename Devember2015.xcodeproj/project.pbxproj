@@ -16,6 +16,7 @@
 		EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */; };
 		EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */; };
 		EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4A0B491C12512E00D5C043 /* Assets.xcassets */; };
+		EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileMap.h; sourceTree = "<group>"; };
 		EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileMap.m; sourceTree = "<group>"; };
 		EB4A0B491C12512E00D5C043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSpriteNode.h; sourceTree = "<group>"; };
+		EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSpriteNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
 				EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */,
 				EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */,
+				EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */,
+				EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
+				EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

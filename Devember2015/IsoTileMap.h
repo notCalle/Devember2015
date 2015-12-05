@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface IsoTileMap : NSObject {
+@interface IsoTileMap : SKSpriteNode {
     CGPoint _position;
     CGPoint _centerTile;
 }
@@ -19,7 +19,6 @@
 @property CGFloat gridsize;
 @property NSInteger width;
 @property NSInteger height;
-@property CGPoint position;
 @property CGPoint centerTile;
 
 - (instancetype)initWithTiles:(NSArray<NSString *> *)tiles mapSize:(CGSize)size;
@@ -29,7 +28,6 @@
 - (void)positionSprite:(SKSpriteNode *)sprite at:(CGPoint)grid;
 
 - (void)repositionTiles;
-- (void)addAsChildOf:(SKScene *)theScene;
 
 - (CGPoint)gridAtLocation:(CGPoint)location;
 
