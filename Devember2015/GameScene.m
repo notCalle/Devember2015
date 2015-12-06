@@ -47,12 +47,14 @@
 
     _tileMap.position = CGPointMake(CGRectGetMidX(self.frame),
                                     CGRectGetMidY(self.frame));
-    _tileMap.centerTile = CGPointMake(8, 8);
+    _tileMap.centerTile = CGPointMake(7, 7);
     [self addChild:_tileMap];
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
-    [_tileMap addChild:_player];
-    _player.myPosition = _tileMap.centerTile;
+    _player.anchorPoint = CGPointMake(0.5, 0);
+    [_player addLightNode];
+    
+    [_tileMap addChild:_player toTileAt:CGPointMake(0,7)];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
@@ -70,16 +72,19 @@
     
     switch (keycode) {
         case kVK_ANSI_W:
-            [_player moveNorth];
+            [_player move:'N'];
             break;
         case kVK_ANSI_S:
-            [_player moveSouth];
+            [_player move:'S'];
             break;
         case kVK_ANSI_A:
-            [_player moveWest];
+            [_player move:'W'];
             break;
         case kVK_ANSI_D:
-            [_player moveEast];
+            [_player move:'E'];
+            break;
+        case kVK_Space:
+            [_player addLightNode];
             break;
         default:
             break;
@@ -88,6 +93,7 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    [_player update:currentTime];
 }
 
 @end

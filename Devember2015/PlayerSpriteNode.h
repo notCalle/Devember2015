@@ -7,21 +7,21 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ITSpriteNode.h"
 #import "IsoTileMap.h"
 
-@interface PlayerSpriteNode : SKSpriteNode {
-    CGPoint _myPosition;
-}
+@interface PlayerSpriteNode : ITSpriteNode
 
-@property CGPoint myPosition;
 @property SKLightNode *light;
-@property NSTimeInterval lighttime;
+@property NSTimeInterval lightTime;
+@property NSColor *lightColor;
+@property NSColor *ambientColor;
 
--(BOOL)reposition;
+-(SKLightNode *)addLightNode;
 
--(BOOL)moveNorth;
--(BOOL)moveSouth;
--(BOOL)moveWest;
--(BOOL)moveEast;
+-(void)reParent:(ITSpriteNode *)newParent;
+-(BOOL)move:(char)direction;
+
+-(void)update:(NSTimeInterval)currentTime;
 
 @end

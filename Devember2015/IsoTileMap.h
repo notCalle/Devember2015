@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
+#import "ITSpriteNode.h"
 
-@interface IsoTileMap : SKSpriteNode {
+@interface IsoTileMap : ITSpriteNode {
     CGPoint _position;
     CGPoint _centerTile;
 }
@@ -22,10 +23,11 @@
 @property CGPoint centerTile;
 
 - (instancetype)initWithTiles:(NSArray<NSString *> *)tiles mapSize:(CGSize)size;
-- (SKSpriteNode *)tileAt:(CGPoint)grid;
+- (ITSpriteNode *)tileAt:(CGPoint)grid;
 - (void)setTile:(NSInteger)index at:(CGPoint)grid;
+- (void)addChild:(ITSpriteNode *)sprite toTileAt:(CGPoint)grid;
 
-- (void)positionSprite:(SKSpriteNode *)sprite at:(CGPoint)grid;
+- (void)positionSprite:(ITSpriteNode *)sprite at:(CGPoint)grid;
 
 - (void)repositionTiles;
 

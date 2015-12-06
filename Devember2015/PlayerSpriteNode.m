@@ -10,56 +10,64 @@
 
 @implementation PlayerSpriteNode
 
--(instancetype)init {
-    self = [super init];
-    if (self) {
-        _myPosition = CGPointZero;
+-(SKLightNode *)addLightNode {
+    if (!_light) {
         _light = [[SKLightNode alloc] init];
-        _light.ambientColor = [NSColor blueColor];
-        _light.lightColor = [NSColor yellowColor];
-        _light.falloff = 1.0;
-        _light.categoryBitMask = 0x1;
-        _lighttime = 0.0;
         [self addChild:_light];
-        self.lightingBitMask = 0x1;
-        
-        [self reposition];
     }
-    return self;
+    _lightColor = [NSColor yellowColor];
+    _ambientColor = [NSColor blueColor];
+    _light.ambientColor = _ambientColor;
+    _light.lightColor = _lightColor;
+    _light.falloff = 1.0;
+    _light.categoryBitMask = 0x1;
+    _lightTime = 0.0;
+    self.lightingBitMask = 0x1;
+    return _light;
 }
 
--(NSPoint)myPosition {
-    return _myPosition;
+-(void)reParent:(ITSpriteNode *)newParent {
+    if (self.parent) {
+        [self removeFromParent];
+    }
+    [newParent addChild:self];
 }
 
--(void)setMyPosition:(NSPoint)myPosition {
-    _myPosition = myPosition;
-    [self reposition];
+-(BOOL)move:(char)direction {
+    ITSpriteNode *currentPlace = (ITSpriteNode *)[self parent];
+    ITSpriteNode *newPlace = nil;
+    
+    switch (direction) {
+        case 'N':
+            newPlace = currentPlace.north;
+            break;
+        case 'S':
+            newPlace = currentPlace.south;
+            break;
+        case 'W':
+            newPlace = currentPlace.west;
+            break;
+        case 'E':
+            newPlace = currentPlace.east;
+            break;
+    }
+    if (newPlace) {
+        [self reParent:newPlace];
+        return YES;
+    }
+    return NO;
 }
 
--(BOOL)reposition {
-    [(IsoTileMap *)[self parent] positionSprite:self at:_myPosition];
-    return YES;
-}
-
--(BOOL)moveNorth {
-    _myPosition.y -= 1;
-    return [self reposition];
-}
-
--(BOOL)moveSouth {
-    _myPosition.y += 1;
-    return [self reposition];
-}
-
--(BOOL)moveWest {
-    _myPosition.x -= 1;
-    return [self reposition];
-}
-
--(BOOL)moveEast {
-    _myPosition.x += 1;
-    return [self reposition];
+-(void)update:(NSTimeInterval)currentTime {
+    if (_lightTime == 0.0) {
+        _lightTime = currentTime;
+    }
+    NSTimeInterval burnTime = (currentTime - _lightTime);
+    if (burnTime < 10.0) {
+        _light.lightColor = [_lightColor blendedColorWithFraction:(burnTime*burnTime)/100.0 ofColor:[NSColor blackColor]];
+        _light.ambientColor = [_ambientColor blendedColorWithFraction:(burnTime*burnTime)/120.0
+                                                              ofColor:[NSColor blackColor]];
+    }
 }
 
 @end
