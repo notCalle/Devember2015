@@ -55,7 +55,6 @@
 -(void)addChild:(ITSpriteNode *)sprite toTileAt:(CGPoint)grid {
     ITSpriteNode *tile = [self tileAt:grid];
     if (tile) {
-//        sprite.position = CGPointMake(tile.size.width / 2.0, tile.size.width / 4.0);
         [tile addChild:sprite];
     }
 }

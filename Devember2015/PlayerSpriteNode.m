@@ -26,38 +26,6 @@
     return _light;
 }
 
--(void)reParent:(ITSpriteNode *)newParent {
-    if (self.parent) {
-        [self removeFromParent];
-    }
-    [newParent addChild:self];
-}
-
--(BOOL)move:(char)direction {
-    ITSpriteNode *currentPlace = (ITSpriteNode *)[self parent];
-    ITSpriteNode *newPlace = nil;
-    
-    switch (direction) {
-        case 'N':
-            newPlace = currentPlace.north;
-            break;
-        case 'S':
-            newPlace = currentPlace.south;
-            break;
-        case 'W':
-            newPlace = currentPlace.west;
-            break;
-        case 'E':
-            newPlace = currentPlace.east;
-            break;
-    }
-    if (newPlace) {
-        [self reParent:newPlace];
-        return YES;
-    }
-    return NO;
-}
-
 -(void)update:(NSTimeInterval)currentTime {
     if (_lightTime == 0.0) {
         _lightTime = currentTime;

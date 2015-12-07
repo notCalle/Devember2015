@@ -21,7 +21,7 @@
         {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
         {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
         {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+        {3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
         {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
         {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
         {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
@@ -34,7 +34,7 @@
         {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2}
     };
     
-    NSArray *tiles = @[@"Tiles/White", @"Tiles/Gray", @"Walls/WhiteWall"];
+    NSArray *tiles = @[@"Tiles/White", @"Tiles/Gray", @"Walls/WhiteWall", @"Walls/LowWhiteWall" ];
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles mapSize:CGSizeMake(W,H)];
     
     NSInteger x, y;
@@ -52,6 +52,7 @@
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
+    _player.stepHeight = 1.0;
     [_player addLightNode];
     
     [_tileMap addChild:_player toTileAt:CGPointMake(0,7)];

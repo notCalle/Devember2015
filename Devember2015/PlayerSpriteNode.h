@@ -7,10 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "ITSpriteNode.h"
+#import "ActorSpriteNode.h"
 #import "IsoTileMap.h"
 
-@interface PlayerSpriteNode : ITSpriteNode
+@interface PlayerSpriteNode : ActorSpriteNode
 
 @property SKLightNode *light;
 @property NSTimeInterval lightTime;
@@ -18,9 +18,6 @@
 @property NSColor *ambientColor;
 
 -(SKLightNode *)addLightNode;
-
--(void)reParent:(ITSpriteNode *)newParent;
--(BOOL)move:(char)direction;
 
 -(void)update:(NSTimeInterval)currentTime;
 
