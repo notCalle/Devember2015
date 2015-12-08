@@ -16,8 +16,9 @@
 		EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */; };
 		EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */; };
 		EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4A0B491C12512E00D5C043 /* Assets.xcassets */; };
-		EB4A0B4D1C147AB700D5C043 /* ITSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4C1C147AB700D5C043 /* ITSpriteNode.m */; };
+		EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */; };
 		EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */; };
+		EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B531C17850000D5C043 /* IsoTile.m */; };
 		EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */; };
 /* End PBXBuildFile section */
 
@@ -57,10 +58,12 @@
 		EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileMap.h; sourceTree = "<group>"; };
 		EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileMap.m; sourceTree = "<group>"; };
 		EB4A0B491C12512E00D5C043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EB4A0B4B1C147AB700D5C043 /* ITSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSpriteNode.h; sourceTree = "<group>"; };
-		EB4A0B4C1C147AB700D5C043 /* ITSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSpriteNode.m; sourceTree = "<group>"; };
+		EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileNode.h; sourceTree = "<group>"; };
+		EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileNode.m; sourceTree = "<group>"; };
 		EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorSpriteNode.h; sourceTree = "<group>"; };
 		EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorSpriteNode.m; sourceTree = "<group>"; };
+		EB4A0B521C17850000D5C043 /* IsoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTile.h; sourceTree = "<group>"; };
+		EB4A0B531C17850000D5C043 /* IsoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTile.m; sourceTree = "<group>"; };
 		EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSpriteNode.h; sourceTree = "<group>"; };
 		EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSpriteNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,8 +125,10 @@
 				EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */,
 				EB20BECE1C0E3A9500A63ED3 /* Info.plist */,
 				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
-				EB4A0B4B1C147AB700D5C043 /* ITSpriteNode.h */,
-				EB4A0B4C1C147AB700D5C043 /* ITSpriteNode.m */,
+				EB4A0B521C17850000D5C043 /* IsoTile.h */,
+				EB4A0B531C17850000D5C043 /* IsoTile.m */,
+				EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */,
+				EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */,
 				EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */,
 				EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */,
 				EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */,
@@ -167,7 +172,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB20BEE71C0E3A9600A63ED3 /* Build configuration list for PBXNativeTarget "Devember2015" */;
 			buildPhases = (
-				EB4A0B511C162C3900D5C043 /* ShellScript */,
 				EB20BEB71C0E3A9500A63ED3 /* Sources */,
 				EB20BEB81C0E3A9500A63ED3 /* Frameworks */,
 				EB20BEB91C0E3A9500A63ED3 /* Resources */,
@@ -287,22 +291,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		EB4A0B511C162C3900D5C043 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "agvtool bump -all";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		EB20BEB71C0E3A9500A63ED3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -311,8 +299,9 @@
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
-				EB4A0B4D1C147AB700D5C043 /* ITSpriteNode.m in Sources */,
+				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
 				EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */,
+				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,
 				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
 				EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */,
 			);
@@ -445,7 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 54;
 				INFOPLIST_FILE = Devember2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015;
@@ -459,7 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 54;
 				INFOPLIST_FILE = Devember2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015;

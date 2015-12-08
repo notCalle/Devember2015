@@ -16,11 +16,12 @@
         _tiles = nil;
         _map = nil;
         self.lightingBitMask = 0x1;
+        _random = [[GKRandomSource alloc] init];
     }
     return self;
 }
 
-- (instancetype)initWithTiles:(NSArray<NSString *> *)tiles mapSize:(CGSize)size {
+- (instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles mapSize:(CGSize)size {
     NSInteger row;
     
     self = [self init];
@@ -41,7 +42,7 @@
     return self;
 }
 
-- (SKSpriteNode *)tileAt:(CGPoint)grid {
+- (IsoTileNode *)tileAt:(CGPoint)grid {
     if (grid.x >= 0 &&
         grid.y >= 0 &&
         grid.x < _width &&
@@ -52,15 +53,15 @@
     }
 }
 
--(void)addChild:(ITSpriteNode *)sprite toTileAt:(CGPoint)grid {
-    ITSpriteNode *tile = [self tileAt:grid];
+-(void)addChild:(IsoTileNode *)sprite toTileAt:(CGPoint)grid {
+    IsoTileNode *tile = [self tileAt:grid];
     if (tile) {
         [tile addChild:sprite];
     }
 }
 
 - (void)setTile:(NSInteger)index at:(CGPoint)grid {
-    ITSpriteNode *sprite = [ITSpriteNode spriteNodeWithImageNamed:_tiles[index]];
+    IsoTileNode *sprite = [[IsoTileNode alloc] initWithTile:_tiles[index]];
     
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
@@ -80,7 +81,7 @@
     [self repositionTiles];
 }
 
-- (void)positionSprite:(ITSpriteNode *)sprite at:(CGPoint)grid {
+- (void)positionTile:(IsoTileNode *)sprite at:(CGPoint)grid {
     CGPoint cartesian = CGPointMake((grid.x - _centerTile.x) * _gridsize, (_centerTile.y - grid.y) * _gridsize);
     CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
 
@@ -91,17 +92,17 @@
 
 - (void)repositionTiles {
     NSInteger x,y;
-    
+
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
-            ITSpriteNode *sprite = _map[y][x];
+            IsoTileNode *sprite = _map[y][x];
             if (y>0) {
                 sprite.north = _map[y-1][x];
             }
             if (x>0) {
                 sprite.west = _map[y][x-1];
             }
-            [self positionSprite:sprite at:CGPointMake(x, y)];
+            [self positionTile:sprite at:CGPointMake(x, y)];
         }
     }
 }
@@ -111,6 +112,20 @@
     CGPoint cartesian = CGPointMake(round(isometric.x + isometric.y + _centerTile.x),
                                     round(isometric.y - isometric.x + _centerTile.y));
     return cartesian;
+}
+
+-(void)randomizeMap {
+    NSInteger x,y;
+    GKRandomDistribution *dist = [[GKRandomDistribution alloc] initWithRandomSource:_random
+                                                                        lowestValue:0
+                                                                       highestValue:_tiles.count - 1];
+    
+    
+    for (y=0; y<_height; y++) {
+        for (x=0; x<_width; x++) {
+            [self setTile:dist.nextInt at:CGPointMake(x, y)];
+        }
+    }
 }
 
 @end

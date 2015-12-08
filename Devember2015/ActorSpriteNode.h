@@ -6,13 +6,13 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import "ITSpriteNode.h"
+#import "IsoTileNode.h"
 
-@interface ActorSpriteNode : ITSpriteNode
+@interface ActorSpriteNode : SKSpriteNode
 
 @property CGFloat stepHeight;
 
--(BOOL)reParent:(ITSpriteNode *)newParent;
+-(BOOL)reParent:(IsoTileNode *)newParent;
 -(BOOL)move:(char)direction;
 
 @end

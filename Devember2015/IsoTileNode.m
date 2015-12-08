@@ -6,9 +6,9 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import "ITSpriteNode.h"
+#import "IsoTileNode.h"
 
-@implementation ITSpriteNode
+@implementation IsoTileNode
 
 -(instancetype)init {
     self = [super init];
@@ -17,11 +17,22 @@
         _south = nil;
         _west = nil;
         _east = nil;
+        _tile = nil;
     }
     return self;
 }
 
--(void)setNorth:(ITSpriteNode *)north {
+-(instancetype)initWithTile:(IsoTile *)tile {
+    self = [self init];
+    if (self) {
+        _tile = tile;
+        self.texture = tile.texture;
+        self.size = tile.texture.size;
+    }
+    return self;
+}
+
+-(void)setNorth:(IsoTileNode *)north {
     if (_north != north) {
         if (_north) {
             _north.south = nil;
@@ -31,7 +42,7 @@
     }
 }
 
--(void)setSouth:(ITSpriteNode *)south {
+-(void)setSouth:(IsoTileNode *)south {
     if (_south != south) {
         if (_south) {
             _south.north = nil;
@@ -41,7 +52,7 @@
     }
 }
 
--(void)setWest:(ITSpriteNode *)west {
+-(void)setWest:(IsoTileNode *)west {
     if (_west != west) {
         if (_west) {
             _west.east = nil;
@@ -51,7 +62,7 @@
     }
 }
 
--(void)setEast:(ITSpriteNode *)east {
+-(void)setEast:(IsoTileNode *)east {
     if (_east != east) {
         if (_east) {
             _east.west = nil;

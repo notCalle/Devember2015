@@ -16,35 +16,43 @@
 
 #define W 15
 #define H 15
-    NSInteger map[H][W] = {
-        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2},
-        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2}
-    };
     
-    NSArray *tiles = @[@"Tiles/White", @"Tiles/Gray", @"Walls/WhiteWall", @"Walls/LowWhiteWall" ];
+    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Grass+Water/G1" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/G2" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/G3" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/G4" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/W1" andStep:-CGFLOAT_MAX],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/W2" andStep:-CGFLOAT_MAX]
+                                  ];
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles mapSize:CGSizeMake(W,H)];
     
-    NSInteger x, y;
-    for (y=0; y<H; y++) {
-        for (x=0; x<W; x++) {
-            [_tileMap setTile:map[y][x] at:CGPointMake(x, y)];
-            
-        }
-    }
+//    NSInteger map[H][W] = {
+//        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2},
+//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+//        {3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+//        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
+//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
+//        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2}
+//    };
+//    NSInteger x, y;
+//    for (y=0; y<H; y++) {
+//        for (x=0; x<W; x++) {
+//            [_tileMap setTile:map[y][x] at:CGPointMake(x, y)];
+//            
+//        }
+//    }
 
+    [_tileMap randomizeMap];
+    
     _tileMap.position = CGPointMake(CGRectGetMidX(self.frame),
                                     CGRectGetMidY(self.frame));
     _tileMap.centerTile = CGPointMake(7, 7);
@@ -52,7 +60,7 @@
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
-    _player.stepHeight = 1.0;
+    _player.stepHeight = 1.5;
     [_player addLightNode];
     
     [_tileMap addChild:_player toTileAt:CGPointMake(0,7)];

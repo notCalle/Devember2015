@@ -8,29 +8,30 @@
 
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
-#import "ITSpriteNode.h"
+#import <GameKit/GameKit.h>
+#import "IsoTileNode.h"
 
-@interface IsoTileMap : ITSpriteNode {
+@interface IsoTileMap : SKSpriteNode {
     CGPoint _position;
     CGPoint _centerTile;
+    GKRandomSource *_random;
 }
 
-@property NSArray<NSString *> *tiles;
-@property NSMutableArray *map;
+@property NSArray<IsoTile *> *tiles;
+@property NSMutableArray<NSMutableArray<IsoTileNode *> *> *map;
 @property CGFloat gridsize;
 @property NSInteger width;
 @property NSInteger height;
 @property CGPoint centerTile;
 
-- (instancetype)initWithTiles:(NSArray<NSString *> *)tiles mapSize:(CGSize)size;
-- (ITSpriteNode *)tileAt:(CGPoint)grid;
+- (instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles mapSize:(CGSize)size;
+- (IsoTileNode *)tileAt:(CGPoint)grid;
 - (void)setTile:(NSInteger)index at:(CGPoint)grid;
-- (void)addChild:(ITSpriteNode *)sprite toTileAt:(CGPoint)grid;
-
-- (void)positionSprite:(ITSpriteNode *)sprite at:(CGPoint)grid;
-
+- (void)addChild:(SKSpriteNode *)sprite toTileAt:(CGPoint)grid;
+- (void)positionTile:(IsoTileNode *)sprite at:(CGPoint)grid;
 - (void)repositionTiles;
-
 - (CGPoint)gridAtLocation:(CGPoint)location;
+
+- (void)randomizeMap;
 
 @end

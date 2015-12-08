@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "IsoTile.h"
 #import "IsoTileMap.h"
 #import "PlayerSpriteNode.h"
 
