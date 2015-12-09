@@ -25,11 +25,15 @@
 -(instancetype)initWithTile:(IsoTile *)tile {
     self = [self init];
     if (self) {
-        _tile = tile;
-        self.texture = tile.texture;
-        self.size = tile.texture.size;
+        self.tile = tile;
     }
     return self;
+}
+
+-(void)setTile:(IsoTile *)tile {
+    _tile = tile;
+    self.texture = tile.texture;
+    self.size = tile.texture.size;
 }
 
 -(void)setNorth:(IsoTileNode *)north {

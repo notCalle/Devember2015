@@ -14,15 +14,29 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
 
-#define W 15
-#define H 15
+#define W 100
+#define H 100
     
-    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Grass+Water/G1" andStep:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/G2" andStep:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/G3" andStep:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/G4" andStep:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/W1" andStep:-CGFLOAT_MAX],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/W2" andStep:-CGFLOAT_MAX]
+    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Grass+Water/GGGG1" andStep:0.2],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG2" andStep:0.2],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG3" andStep:0.2],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG4" andStep:0.2],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW1" andStep:-CGFLOAT_MAX],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW2" andStep:-CGFLOAT_MAX],
+
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGW" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGW" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWW" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGW" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWW" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGW" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" andStep:0.1],
                                   ];
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles mapSize:CGSizeMake(W,H)];
     
@@ -50,12 +64,15 @@
 //            
 //        }
 //    }
+    NSRange tileRange = {.location = 0, .length = 6};
+    NSRange cat1Range = {.location = 0, .length = 4};
+    NSRange cat2Range = {.location = 4, .length = 2};
+    NSRange smoothRange = {.location = 6, .length = 14};
 
-    [_tileMap randomizeMap];
-    
-    _tileMap.position = CGPointMake(CGRectGetMidX(self.frame),
-                                    CGRectGetMidY(self.frame));
-    _tileMap.centerTile = CGPointMake(7, 7);
+    [_tileMap randomizeMapUsingTiles:tileRange];
+//    [_tileMap smoothMapWith:cat1Range and:cat2Range using:smoothRange];
+
+    _tileMap.centerTile = CGPointMake(0,7);
     [self addChild:_tileMap];
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
@@ -103,6 +120,14 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     [_player update:currentTime];
+    CGPoint positionInScene = [_player.scene convertPoint:_player.position fromNode:_player.parent];
+    CGPoint distanceFromCenter = CGPointMake(positionInScene.x - CGRectGetMidX(self.frame),
+                                             positionInScene.y - CGRectGetMidY(self.frame));
+    if (!CGPointEqualToPoint(distanceFromCenter, CGPointZero)) {
+        _tileMap.position = CGPointMake(_tileMap.position.x - distanceFromCenter.x/10.0,
+                                        _tileMap.position.y - distanceFromCenter.y/20.0);
+    }
+    
 }
 
 @end

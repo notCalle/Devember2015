@@ -18,12 +18,13 @@
             CGFloat stepHeight = fabs(newParent.tile.stepHeight - oldParent.tile.stepHeight);
             if (stepHeight <= _stepHeight) {
                 [self removeFromParent];
-                self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 0.5) * newParent.size.width / 2.0);
+                self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 1.0) * newParent.size.width / 4.0);
+                self.zPosition = newParent.zPosition;
                 [newParent addChild:self];
                 return YES;
             }
         } else {
-            self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 0.5) * newParent.size.width / 2.0);
+            self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 1.0) * newParent.size.width / 4.0);
             self.zPosition = newParent.zPosition;
             [newParent addChild:self];
         }

@@ -37,7 +37,8 @@
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     
     /* Set the scale mode to scale to fit the window */
-    scene.scaleMode = SKSceneScaleModeAspectFit;
+    scene.scaleMode = SKSceneScaleModeResizeFill;
+    scene.anchorPoint = CGPointMake(0.5, 0.5);
 
     [self.skView presentScene:scene];
 

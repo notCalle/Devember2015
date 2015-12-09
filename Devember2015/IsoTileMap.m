@@ -62,9 +62,17 @@
 
 - (void)setTile:(NSInteger)index at:(CGPoint)grid {
     IsoTileNode *sprite = [[IsoTileNode alloc] initWithTile:_tiles[index]];
+    NSInteger x = grid.x, y = grid.y;
     
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
+
+    if (y>0) {
+        sprite.north = _map[y-1][x];
+    }
+    if (x>0) {
+        sprite.west = _map[y][x-1];
+    }
     
     sprite.lightingBitMask = 0x1;
     [self addChild:sprite];
@@ -96,12 +104,6 @@
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
             IsoTileNode *sprite = _map[y][x];
-            if (y>0) {
-                sprite.north = _map[y-1][x];
-            }
-            if (x>0) {
-                sprite.west = _map[y][x-1];
-            }
             [self positionTile:sprite at:CGPointMake(x, y)];
         }
     }
@@ -115,15 +117,58 @@
 }
 
 -(void)randomizeMap {
+    NSRange range = {
+        .location = 0,
+        .length = _tiles.count
+    };
+    [self randomizeMapUsingTiles:range];
+}
+
+-(void)randomizeMapUsingTiles:(NSRange)range {
     NSInteger x,y;
     GKRandomDistribution *dist = [[GKRandomDistribution alloc] initWithRandomSource:_random
-                                                                        lowestValue:0
-                                                                       highestValue:_tiles.count - 1];
-    
-    
+                                                                        lowestValue:range.location
+                                                                       highestValue:range.length - 1];
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
             [self setTile:dist.nextInt at:CGPointMake(x, y)];
+        }
+    }
+}
+
+-(void)smoothMapWith:(NSRange)category1Range and:(NSRange)category2Range using:(NSRange)smoothRange {
+    NSInteger x, y;
+    NSInteger mask = 0, orgMask = 0;
+    
+    for (y=0; y<_height-1; y++) {
+        for (x=0; x<_width-1; x++) {
+            IsoTileNode *thisTileNode = _map[y][x];
+            IsoTileNode *southTileNode = thisTileNode.south;
+            IsoTileNode *eastTileNode = thisTileNode.east;
+            IsoTile *thisTile = thisTileNode.tile;
+            IsoTile *southTile = southTileNode.tile;
+            IsoTile *eastTile = eastTileNode.tile;
+            if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category1Range]) {
+                orgMask = mask = 0b1111;
+                if (NSNotFound != [_tiles indexOfObject:southTile inRange:category2Range]) {
+                    mask &= 0b0011;
+                }
+                if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category2Range]) {
+//                    mask &= 0b1010;
+                }
+            }
+//            if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category2Range]) {
+//                orgMask = mask = 0b1111;
+//                if (NSNotFound != [_tiles indexOfObject:southTile inRange:category1Range]) {
+//                    mask &= 0b1100;
+//                }
+//                if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category1Range]) {
+//                    mask &= 0b0101;
+//                }
+//            }
+            if (mask != orgMask) {
+                thisTileNode.tile = _tiles[smoothRange.location + mask-1];
+            }
         }
     }
 }

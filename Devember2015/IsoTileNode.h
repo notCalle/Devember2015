@@ -15,7 +15,7 @@
 @property(nonatomic) IsoTileNode *south;
 @property(nonatomic) IsoTileNode *west;
 @property(nonatomic) IsoTileNode *east;
-@property(readonly) IsoTile *tile;
+@property(nonatomic) IsoTile *tile;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
 

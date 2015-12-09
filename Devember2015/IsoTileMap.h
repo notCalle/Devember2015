@@ -24,14 +24,17 @@
 @property NSInteger height;
 @property CGPoint centerTile;
 
-- (instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles mapSize:(CGSize)size;
-- (IsoTileNode *)tileAt:(CGPoint)grid;
-- (void)setTile:(NSInteger)index at:(CGPoint)grid;
-- (void)addChild:(SKSpriteNode *)sprite toTileAt:(CGPoint)grid;
-- (void)positionTile:(IsoTileNode *)sprite at:(CGPoint)grid;
-- (void)repositionTiles;
-- (CGPoint)gridAtLocation:(CGPoint)location;
+-(instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles mapSize:(CGSize)size;
+-(IsoTileNode *)tileAt:(CGPoint)grid;
+-(void)setTile:(NSInteger)index at:(CGPoint)grid;
+-(void)addChild:(SKSpriteNode *)sprite toTileAt:(CGPoint)grid;
+-(void)positionTile:(IsoTileNode *)sprite at:(CGPoint)grid;
+-(void)repositionTiles;
+-(CGPoint)gridAtLocation:(CGPoint)location;
 
-- (void)randomizeMap;
+-(void)randomizeMap;
+-(void)randomizeMapUsingTiles:(NSRange)range;
+
+-(void)smoothMapWith:(NSRange)category1Range and:(NSRange)category2Range using:(NSRange)smoothRange;
 
 @end
