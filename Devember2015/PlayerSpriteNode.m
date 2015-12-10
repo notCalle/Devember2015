@@ -19,7 +19,7 @@
     _ambientColor = [NSColor blueColor];
     _light.ambientColor = _ambientColor;
     _light.lightColor = _lightColor;
-    _light.falloff = 0.5;
+    _light.falloff = 1.0;
     _light.categoryBitMask = 0x1;
     _light.yScale = 0.5;
     _lightTime = 0.0;

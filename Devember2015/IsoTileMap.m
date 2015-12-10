@@ -21,20 +21,23 @@
     return self;
 }
 
-- (instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles mapSize:(CGSize)size {
+- (instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles width:(NSInteger)width height:(NSInteger)height {
     NSInteger row;
     
     self = [self init];
     if (self) {
         _tiles = tiles;
-        _map = [NSMutableArray arrayWithCapacity:size.height];
+        _map = [NSMutableArray arrayWithCapacity:height];
         
-        _width = (NSInteger)size.width;
-        _height = (NSInteger)size.height;
+        _width = (NSInteger)width;
+        _height = (NSInteger)height;
         _position = CGPointMake(0, 0);
-        _centerTile = CGPointMake(0, 0);
+        _centerTile = (vector_int2){0,0};
         _gridsize = 0.0;
-        
+        _gridGraph = [GKGridGraph graphFromGridStartingAt:(vector_int2){0,0}
+                                                    width:(int)width
+                                                   height:(int)height
+                                         diagonalsAllowed:NO];
         for (row = 0; row < _height; row++) {
             _map[row] = [NSMutableArray arrayWithCapacity:_width];
         }
@@ -42,54 +45,54 @@
     return self;
 }
 
-- (IsoTileNode *)tileAt:(CGPoint)grid {
+- (IsoTileNode *)tileAt:(vector_int2)grid {
     if (grid.x >= 0 &&
         grid.y >= 0 &&
         grid.x < _width &&
         grid.y < _height) {
-        return _map[(NSInteger)grid.y][(NSInteger)grid.x];
+        return _map[grid.y][grid.x];
     } else {
         return nil;
     }
 }
 
--(void)addChild:(IsoTileNode *)sprite toTileAt:(CGPoint)grid {
+-(void)addChild:(IsoTileNode *)sprite toTileAt:(vector_int2)grid {
     IsoTileNode *tile = [self tileAt:grid];
     if (tile) {
         [tile addChild:sprite];
     }
 }
 
-- (void)setTile:(NSInteger)index at:(CGPoint)grid {
+- (void)setTile:(NSInteger)index at:(vector_int2)grid {
     IsoTileNode *sprite = [[IsoTileNode alloc] initWithTile:_tiles[index]];
-    NSInteger x = grid.x, y = grid.y;
     
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
 
-    if (y>0) {
-        sprite.north = _map[y-1][x];
+    if (grid.y>0) {
+        sprite.north = _map[grid.y-1][grid.x];
     }
-    if (x>0) {
-        sprite.west = _map[y][x-1];
+    if (grid.x>0) {
+        sprite.west = _map[grid.y][grid.x-1];
     }
     
     sprite.lightingBitMask = 0x1;
     [self addChild:sprite];
     
-    _map[(NSInteger)grid.y][(NSInteger)grid.x] = sprite;
+    _map[grid.y][grid.x] = sprite;
+    sprite.gridGraphNode = [_gridGraph nodeAtGridPosition:grid];
 }
 
-- (CGPoint)centerTile {
+- (vector_int2)centerTile {
     return _centerTile;
 }
 
-- (void)setCenterTile:(CGPoint)centerTile {
+- (void)setCenterTile:(vector_int2)centerTile {
     _centerTile = centerTile;
     [self repositionTiles];
 }
 
-- (void)positionTile:(IsoTileNode *)sprite at:(CGPoint)grid {
+- (void)positionTile:(IsoTileNode *)sprite at:(vector_int2)grid {
     CGPoint cartesian = CGPointMake((grid.x - _centerTile.x) * _gridsize, (_centerTile.y - grid.y) * _gridsize);
     CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
 
@@ -99,20 +102,21 @@
 }
 
 - (void)repositionTiles {
-    NSInteger x,y;
+    int x,y;
 
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
             IsoTileNode *sprite = _map[y][x];
-            [self positionTile:sprite at:CGPointMake(x, y)];
+            [self positionTile:sprite at:(vector_int2){x,y}];
         }
     }
 }
 
-- (CGPoint)gridAtLocation:(CGPoint)location {
+- (vector_int2)gridAtLocation:(CGPoint)location {
     CGPoint isometric = CGPointMake((location.x - _position.x)/_gridsize, (_position.y - location.y)/_gridsize*2);
-    CGPoint cartesian = CGPointMake(round(isometric.x + isometric.y + _centerTile.x),
-                                    round(isometric.y - isometric.x + _centerTile.y));
+    vector_int2 cartesian = (vector_int2){
+        round(isometric.x + isometric.y + _centerTile.x),
+        round(isometric.y - isometric.x + _centerTile.y)};
     return cartesian;
 }
 
@@ -125,47 +129,50 @@
 }
 
 -(void)randomizeMapUsingTiles:(NSRange)range {
-    NSInteger x,y;
+    int x,y;
     GKRandomDistribution *dist = [[GKRandomDistribution alloc] initWithRandomSource:_random
                                                                         lowestValue:range.location
                                                                        highestValue:range.length - 1];
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
-            [self setTile:dist.nextInt at:CGPointMake(x, y)];
+            [self setTile:dist.nextInt at:(vector_int2){x, y}];
         }
     }
 }
 
 -(void)smoothMapWith:(NSRange)category1Range and:(NSRange)category2Range using:(NSRange)smoothRange {
-    NSInteger x, y;
-    NSInteger mask = 0, orgMask = 0;
+    int x,y;
     
     for (y=0; y<_height-1; y++) {
         for (x=0; x<_width-1; x++) {
+            NSInteger mask = 0, orgMask = 0;
             IsoTileNode *thisTileNode = _map[y][x];
             IsoTileNode *southTileNode = thisTileNode.south;
             IsoTileNode *eastTileNode = thisTileNode.east;
             IsoTile *thisTile = thisTileNode.tile;
             IsoTile *southTile = southTileNode.tile;
             IsoTile *eastTile = eastTileNode.tile;
+
             if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category1Range]) {
-                orgMask = mask = 0b1111;
+                orgMask = mask = 0b0000;
                 if (NSNotFound != [_tiles indexOfObject:southTile inRange:category2Range]) {
-                    mask &= 0b0011;
+                    mask |= 0b0011;
                 }
                 if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category2Range]) {
-//                    mask &= 0b1010;
+                    mask |= 0b0101;
                 }
             }
-//            if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category2Range]) {
-//                orgMask = mask = 0b1111;
-//                if (NSNotFound != [_tiles indexOfObject:southTile inRange:category1Range]) {
-//                    mask &= 0b1100;
-//                }
-//                if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category1Range]) {
-//                    mask &= 0b0101;
-//                }
-//            }
+            
+            if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category2Range]) {
+                orgMask = mask = 0b1111;
+                if (NSNotFound != [_tiles indexOfObject:southTile inRange:category1Range]) {
+                    mask &= 0b1100;
+                }
+                if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category1Range]) {
+                    mask &= 0b1010;
+                }
+            }
+            
             if (mask != orgMask) {
                 thisTileNode.tile = _tiles[smoothRange.location + mask-1];
             }

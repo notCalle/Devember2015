@@ -53,4 +53,20 @@
     return [self reParent:newPlace];
 }
 
+-(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target {
+    return [self findPathTo:target from:(IsoTileNode *)self.parent];
+}
+
+-(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target from:(IsoTileNode *)here {
+    IsoTileMap *tileMap = (IsoTileMap *)here.parent;
+    NSArray<GKGridGraphNode *> *gridPath = [tileMap.gridGraph findPathFromNode:here.gridGraphNode
+                                                                        toNode:target.gridGraphNode];
+    NSMutableArray<IsoTileNode *> *path = [NSMutableArray arrayWithCapacity:gridPath.count];
+    for (GKGridGraphNode *graphNode in gridPath) {
+        IsoTileNode *tileNode = [tileMap tileAt:graphNode.gridPosition];
+        [path addObject:tileNode];
+    }
+    return path;
+}
+
 @end

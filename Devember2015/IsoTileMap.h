@@ -13,7 +13,7 @@
 
 @interface IsoTileMap : SKSpriteNode {
     CGPoint _position;
-    CGPoint _centerTile;
+    vector_int2 _centerTile;
     GKRandomSource *_random;
 }
 
@@ -22,15 +22,16 @@
 @property CGFloat gridsize;
 @property NSInteger width;
 @property NSInteger height;
-@property CGPoint centerTile;
+@property vector_int2 centerTile;
+@property(readonly) GKGridGraph *gridGraph;
 
--(instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles mapSize:(CGSize)size;
--(IsoTileNode *)tileAt:(CGPoint)grid;
--(void)setTile:(NSInteger)index at:(CGPoint)grid;
--(void)addChild:(SKSpriteNode *)sprite toTileAt:(CGPoint)grid;
--(void)positionTile:(IsoTileNode *)sprite at:(CGPoint)grid;
+-(instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles width:(NSInteger)width height:(NSInteger)height;
+-(IsoTileNode *)tileAt:(vector_int2)grid;
+-(void)setTile:(NSInteger)index at:(vector_int2)grid;
+-(void)addChild:(SKSpriteNode *)sprite toTileAt:(vector_int2)grid;
+-(void)positionTile:(IsoTileNode *)sprite at:(vector_int2)grid;
 -(void)repositionTiles;
--(CGPoint)gridAtLocation:(CGPoint)location;
+-(vector_int2)gridAtLocation:(CGPoint)location;
 
 -(void)randomizeMap;
 -(void)randomizeMapUsingTiles:(NSRange)range;

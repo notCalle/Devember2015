@@ -7,6 +7,7 @@
 //
 
 #import "IsoTileNode.h"
+#import "IsoTileMap.h"
 
 @interface ActorSpriteNode : SKSpriteNode
 
@@ -14,5 +15,7 @@
 
 -(BOOL)reParent:(IsoTileNode *)newParent;
 -(BOOL)move:(char)direction;
+-(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target;
+-(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 
 @end

@@ -26,6 +26,7 @@
 
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGGW" andStep:0.1],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGWG" andStep:0.1],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWW" andStep:0.1],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GWGG" andStep:0.1],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GWGW" andStep:0.1],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GWWG" andStep:0.1],
@@ -38,7 +39,7 @@
                                   [IsoTile tileWithImageNamed:@"Grass+Water/WWGW" andStep:0.1],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" andStep:0.1],
                                   ];
-    _tileMap = [[IsoTileMap alloc] initWithTiles:tiles mapSize:CGSizeMake(W,H)];
+    _tileMap = [[IsoTileMap alloc] initWithTiles:tiles width:W height:H];
     
 //    NSInteger map[H][W] = {
 //        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2},
@@ -72,7 +73,7 @@
     [_tileMap randomizeMapUsingTiles:tileRange];
 //    [_tileMap smoothMapWith:cat1Range and:cat2Range using:smoothRange];
 
-    _tileMap.centerTile = CGPointMake(0,7);
+    _tileMap.centerTile = (vector_int2){0,7};
     [self addChild:_tileMap];
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
@@ -80,17 +81,16 @@
     _player.stepHeight = 1.5;
     [_player addLightNode];
     
-    [_tileMap addChild:_player toTileAt:CGPointMake(0,7)];
+    [_tileMap addChild:_player toTileAt:(vector_int2){0,7}];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
      /* Called when a mouse click occurs */
     
     CGPoint location = [theEvent locationInNode:self];
-
-    CGPoint grid = [_tileMap gridAtLocation:location];
-
-    _tileMap.centerTile = grid;
+    vector_int2 grid = [_tileMap gridAtLocation:location];
+    NSArray<IsoTileNode *> *path = [_player findPathTo:[_tileMap tileAt:grid]];
+    
 }
 
 -(void)keyDown:(NSEvent *)theEvent {

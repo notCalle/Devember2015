@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <GameKit/GameKit.h>
 #import "IsoTile.h"
 
 @interface IsoTileNode : SKSpriteNode
@@ -16,6 +17,7 @@
 @property(nonatomic) IsoTileNode *west;
 @property(nonatomic) IsoTileNode *east;
 @property(nonatomic) IsoTile *tile;
+@property GKGridGraphNode *gridGraphNode;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
 
