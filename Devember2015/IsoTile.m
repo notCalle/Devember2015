@@ -11,14 +11,20 @@
 @implementation IsoTile
 
 +(instancetype)tileWithTexture:(SKTexture *)texture {
-    return [IsoTile tileWithTexture:texture andStep:texture.size.height * 2.0 / texture.size.width];
+    return [IsoTile tileWithTexture:texture height:texture.size.height * 2.0 / texture.size.width];
 }
 
-+(instancetype)tileWithTexture:(SKTexture *)texture andStep:(CGFloat)stepHeight {
+
++(instancetype)tileWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight {
+    return [IsoTile tileWithTexture:texture height:stepHeight cost:1.0];
+}
+
++(instancetype)tileWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
     IsoTile *object = [[IsoTile alloc] init];
     if (object) {
         object.texture = texture;
         object.stepHeight = stepHeight;
+        object.stepCost = stepCost;
     }
     return object;
 }
@@ -27,8 +33,12 @@
     return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name]];
 }
 
-+(instancetype)tileWithImageNamed:(NSString *)name andStep:(CGFloat)stepHeight {
-    return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name] andStep:stepHeight];
++(instancetype)tileWithImageNamed:(NSString *)name height:(CGFloat)stepHeight {
+    return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight];
+}
+
++(instancetype)tileWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
+    return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight cost:stepCost];
 }
 
 @end

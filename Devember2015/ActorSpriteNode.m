@@ -10,32 +10,20 @@
 
 @implementation ActorSpriteNode
 
--(BOOL)reParent:(IsoTileNode *)newParent {
-    
+-(void)reParent:(IsoTileNode *)newParent {
     if (newParent) {
         if (self.parent) {
-            IsoTileNode *oldParent = (IsoTileNode *)self.parent;
-            CGFloat stepHeight = fabs(newParent.tile.stepHeight - oldParent.tile.stepHeight);
-            if (stepHeight <= _stepHeight) {
-                [self removeFromParent];
-                self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 1.0) * newParent.size.width / 4.0);
-                self.zPosition = newParent.zPosition;
-                [newParent addChild:self];
-                return YES;
-            }
-        } else {
-            self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 1.0) * newParent.size.width / 4.0);
-            self.zPosition = newParent.zPosition;
-            [newParent addChild:self];
+            [self removeFromParent];
         }
+        self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 1.0) * newParent.size.width / 4.0);
+        self.zPosition = newParent.zPosition;
+        [newParent addChild:self];
     }
-    return NO;
 }
 
--(BOOL)move:(char)direction {
+-(IsoTileNode *)tileInDirection:(char)direction {
     IsoTileNode *currentPlace = (IsoTileNode *)[self parent];
     IsoTileNode *newPlace = nil;
-    
     switch (direction) {
         case 'N':
             newPlace = currentPlace.north;
@@ -50,23 +38,46 @@
             newPlace = currentPlace.east;
             break;
     }
-    return [self reParent:newPlace];
+    return newPlace;
 }
 
--(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target {
-    return [self findPathTo:target from:(IsoTileNode *)self.parent];
-}
-
--(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target from:(IsoTileNode *)here {
-    IsoTileMap *tileMap = (IsoTileMap *)here.parent;
-    NSArray<GKGridGraphNode *> *gridPath = [tileMap.gridGraph findPathFromNode:here.gridGraphNode
-                                                                        toNode:target.gridGraphNode];
-    NSMutableArray<IsoTileNode *> *path = [NSMutableArray arrayWithCapacity:gridPath.count];
-    for (GKGridGraphNode *graphNode in gridPath) {
-        IsoTileNode *tileNode = [tileMap tileAt:graphNode.gridPosition];
-        [path addObject:tileNode];
+-(BOOL)move:(char)direction {
+    IsoTileNode *newPlace = [self tileInDirection:direction];
+    BOOL canStep = [self canStepTo:newPlace];
+    if (canStep) {
+        [self reParent:newPlace];
     }
-    return path;
+    return canStep;
+}
+
+-(BOOL)canStepTo:(IsoTileNode *)target {
+    return [self canStepTo:target from:(IsoTileNode *)self.parent];
+}
+
+-(BOOL)canStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
+    if (target != nil &&
+        (target == here.north ||
+         target == here.south ||
+         target == here.west  ||
+         target == here.east))
+    {
+        CGFloat stepHeight = fabs(target.tile.stepHeight - here.tile.stepHeight);
+        return (stepHeight <= _stepHeight);
+    }
+    return NO;
+}
+
+-(CGFloat)costOfStepTo:(IsoTileNode *)target {
+    return [self costOfStepTo:target from:(IsoTileNode *)self.parent];
+}
+
+-(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
+    if ([self canStepTo:target from:here]) {
+        CGFloat baseCost = (target.tile.stepCost + here.tile.stepCost) / 2.0;
+        CGFloat stepHeight = target.tile.stepHeight - here.tile.stepHeight;
+        return baseCost + stepHeight * stepHeight;
+    }
+    return CGFLOAT_MAX;
 }
 
 @end

@@ -17,7 +17,7 @@
 @property(nonatomic) IsoTileNode *west;
 @property(nonatomic) IsoTileNode *east;
 @property(nonatomic) IsoTile *tile;
-@property GKGridGraphNode *gridGraphNode;
+@property vector_int2 gridPosition;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
 

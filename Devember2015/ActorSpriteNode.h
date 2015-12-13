@@ -6,6 +6,7 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
+@import GameKit;
 #import "IsoTileNode.h"
 #import "IsoTileMap.h"
 
@@ -13,9 +14,12 @@
 
 @property CGFloat stepHeight;
 
--(BOOL)reParent:(IsoTileNode *)newParent;
+-(void)reParent:(IsoTileNode *)newParent;
+-(IsoTileNode *)tileInDirection:(char)direction;
 -(BOOL)move:(char)direction;
--(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target;
--(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)target from:(IsoTileNode *)here;
+-(BOOL)canStepTo:(IsoTileNode *)target;
+-(BOOL)canStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
+-(CGFloat)costOfStepTo:(IsoTileNode *)target;
+-(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 
 @end

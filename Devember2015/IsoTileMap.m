@@ -80,7 +80,7 @@
     [self addChild:sprite];
     
     _map[grid.y][grid.x] = sprite;
-    sprite.gridGraphNode = [_gridGraph nodeAtGridPosition:grid];
+    sprite.gridPosition = grid;
 }
 
 - (vector_int2)centerTile {
