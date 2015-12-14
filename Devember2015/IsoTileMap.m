@@ -17,6 +17,7 @@
         _map = nil;
         self.lightingBitMask = 0x1;
         _random = [[GKRandomSource alloc] init];
+        _minimum_cost = CGFLOAT_MAX;
     }
     return self;
 }
@@ -68,7 +69,9 @@
     
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
-
+    if (sprite.tile.stepCost < _minimum_cost)
+        _minimum_cost = sprite.tile.stepCost;
+    
     if (grid.y>0) {
         sprite.north = _map[grid.y-1][grid.x];
     }
@@ -118,6 +121,15 @@
         round(isometric.x + isometric.y + _centerTile.x),
         round(isometric.y - isometric.x + _centerTile.y)};
     return cartesian;
+}
+
+-(CGFloat)bestPathCostFrom:(IsoTileNode *)here to:(IsoTileNode *)there {
+    vector_int2 hereGrid = here.gridPosition;
+    vector_int2 thereGrid = there.gridPosition;
+    int xDelta = abs(hereGrid.x - thereGrid.x);
+    int yDelta = abs(hereGrid.y - thereGrid.y);
+    
+    return _minimum_cost * (xDelta + yDelta);
 }
 
 -(void)randomizeMap {

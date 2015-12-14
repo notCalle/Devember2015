@@ -28,39 +28,55 @@
 }
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there from:(IsoTileNode *)here {
-    GKGridGraph *gridGraph = [GKGridGraph graphFromGridStartingAt:(vector_int2){0,0}
-                                                            width:(int)_tileMap.width
-                                                           height:(int)_tileMap.height
-                                                 diagonalsAllowed:NO];
-    NSMutableArray<IsoTileNode *> *path = nil;
-    
-    while (path == nil) {
-        GKGridGraphNode *hereNode = [gridGraph nodeAtGridPosition:here.gridPosition];
-        GKGridGraphNode *thereNode = [gridGraph nodeAtGridPosition:there.gridPosition];
+    NSMutableArray<IsoTileNode *> *path = [NSMutableArray array];
+    NSMutableDictionary<IsoTileNode *,NSNumber *> *pathCost = [NSMutableDictionary dictionary];
+    NSMutableDictionary<IsoTileNode *,NSNumber *> *goalCost = [NSMutableDictionary dictionary];
+    NSMutableSet<IsoTileNode *> *closedSet = [NSMutableSet set];
+    NCPriorityQueue<IsoTileNode *> *openQueue = [NCPriorityQueue queueWithPriorities:goalCost];
+    NSMutableDictionary<IsoTileNode *,IsoTileNode *> *cameFrom = [NSMutableDictionary dictionary];
 
-        if (thereNode && hereNode) {
-            NSArray<GKGridGraphNode *> *gridPath = [gridGraph findPathFromNode:hereNode toNode:thereNode];
-            IsoTileNode *previousNode = nil;
-            path = [NSMutableArray arrayWithCapacity:gridPath.count];
-            
-            for (GKGridGraphNode *graphNode in gridPath) {
-                IsoTileNode *tileNode = [_tileMap tileAt:graphNode.gridPosition];
-                
-                if (previousNode == nil ||
-                    [_actor canStepTo:tileNode from:previousNode])
-                {
-                    [path addObject:tileNode];
-                } else {
-                    [gridGraph removeNodes:@[graphNode]];
-                    path = nil;
-                    break;
-                }
-                previousNode = tileNode;
+    for (SKNode *node in _tileMap.children) {
+        if ([node isKindOfClass:[IsoTileNode class]]) {
+            pathCost[(IsoTileNode *)node] = [NSNumber numberWithDouble:CGFLOAT_MAX];
+            goalCost[(IsoTileNode *)node] = [NSNumber numberWithDouble:CGFLOAT_MAX];
+        }
+    }
+    [openQueue addObject:here];
+    pathCost[here] = [NSNumber numberWithDouble:0.0];
+    goalCost[here] = [NSNumber numberWithDouble:[_tileMap bestPathCostFrom:here to:there]];
+    
+    while (openQueue.count > 0) {
+        IsoTileNode *current = openQueue.lastObject;
+        if (current == there) {
+            // reconstruct path
+            [path addObject:current];
+            while ((current = cameFrom[current])) {
+                [path addObject:current];
             }
-        } else
             break;
+        } else {
+            [openQueue removeLastObject];
+            [closedSet addObject:current];
+            for (IsoTileNode *neighbor in current.neighbors) {
+                if ([closedSet containsObject:neighbor])
+                    continue;
+
+                double tentativePathCost = pathCost[current].doubleValue + [_actor costOfStepTo:neighbor from:current];
+
+                if (![openQueue containsObject:neighbor]) {
+                    [openQueue addObject:neighbor];
+                } else if (tentativePathCost >= pathCost[neighbor].doubleValue) {
+                    continue;
+                }
+                cameFrom[neighbor] = current;
+                pathCost[neighbor] = [NSNumber numberWithDouble:tentativePathCost];
+                goalCost[neighbor] = [NSNumber numberWithDouble:(tentativePathCost +
+                                                                 [_tileMap bestPathCostFrom:neighbor to:there])];
+            }
+        }
     }
     return path;
 }
+
 
 @end

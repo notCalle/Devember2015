@@ -21,6 +21,7 @@
 		EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B531C17850000D5C043 /* IsoTile.m */; };
 		EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */; };
 		EBF7D6171C1DE56300E7ED0F /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6161C1DE56300E7ED0F /* PathFinder.m */; };
+		EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSpriteNode.m; sourceTree = "<group>"; };
 		EBF7D6151C1DE56300E7ED0F /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinder.h; sourceTree = "<group>"; };
 		EBF7D6161C1DE56300E7ED0F /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinder.m; sourceTree = "<group>"; };
+		EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPriorityQueue.h; sourceTree = "<group>"; };
+		EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPriorityQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */,
 				EBF7D6151C1DE56300E7ED0F /* PathFinder.h */,
 				EBF7D6161C1DE56300E7ED0F /* PathFinder.m */,
+				EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */,
+				EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */,
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
 				EBF7D6171C1DE56300E7ED0F /* PathFinder.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,

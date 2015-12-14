@@ -15,6 +15,7 @@
     CGPoint _position;
     vector_int2 _centerTile;
     GKRandomSource *_random;
+    CGFloat _minimum_cost;
 }
 
 @property NSArray<IsoTile *> *tiles;
@@ -32,6 +33,7 @@
 -(void)positionTile:(IsoTileNode *)sprite at:(vector_int2)grid;
 -(void)repositionTiles;
 -(vector_int2)gridAtLocation:(CGPoint)location;
+-(CGFloat)bestPathCostFrom:(IsoTileNode *)here to:(IsoTileNode *)there;
 
 -(void)randomizeMap;
 -(void)randomizeMapUsingTiles:(NSRange)range;

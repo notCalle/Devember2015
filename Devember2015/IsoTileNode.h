@@ -20,5 +20,7 @@
 @property vector_int2 gridPosition;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
+-(NSArray<IsoTileNode *> *)neighbors;
+-(NSString *)gridS;
 
 @end

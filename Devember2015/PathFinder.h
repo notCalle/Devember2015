@@ -10,11 +10,11 @@
 #import <GameKit/GameKit.h>
 #import "IsoTileMap.h"
 #import "ActorSpriteNode.h"
+#import "NCPriorityQueue.h"
 
 @interface PathFinder : NSObject {
     IsoTileMap *_tileMap;
     ActorSpriteNode *_actor;
-    GKGridGraph *_gridGraph;
 }
 
 -initWithActor:(ActorSpriteNode *)actor map:(IsoTileMap *)map;

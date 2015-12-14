@@ -30,6 +30,23 @@
     return self;
 }
 
+-(NSArray<IsoTileNode *> *)neighbors {
+    NSMutableArray *array = [NSMutableArray array];
+    if (_north)
+        [array addObject:_north];
+    if (_south)
+        [array addObject:_south];
+    if (_west)
+        [array addObject:_west];
+    if (_east)
+        [array addObject:_east];
+    return array;
+}
+
+-(NSString *)gridS {
+    return [NSString stringWithFormat:@"%d,%d", _gridPosition.x, _gridPosition.y];
+}
+
 -(void)setTile:(IsoTile *)tile {
     _tile = tile;
     self.texture = tile.texture;
