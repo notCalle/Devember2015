@@ -43,7 +43,12 @@
         frequency *= 2;
         amplitude *= _persistance;
     }
-    return sum;
+    if (sum > 1.0)
+        return 1.0;
+    else if (sum < -1.0)
+        return -1.0;
+    else
+        return sum;
 }
 
 +(CGFloat)noise:(int)x {
