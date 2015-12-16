@@ -142,12 +142,17 @@
 
 -(void)randomizeMapUsingTiles:(NSRange)range {
     int x,y;
+
+    NCPerlinNoise *noise = [NCPerlinNoise octaves:3 persistance:0.5];
+    
     GKRandomDistribution *dist = [[GKRandomDistribution alloc] initWithRandomSource:_random
                                                                         lowestValue:range.location
                                                                        highestValue:range.length - 1];
+
     for (y=0; y<_height; y++) {
         for (x=0; x<_width; x++) {
-            [self setTile:dist.nextInt at:(vector_int2){x, y}];
+            NSInteger tile = range.location + range.length * fabs([noise perlinNoise2:CGPointMake(x, y)] + 0.5)/1.5;
+            [self setTile:tile at:(vector_int2){x, y}];
         }
     }
 }

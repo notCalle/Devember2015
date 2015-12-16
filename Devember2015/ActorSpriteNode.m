@@ -15,7 +15,7 @@
         if (self.parent) {
             [self removeFromParent];
         }
-        self.position = CGPointMake(0.0, (newParent.tile.stepHeight + 1.0) * newParent.size.width / 4.0);
+        self.position = CGPointMake(0.0, (newParent.tile.stepHeight) * newParent.size.width / 2.0);
         self.zPosition = newParent.zPosition;
         [newParent addChild:self];
     }

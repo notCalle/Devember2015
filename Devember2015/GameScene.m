@@ -17,68 +17,46 @@
 #define W 100
 #define H 100
     
-    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Grass+Water/GGGG1" height:0.2],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG2" height:0.2],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG3" height:0.2],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG4" height:0.2],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW1" height:-0.1 cost:2.0],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW2" height:-0.2 cost:2.0],
-
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWG" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGG" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWG" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGG" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWG" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGG" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGW" height:0.1],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" height:0.1],
-                                  ];
-    _tileMap = [[IsoTileMap alloc] initWithTiles:tiles width:W height:H];
+//    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Grass+Water/GGGG1" height:0.2],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG2" height:0.2],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG3" height:0.2],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG4" height:0.2],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW1" height:-0.1 cost:2.0],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW2" height:-0.2 cost:2.0],
+//
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWG" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGG" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWG" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGG" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWG" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGG" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGW" height:0.1],
+//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" height:0.1],
+//                                  ];
     
-//    NSInteger map[H][W] = {
-//        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2},
-//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-//        {3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-//        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-//        {2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2},
-//        {2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2},
-//        {2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2}
-//    };
-//    NSInteger x, y;
-//    for (y=0; y<H; y++) {
-//        for (x=0; x<W; x++) {
-//            [_tileMap setTile:map[y][x] at:CGPointMake(x, y)];
-//            
-//        }
-//    }
-    NSRange tileRange = {.location = 0, .length = 6};
-    NSRange cat1Range = {.location = 0, .length = 4};
-    NSRange cat2Range = {.location = 4, .length = 2};
-    NSRange smoothRange = {.location = 6, .length = 14};
-
-    [_tileMap randomizeMapUsingTiles:tileRange];
-//    [_tileMap smoothMapWith:cat1Range and:cat2Range using:smoothRange];
+    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Terrain/00-Water" height:0 cost:3.0],
+                                  [IsoTile tileWithImageNamed:@"Terrain/01-Sandy" height:0.5 cost:1.5],
+                                  [IsoTile tileWithImageNamed:@"Terrain/02-Grass" height:1.0 cost:1.0],
+                                  [IsoTile tileWithImageNamed:@"Terrain/03-Grass" height:1.5 cost:1.0],
+                                  [IsoTile tileWithImageNamed:@"Terrain/04-Grassy mountains" height:2.0 cost:1.5],
+                                  [IsoTile tileWithImageNamed:@"Terrain/05-Rocky mountains" height:2.5 cost:1.5],
+                                  [IsoTile tileWithImageNamed:@"Terrain/06-Snowy mountains" height:3.0 cost:2.0]];
+    
+    _tileMap = [[IsoTileMap alloc] initWithTiles:tiles width:W height:H];
+    [_tileMap randomizeMap];
 
     _tileMap.centerTile = (vector_int2){0,7};
     [self addChild:_tileMap];
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
-    _player.stepHeight = 1.5;
+    _player.stepHeight = 0.5;
     [_player addLightNode];
     
     [_tileMap addChild:_player toTileAt:(vector_int2){0,7}];
@@ -91,6 +69,11 @@
     vector_int2 grid = [_tileMap gridAtLocation:location];
     NCPathFinder *pathFinder = [NCPathFinder finderFor:_player on:_tileMap];
     NSArray<IsoTileNode *> *path = [pathFinder findPathTo:[_tileMap tileAt:grid]];
+    for (IsoTileNode *tile in path) {
+        tile.color = [NSColor redColor];
+        tile.colorBlendFactor = 1.0;
+        [tile runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:5.0]];
+    }
 }
 
 -(void)keyDown:(NSEvent *)theEvent {

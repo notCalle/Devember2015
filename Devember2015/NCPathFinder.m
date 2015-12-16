@@ -55,17 +55,11 @@
             [_openQueue removeLastObject];
             current.visited = YES;
             
-            current.color=[NSColor blackColor];
-
             for (IsoTileNode *neighbor in current.neighbors) {
                 if (neighbor.visited)
                     continue;
                 if (![_actor canStepTo:neighbor from:current])
                     continue;
-
-                neighbor.color = [NSColor blueColor];
-                neighbor.colorBlendFactor = 1.0;
-                [neighbor runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:5.0]];
 
                 CGFloat tentativePathCost = current.bestPathCost + [_actor costOfStepTo:neighbor from:current];
 
@@ -79,9 +73,6 @@
                     [_openQueue addObject:neighbor];
             }
         }
-    }
-    for (IsoTileNode *tile in path) {
-        tile.color = [NSColor redColor];
     }
     return path;
 }

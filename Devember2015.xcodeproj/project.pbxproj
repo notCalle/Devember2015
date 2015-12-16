@@ -22,6 +22,7 @@
 		EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */; };
 		EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */; };
 		EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */; };
+		EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6221C2214E300E7ED0F /* NCPerlinNoise.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPriorityQueue.h; sourceTree = "<group>"; };
 		EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPriorityQueue.m; sourceTree = "<group>"; };
 		EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCGraphNode.h; sourceTree = "<group>"; };
+		EBF7D6211C2214E300E7ED0F /* NCPerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPerlinNoise.h; sourceTree = "<group>"; };
+		EBF7D6221C2214E300E7ED0F /* NCPerlinNoise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPerlinNoise.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 				EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */,
 				EBF7D6151C1DE56300E7ED0F /* NCPathFinder.h */,
 				EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */,
+				EBF7D6211C2214E300E7ED0F /* NCPerlinNoise.h */,
+				EBF7D6221C2214E300E7ED0F /* NCPerlinNoise.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */,
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
 				EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */,
+				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
