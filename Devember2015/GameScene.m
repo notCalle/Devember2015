@@ -21,8 +21,8 @@
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGGG2" height:0.2],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGGG3" height:0.2],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGGG4" height:0.2],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW1" height:-CGFLOAT_MAX],
-                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW2" height:-CGFLOAT_MAX],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW1" height:-0.1 cost:2.0],
+                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW2" height:-0.2 cost:2.0],
 
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGGW" height:0.1],
                                   [IsoTile tileWithImageNamed:@"Grass+Water/GGWG" height:0.1],
@@ -89,9 +89,8 @@
     
     CGPoint location = [theEvent locationInNode:self];
     vector_int2 grid = [_tileMap gridAtLocation:location];
-    PathFinder *pathFinder = [PathFinder finderFor:_player on:_tileMap];
+    NCPathFinder *pathFinder = [NCPathFinder finderFor:_player on:_tileMap];
     NSArray<IsoTileNode *> *path = [pathFinder findPathTo:[_tileMap tileAt:grid]];
-    
 }
 
 -(void)keyDown:(NSEvent *)theEvent {

@@ -20,7 +20,7 @@
 		EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */; };
 		EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B531C17850000D5C043 /* IsoTile.m */; };
 		EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */; };
-		EBF7D6171C1DE56300E7ED0F /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6161C1DE56300E7ED0F /* PathFinder.m */; };
+		EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */; };
 		EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */; };
 /* End PBXBuildFile section */
 
@@ -68,10 +68,11 @@
 		EB4A0B531C17850000D5C043 /* IsoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTile.m; sourceTree = "<group>"; };
 		EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSpriteNode.h; sourceTree = "<group>"; };
 		EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSpriteNode.m; sourceTree = "<group>"; };
-		EBF7D6151C1DE56300E7ED0F /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinder.h; sourceTree = "<group>"; };
-		EBF7D6161C1DE56300E7ED0F /* PathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinder.m; sourceTree = "<group>"; };
+		EBF7D6151C1DE56300E7ED0F /* NCPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPathFinder.h; sourceTree = "<group>"; };
+		EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPathFinder.m; sourceTree = "<group>"; };
 		EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPriorityQueue.h; sourceTree = "<group>"; };
 		EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPriorityQueue.m; sourceTree = "<group>"; };
+		EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCGraphNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +142,11 @@
 				EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */,
 				EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */,
 				EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */,
-				EBF7D6151C1DE56300E7ED0F /* PathFinder.h */,
-				EBF7D6161C1DE56300E7ED0F /* PathFinder.m */,
 				EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */,
 				EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */,
+				EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */,
+				EBF7D6151C1DE56300E7ED0F /* NCPathFinder.h */,
+				EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -308,7 +310,7 @@
 			files = (
 				EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */,
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
-				EBF7D6171C1DE56300E7ED0F /* PathFinder.m in Sources */,
+				EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,

@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NCQueuePriority <NSObject>
+
+@property(readonly) CGFloat priority;
+
+@end
+
 @interface NCPriorityQueue<ObjectType> : NSMutableArray {
     NSMutableArray<ObjectType> *_queue;
-    NSDictionary<ObjectType,NSNumber *> *_prio;
 }
 
--(instancetype)initWithPriorities:(NSDictionary<ObjectType,NSNumber *> *)priorities;
-+(instancetype)queueWithPriorities:(NSDictionary<ObjectType,NSNumber *> *)priorities;
++(instancetype)queue;
 
 @end

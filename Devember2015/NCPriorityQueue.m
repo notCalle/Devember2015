@@ -14,21 +14,12 @@
     self = [super init];
     if (self) {
         _queue = [NSMutableArray array];
-        _prio = nil;
     }
     return self;
 }
 
--(instancetype)initWithPriorities:(NSDictionary<ObjectType,NSNumber *> *)priorities {
-    self = [self init];
-    if (self) {
-        _prio = priorities;
-    }
-    return self;
-}
-
-+(instancetype)queueWithPriorities:(NSDictionary<ObjectType,NSNumber *> *)priorities {
-    return [[NCPriorityQueue alloc] initWithPriorities:priorities];
++(instancetype)queue {
+    return [[NCPriorityQueue alloc] init];
 }
 
 -(NSUInteger)count {
@@ -39,7 +30,7 @@
     return [_queue objectAtIndex:index];
 }
 
--(void)insertObject:(id)anObject atIndex:(NSUInteger)index {
+-(void)insertObject:(id<NCQueuePriority>)anObject atIndex:(NSUInteger)index {
     [self addObject:anObject];
 }
 
@@ -47,10 +38,11 @@
     [_queue removeObjectAtIndex:index];
 }
 
--(void)addObject:(id)anObject {
+-(void)addObject:(id<NCQueuePriority>)anObject {
     NSInteger n;
     for (n=0; n<[_queue count]; n++) {
-        if ([_prio[_queue[n]] isLessThan:_prio[anObject]]) {
+        id<NCQueuePriority>this = _queue[n];
+        if (anObject.priority > this.priority) {
             [_queue insertObject:anObject atIndex:n];
             break;
         }
@@ -64,7 +56,7 @@
     [_queue removeLastObject];
 }
 
--(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
+-(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id<NCQueuePriority>)anObject {
     [self removeObjectAtIndex:index];
     [self addObject:anObject];
 }

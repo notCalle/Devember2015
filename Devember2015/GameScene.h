@@ -10,7 +10,7 @@
 #import "IsoTile.h"
 #import "IsoTileMap.h"
 #import "PlayerSpriteNode.h"
-#import "PathFinder.h"
+#import "NCPathFinder.h"
 
 @interface GameScene : SKScene
 

@@ -43,10 +43,6 @@
     return array;
 }
 
--(NSString *)gridS {
-    return [NSString stringWithFormat:@"%d,%d", _gridPosition.x, _gridPosition.y];
-}
-
 -(void)setTile:(IsoTile *)tile {
     _tile = tile;
     self.texture = tile.texture;
@@ -92,5 +88,16 @@
         east.west = self;
     }
 }
+
+// NCGraphNode protocol
+
+-(CGFloat)priority {
+    return self.estimatedGoalCost;
+}
+
+@synthesize estimatedGoalCost;
+@synthesize bestPathCost;
+@synthesize cameFrom;
+@synthesize visited;
 
 @end

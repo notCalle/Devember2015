@@ -9,8 +9,9 @@
 #import <SpriteKit/SpriteKit.h>
 #import <GameKit/GameKit.h>
 #import "IsoTile.h"
+#import "NCGraphNode.h"
 
-@interface IsoTileNode : SKSpriteNode
+@interface IsoTileNode : SKSpriteNode <NCGraphNode>
 
 @property(nonatomic) IsoTileNode *north;
 @property(nonatomic) IsoTileNode *south;
@@ -20,7 +21,5 @@
 @property vector_int2 gridPosition;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
--(NSArray<IsoTileNode *> *)neighbors;
--(NSString *)gridS;
 
 @end
