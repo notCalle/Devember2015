@@ -40,7 +40,7 @@
 //                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" height:0.1],
 //                                  ];
     
-    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Terrain/00-Water" height:0 cost:3.0],
+    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Terrain/00-Water" height:0 cost:5.0],
                                   [IsoTile tileWithImageNamed:@"Terrain/01-Sandy" height:0.5 cost:1.5],
                                   [IsoTile tileWithImageNamed:@"Terrain/02-Grass" height:1.0 cost:1.0],
                                   [IsoTile tileWithImageNamed:@"Terrain/03-Grass" height:1.5 cost:1.0],
@@ -55,7 +55,7 @@
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
-    _player.stepHeight = 0.5;
+    _player.stepHeight = 1.0;
     [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
 //    [_tileMap addChild:_player toTileAt:_tileMap.centerTile];
 }
