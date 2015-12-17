@@ -51,15 +51,13 @@
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles width:W height:H];
     [_tileMap randomizeMap];
 
-    _tileMap.centerTile = (vector_int2){0,7};
     [self addChild:_tileMap];
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
     _player.stepHeight = 0.5;
-    [_player addLightNode];
-    
-    [_tileMap addChild:_player toTileAt:(vector_int2){0,7}];
+    [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
+//    [_tileMap addChild:_player toTileAt:_tileMap.centerTile];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
@@ -67,13 +65,8 @@
     
     CGPoint location = [theEvent locationInNode:self];
     vector_int2 grid = [_tileMap gridAtLocation:location];
-    NCPathFinder *pathFinder = [NCPathFinder finderFor:_player on:_tileMap];
-    NSArray<IsoTileNode *> *path = [pathFinder findPathTo:[_tileMap tileAt:grid]];
-    for (IsoTileNode *tile in path) {
-        tile.color = [NSColor redColor];
-        tile.colorBlendFactor = 1.0;
-        [tile runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:5.0]];
-    }
+
+    [_player moveTo:[_tileMap tileAt:grid]];
 }
 
 -(void)keyDown:(NSEvent *)theEvent {
@@ -110,6 +103,7 @@
         _tileMap.position = CGPointMake(_tileMap.position.x - distanceFromCenter.x/10.0,
                                         _tileMap.position.y - distanceFromCenter.y/20.0);
     }
+
     
 }
 

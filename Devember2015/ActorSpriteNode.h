@@ -10,16 +10,23 @@
 #import "IsoTileNode.h"
 #import "IsoTileMap.h"
 
-@interface ActorSpriteNode : SKSpriteNode
+@interface ActorSpriteNode : SKSpriteNode {
+    NSMutableArray<SKAction *> *_actions;
+}
 
 @property CGFloat stepHeight;
 
 -(void)reParent:(IsoTileNode *)newParent;
 -(IsoTileNode *)tileInDirection:(char)direction;
--(BOOL)move:(char)direction;
+-(void)move:(char)direction;
+-(void)moveTo:(IsoTileNode *)target;
+-(void)addAction:(SKAction *)action;
+-(void)addActionStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 -(BOOL)canStepTo:(IsoTileNode *)target;
 -(BOOL)canStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 -(CGFloat)costOfStepTo:(IsoTileNode *)target;
 -(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
+
+-(void)update:(NSTimeInterval)currentTime;
 
 @end

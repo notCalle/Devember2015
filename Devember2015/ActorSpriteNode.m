@@ -7,6 +7,7 @@
 //
 
 #import "ActorSpriteNode.h"
+#import "NCPathFinder.h"
 
 @implementation ActorSpriteNode
 
@@ -41,13 +42,48 @@
     return newPlace;
 }
 
--(BOOL)move:(char)direction {
-    IsoTileNode *newPlace = [self tileInDirection:direction];
-    BOOL canStep = [self canStepTo:newPlace];
-    if (canStep) {
-        [self reParent:newPlace];
+-(void)move:(char)direction {
+    [self addAction:[SKAction runBlock:^(void) {
+        IsoTileNode *target = [self tileInDirection:direction];
+        BOOL canStep = [self canStepTo:target];
+        if (canStep) {
+            [self addActionStepTo:target from:(IsoTileNode *)self.parent];
+        }
+    }]];
+}
+
+-(void)moveTo:(IsoTileNode *)target {
+    NCPathFinder *pathFinder = [NCPathFinder finderFor:self on:(IsoTileMap *)target.parent];
+    NSArray<IsoTileNode *> *path = [pathFinder findPathTo:target];
+    
+    if (path) {
+        for (IsoTileNode *tile in path) {
+            if (tile.cameFrom) {
+                [self addActionStepTo:tile from:(IsoTileNode *)tile.cameFrom];
+            }
+        }
     }
-    return canStep;
+}
+
+-(void)addAction:(SKAction *)action {
+    if (!_actions) {
+        _actions = [NSMutableArray array];
+    }
+    [_actions addObject:action];
+}
+
+-(void)addActionStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
+    CGVector smoothMovement = CGVectorMake(target.position.x - here.position.x,
+                                           target.position.y - here.position.y);
+    CGFloat stepCost = [self costOfStepTo:target from:here];
+    
+    target.color = [NSColor redColor];
+    target.colorBlendFactor = 1.0;
+    [self addAction:[SKAction moveBy:smoothMovement duration:0.2*stepCost]];
+    [self addAction:[SKAction runBlock:^(void){
+        [self reParent:target];
+        [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
+    }]];
 }
 
 -(BOOL)canStepTo:(IsoTileNode *)target {
@@ -78,6 +114,13 @@
         return baseCost + stepHeight * stepHeight;
     }
     return CGFLOAT_MAX;
+}
+
+-(void)update:(NSTimeInterval)currentTime {
+    if (_actions.count && ![self hasActions]) {
+        [self runAction:[SKAction sequence:_actions]];
+        [_actions removeAllObjects];
+    }
 }
 
 @end

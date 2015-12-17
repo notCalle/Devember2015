@@ -19,6 +19,4 @@
 
 -(SKLightNode *)addLightNode;
 
--(void)update:(NSTimeInterval)currentTime;
-
 @end

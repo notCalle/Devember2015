@@ -33,12 +33,8 @@
         _width = (NSInteger)width;
         _height = (NSInteger)height;
         _position = CGPointMake(0, 0);
-        _centerTile = (vector_int2){0,0};
+        _centerTile = (vector_int2){(int)width/2,(int)height/2};
         _gridsize = 0.0;
-        _gridGraph = [GKGridGraph graphFromGridStartingAt:(vector_int2){0,0}
-                                                    width:(int)width
-                                                   height:(int)height
-                                         diagonalsAllowed:NO];
         for (row = 0; row < _height; row++) {
             _map[row] = [NSMutableArray arrayWithCapacity:_width];
         }
@@ -83,7 +79,7 @@
     [self addChild:sprite];
     
     _map[grid.y][grid.x] = sprite;
-    sprite.gridPosition = grid;
+    [self positionTile:sprite at:grid];
 }
 
 - (vector_int2)centerTile {
@@ -99,6 +95,7 @@
     CGPoint cartesian = CGPointMake((grid.x - _centerTile.x) * _gridsize, (_centerTile.y - grid.y) * _gridsize);
     CGPoint isometric = CGPointMake((cartesian.x + cartesian.y)/2.0, (cartesian.y - cartesian.x)/4.0);
 
+    sprite.gridPosition = grid;
     sprite.position = CGPointMake(isometric.x, isometric.y);
     sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
     sprite.zPosition = grid.x+grid.y;
@@ -116,7 +113,8 @@
 }
 
 - (vector_int2)gridAtLocation:(CGPoint)location {
-    CGPoint isometric = CGPointMake((location.x - _position.x)/_gridsize, (_position.y - location.y)/_gridsize*2);
+    CGPoint local = [self convertPoint:location fromNode:self.parent];
+    CGPoint isometric = CGPointMake(local.x/_gridsize, -local.y/_gridsize*2);
     vector_int2 cartesian = (vector_int2){
         round(isometric.x + isometric.y + _centerTile.x),
         round(isometric.y - isometric.x + _centerTile.y)};
