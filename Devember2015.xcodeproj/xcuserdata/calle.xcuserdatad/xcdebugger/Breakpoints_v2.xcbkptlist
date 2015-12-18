@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Devember2015/IsoTileNode.m"
-            timestampString = "471393836.611735"
+            timestampString = "472168819.589948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-initWithTile:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Devember2015/GameScene.m"
-            timestampString = "472069558.339143"
+            timestampString = "472170013.5324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-update:"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-didMoveToView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -176,6 +176,22 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "-addObject:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Devember2015/GameScene.m"
+            timestampString = "472170030.889743"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-didMoveToView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

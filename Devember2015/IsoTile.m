@@ -10,35 +10,35 @@
 
 @implementation IsoTile
 
-+(instancetype)tileWithTexture:(SKTexture *)texture {
-    return [IsoTile tileWithTexture:texture height:texture.size.height * 2.0 / texture.size.width];
+-(instancetype)initWithTexture:(SKTexture *)texture {
+    return [self initWithTexture:texture height:texture.size.height * 2.0 / texture.size.width];
 }
 
 
-+(instancetype)tileWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight {
-    return [IsoTile tileWithTexture:texture height:stepHeight cost:1.0];
+-(instancetype)initWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight {
+    return [self initWithTexture:texture height:stepHeight cost:1.0];
 }
 
-+(instancetype)tileWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
-    IsoTile *object = [[IsoTile alloc] init];
-    if (object) {
-        object.texture = texture;
-        object.stepHeight = stepHeight;
-        object.stepCost = stepCost;
+-(instancetype)initWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
+    self = [super init];
+    if (self) {
+        _texture = texture;
+        _stepHeight = stepHeight;
+        _stepCost = stepCost;
     }
-    return object;
+    return self;
 }
 
-+(instancetype)tileWithImageNamed:(NSString *)name {
-    return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name]];
+-(instancetype)initWithImageNamed:(NSString *)name {
+    return [self initWithTexture:[SKTexture textureWithImageNamed:name]];
 }
 
-+(instancetype)tileWithImageNamed:(NSString *)name height:(CGFloat)stepHeight {
-    return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight];
+-(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight {
+    return [self initWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight];
 }
 
-+(instancetype)tileWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
-    return [IsoTile tileWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight cost:stepCost];
+-(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
+    return [self initWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight cost:stepCost];
 }
 
 @end

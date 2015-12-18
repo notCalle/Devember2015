@@ -7,6 +7,7 @@
 //
 
 #import "IsoTileNode.h"
+#import "GameScene.h"
 
 @implementation IsoTileNode
 

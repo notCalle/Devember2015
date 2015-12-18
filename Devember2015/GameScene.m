@@ -40,13 +40,13 @@
 //                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" height:0.1],
 //                                  ];
     
-    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Terrain/00-Water" height:0 cost:5.0],
-                                  [IsoTile tileWithImageNamed:@"Terrain/01-Sandy" height:0.5 cost:1.5],
-                                  [IsoTile tileWithImageNamed:@"Terrain/02-Grass" height:1.0 cost:1.0],
-                                  [IsoTile tileWithImageNamed:@"Terrain/03-Grass" height:1.5 cost:1.0],
-                                  [IsoTile tileWithImageNamed:@"Terrain/04-Grassy mountains" height:2.0 cost:1.5],
-                                  [IsoTile tileWithImageNamed:@"Terrain/05-Rocky mountains" height:2.5 cost:1.5],
-                                  [IsoTile tileWithImageNamed:@"Terrain/06-Snowy mountains" height:3.0 cost:2.0]];
+    NSArray<IsoTile *> *tiles = @[[WaterTile00 tile],
+                                  [SandTile01 tile],
+                                  [GrassTile02 tile],
+                                  [GrassTile03 tile],
+                                  [GrassyMountainTile04 tile],
+                                  [RockyMountainTile05 tile],
+                                  [SnowyMountainTile06 tile]];
     
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles width:W height:H];
     [_tileMap randomizeMap];
@@ -58,6 +58,18 @@
     _player.stepHeight = 1.0;
     [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
 //    [_tileMap addChild:_player toTileAt:_tileMap.centerTile];
+}
+
+-(void)mouseMoved:(NSEvent *)theEvent {
+    static vector_int2 lastGrid;
+    CGPoint location = [theEvent locationInNode:self];
+    vector_int2 grid = [_tileMap gridAtLocation:location];
+    if (grid.x != lastGrid.x && grid.y != lastGrid.y) {
+        [_tileMap tileAt:lastGrid].colorBlendFactor = 0.0;
+        [_tileMap tileAt:grid].color = [NSColor redColor];
+        [_tileMap tileAt:grid].colorBlendFactor = 1.0;
+        lastGrid = grid;
+    }
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {

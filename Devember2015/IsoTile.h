@@ -14,11 +14,13 @@
 @property CGFloat stepHeight;
 @property CGFloat stepCost;
 
-+(instancetype)tileWithTexture:(SKTexture *)texture;
-+(instancetype)tileWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight;
-+(instancetype)tileWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight cost:(CGFloat)stepCost;
-+(instancetype)tileWithImageNamed:(NSString *)name;
-+(instancetype)tileWithImageNamed:(NSString *)name height:(CGFloat)stepHeight;
-+(instancetype)tileWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost;
+-(instancetype)initWithTexture:(SKTexture *)texture;
+-(instancetype)initWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight;
+-(instancetype)initWithTexture:(SKTexture *)texture height:(CGFloat)stepHeight cost:(CGFloat)stepCost;
+-(instancetype)initWithImageNamed:(NSString *)name;
+-(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight;
+-(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost;
+
++(instancetype)tile;
 
 @end

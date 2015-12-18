@@ -23,6 +23,13 @@
 		EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */; };
 		EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */; };
 		EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6221C2214E300E7ED0F /* NCPerlinNoise.m */; };
+		EBF7D6271C24C29300E7ED0F /* WaterTile00.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6261C24C29300E7ED0F /* WaterTile00.m */; };
+		EBF7D62A1C24C40900E7ED0F /* SandTile01.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6291C24C40900E7ED0F /* SandTile01.m */; };
+		EBF7D62E1C24C55900E7ED0F /* GrassTile02.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D62D1C24C55900E7ED0F /* GrassTile02.m */; };
+		EBF7D6311C24C5F600E7ED0F /* GrassTile03.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6301C24C5F600E7ED0F /* GrassTile03.m */; };
+		EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6331C24C63800E7ED0F /* GrassyMountainTile04.m */; };
+		EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */; };
+		EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +83,21 @@
 		EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCGraphNode.h; sourceTree = "<group>"; };
 		EBF7D6211C2214E300E7ED0F /* NCPerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPerlinNoise.h; sourceTree = "<group>"; };
 		EBF7D6221C2214E300E7ED0F /* NCPerlinNoise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPerlinNoise.m; sourceTree = "<group>"; };
+		EBF7D6251C24C29300E7ED0F /* WaterTile00.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterTile00.h; sourceTree = "<group>"; };
+		EBF7D6261C24C29300E7ED0F /* WaterTile00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterTile00.m; sourceTree = "<group>"; };
+		EBF7D6281C24C40900E7ED0F /* SandTile01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandTile01.h; sourceTree = "<group>"; };
+		EBF7D6291C24C40900E7ED0F /* SandTile01.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandTile01.m; sourceTree = "<group>"; };
+		EBF7D62B1C24C50B00E7ED0F /* Tiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tiles.h; sourceTree = "<group>"; };
+		EBF7D62C1C24C55900E7ED0F /* GrassTile02.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile02.h; sourceTree = "<group>"; };
+		EBF7D62D1C24C55900E7ED0F /* GrassTile02.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassTile02.m; sourceTree = "<group>"; };
+		EBF7D62F1C24C5F600E7ED0F /* GrassTile03.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile03.h; sourceTree = "<group>"; };
+		EBF7D6301C24C5F600E7ED0F /* GrassTile03.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassTile03.m; sourceTree = "<group>"; };
+		EBF7D6321C24C63800E7ED0F /* GrassyMountainTile04.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassyMountainTile04.h; sourceTree = "<group>"; };
+		EBF7D6331C24C63800E7ED0F /* GrassyMountainTile04.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassyMountainTile04.m; sourceTree = "<group>"; };
+		EBF7D6351C24C6C300E7ED0F /* RockyMountainTile05.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RockyMountainTile05.h; sourceTree = "<group>"; };
+		EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RockyMountainTile05.m; sourceTree = "<group>"; };
+		EBF7D6381C24C75F00E7ED0F /* SnowyMountainTile06.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowyMountainTile06.h; sourceTree = "<group>"; };
+		EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowyMountainTile06.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +159,8 @@
 				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
 				EB4A0B521C17850000D5C043 /* IsoTile.h */,
 				EB4A0B531C17850000D5C043 /* IsoTile.m */,
+				EBF7D62B1C24C50B00E7ED0F /* Tiles.h */,
+				EBF7D6241C24C25F00E7ED0F /* Tiles */,
 				EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */,
 				EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */,
 				EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */,
@@ -180,6 +204,27 @@
 				EB20BEE41C0E3A9600A63ED3 /* Info.plist */,
 			);
 			path = Devember2015UITests;
+			sourceTree = "<group>";
+		};
+		EBF7D6241C24C25F00E7ED0F /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				EBF7D6251C24C29300E7ED0F /* WaterTile00.h */,
+				EBF7D6261C24C29300E7ED0F /* WaterTile00.m */,
+				EBF7D6281C24C40900E7ED0F /* SandTile01.h */,
+				EBF7D6291C24C40900E7ED0F /* SandTile01.m */,
+				EBF7D62C1C24C55900E7ED0F /* GrassTile02.h */,
+				EBF7D62D1C24C55900E7ED0F /* GrassTile02.m */,
+				EBF7D62F1C24C5F600E7ED0F /* GrassTile03.h */,
+				EBF7D6301C24C5F600E7ED0F /* GrassTile03.m */,
+				EBF7D6321C24C63800E7ED0F /* GrassyMountainTile04.h */,
+				EBF7D6331C24C63800E7ED0F /* GrassyMountainTile04.m */,
+				EBF7D6351C24C6C300E7ED0F /* RockyMountainTile05.h */,
+				EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */,
+				EBF7D6381C24C75F00E7ED0F /* SnowyMountainTile06.h */,
+				EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */,
+			);
+			name = Tiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,15 +358,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF7D62E1C24C55900E7ED0F /* GrassTile02.m in Sources */,
 				EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */,
+				EBF7D6271C24C29300E7ED0F /* WaterTile00.m in Sources */,
+				EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */,
+				EBF7D6311C24C5F600E7ED0F /* GrassTile03.m in Sources */,
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
 				EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */,
+				EBF7D62A1C24C40900E7ED0F /* SandTile01.m in Sources */,
+				EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */,
 				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
 				EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */,
 				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,
+				EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */,
 				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
 				EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */,
 			);
