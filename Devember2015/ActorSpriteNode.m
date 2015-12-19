@@ -62,8 +62,8 @@
 }
 
 -(void)addActionStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
-    CGVector smoothMovement = CGVectorMake(target.position.x - here.position.x,
-                                           target.position.y - here.position.y);
+    CGVector smoothMovement = CGVectorMake((target.position.x - here.position.x) / 2.0,
+                                           (target.position.y - here.position.y) / 2.0);
     CGFloat stepCost = [self costOfStepTo:target from:here];
     
     target.color = [NSColor redColor];
@@ -71,8 +71,10 @@
     [self addAction:[SKAction moveBy:smoothMovement duration:0.2*stepCost]];
     [self addAction:[SKAction runBlock:^(void){
         [self reParent:target];
+        self.position = CGPointMake(self.position.x - smoothMovement.dx, self.position.y - smoothMovement.dy);
         [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
     }]];
+    [self addAction:[SKAction moveBy:smoothMovement duration:0.2*stepCost]];
 }
 
 -(BOOL)canStepTo:(IsoTileNode *)target {

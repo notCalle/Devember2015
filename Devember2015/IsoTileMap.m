@@ -98,7 +98,6 @@
     sprite.gridPosition = grid;
     sprite.position = CGPointMake(isometric.x, isometric.y);
     sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
-//    sprite.zPosition = grid.x+grid.y;
 }
 
 - (void)repositionTiles {

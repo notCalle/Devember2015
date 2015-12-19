@@ -17,29 +17,6 @@
 #define W 100
 #define H 100
     
-//    NSArray<IsoTile *> *tiles = @[[IsoTile tileWithImageNamed:@"Grass+Water/GGGG1" height:0.2],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG2" height:0.2],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG3" height:0.2],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGG4" height:0.2],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW1" height:-0.1 cost:2.0],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWW2" height:-0.2 cost:2.0],
-//
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGGW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWG" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GGWW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGG" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWGW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWG" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/GWWW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGG" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGGW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWG" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WGWW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGG" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWGW" height:0.1],
-//                                  [IsoTile tileWithImageNamed:@"Grass+Water/WWWG" height:0.1],
-//                                  ];
-    
     NSArray<IsoTile *> *tiles = @[[WaterTile00 tile],
                                   [SandTile01 tile],
                                   [GrassTile02 tile],
@@ -58,19 +35,6 @@
     _player.stepHeight = 0.5;
     
     [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
-//    [_tileMap addChild:_player toTileAt:_tileMap.centerTile];
-}
-
--(void)mouseMoved:(NSEvent *)theEvent {
-    static vector_int2 lastGrid;
-    CGPoint location = [theEvent locationInNode:self];
-    vector_int2 grid = [_tileMap gridAtLocation:location];
-    if (grid.x != lastGrid.x && grid.y != lastGrid.y) {
-        [_tileMap tileAt:lastGrid].colorBlendFactor = 0.0;
-        [_tileMap tileAt:grid].color = [NSColor redColor];
-        [_tileMap tileAt:grid].colorBlendFactor = 1.0;
-        lastGrid = grid;
-    }
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
