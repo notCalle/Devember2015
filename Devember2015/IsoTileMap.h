@@ -39,6 +39,4 @@
 -(void)randomizeMap;
 -(void)randomizeMapUsingTiles:(NSRange)range;
 
--(void)smoothMapWith:(NSRange)category1Range and:(NSRange)category2Range using:(NSRange)smoothRange;
-
 @end

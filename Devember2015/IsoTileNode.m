@@ -8,6 +8,7 @@
 
 #import "IsoTileNode.h"
 #import "GameScene.h"
+#import "ClutterSpriteNode.h"
 
 @implementation IsoTileNode
 
@@ -19,6 +20,8 @@
         _west = nil;
         _east = nil;
         _tile = nil;
+        _stepHeight = 0.0;
+        _stepCost = 0.0;
     }
     return self;
 }
@@ -46,6 +49,8 @@
 
 -(void)setTile:(IsoTile *)tile {
     _tile = tile;
+    _stepCost = tile.stepCost;
+    _stepHeight = tile.stepHeight;
     self.texture = tile.texture;
     self.size = tile.texture.size;
 }
@@ -89,6 +94,17 @@
         east.west = self;
     }
 }
+
+-(void)setGridPosition:(vector_int2)grid {
+    _gridPosition = grid;
+    self.zPosition = grid.x + grid.y;
+    ClutterSpriteNode *clutter = (ClutterSpriteNode *)[_tile clutterAt:grid];
+    if (clutter) {
+        _stepCost *= 2;
+        [clutter reParent:self];
+    }
+}
+
 
 // NCGraphNode protocol
 

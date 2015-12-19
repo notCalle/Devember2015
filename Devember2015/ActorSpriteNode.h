@@ -7,16 +7,14 @@
 //
 
 @import GameKit;
-#import "IsoTileNode.h"
-#import "IsoTileMap.h"
+#import "ClutterSpriteNode.h"
 
-@interface ActorSpriteNode : SKSpriteNode {
+@interface ActorSpriteNode : ClutterSpriteNode {
     NSMutableArray<SKAction *> *_actions;
 }
 
 @property CGFloat stepHeight;
 
--(void)reParent:(IsoTileNode *)newParent;
 -(IsoTileNode *)tileInDirection:(char)direction;
 -(void)move:(char)direction;
 -(void)moveTo:(IsoTileNode *)target;

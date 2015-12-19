@@ -11,14 +11,17 @@
 #import "IsoTile.h"
 #import "NCGraphNode.h"
 
-@interface IsoTileNode : SKSpriteNode <NCGraphNode>
+@interface IsoTileNode : SKSpriteNode <NCGraphNode> {
+}
 
 @property(nonatomic) IsoTileNode *north;
 @property(nonatomic) IsoTileNode *south;
 @property(nonatomic) IsoTileNode *west;
 @property(nonatomic) IsoTileNode *east;
 @property(nonatomic) IsoTile *tile;
-@property vector_int2 gridPosition;
+@property(nonatomic) vector_int2 gridPosition;
+@property CGFloat stepHeight;
+@property CGFloat stepCost;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
 

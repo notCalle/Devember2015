@@ -55,7 +55,8 @@
 
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
-    _player.stepHeight = 1.0;
+    _player.stepHeight = 0.5;
+    
     [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
 //    [_tileMap addChild:_player toTileAt:_tileMap.centerTile];
 }

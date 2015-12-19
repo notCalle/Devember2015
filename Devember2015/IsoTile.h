@@ -7,8 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "NCPerlinNoise.h"
 
-@interface IsoTile : NSObject
+@interface IsoTile : NSObject {
+    NCPerlinNoise *_noise;
+    NSArray<SKTexture *> *_clutter;
+}
 
 @property SKTexture *texture;
 @property CGFloat stepHeight;
@@ -21,6 +25,9 @@
 -(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight;
 -(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost;
 
+-(SKSpriteNode *)clutterAt:(vector_int2)grid;
+
+-(instancetype)initTile;
 +(instancetype)tile;
 
 @end

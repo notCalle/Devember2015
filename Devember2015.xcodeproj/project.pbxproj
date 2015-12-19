@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB17AED41C25B9E0001B46EA /* ClutterSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */; };
 		EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */; };
 		EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC21C0E3A9500A63ED3 /* main.m */; };
 		EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC51C0E3A9500A63ED3 /* GameScene.m */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB17AED21C25B9E0001B46EA /* ClutterSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClutterSpriteNode.h; sourceTree = "<group>"; };
+		EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClutterSpriteNode.m; sourceTree = "<group>"; };
 		EB20BEBB1C0E3A9500A63ED3 /* Devember2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devember2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB20BEBE1C0E3A9500A63ED3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */,
 				EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */,
 				EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */,
+				EB17AED21C25B9E0001B46EA /* ClutterSpriteNode.h */,
+				EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */,
 				EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */,
 				EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */,
 				EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */,
@@ -368,6 +373,7 @@
 				EBF7D62A1C24C40900E7ED0F /* SandTile01.m in Sources */,
 				EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */,
 				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
+				EB17AED41C25B9E0001B46EA /* ClutterSpriteNode.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,

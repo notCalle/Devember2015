@@ -98,7 +98,7 @@
     sprite.gridPosition = grid;
     sprite.position = CGPointMake(isometric.x, isometric.y);
     sprite.anchorPoint = CGPointMake(0.5, sprite.size.width/sprite.size.height/4);
-    sprite.zPosition = grid.x+grid.y;
+//    sprite.zPosition = grid.x+grid.y;
 }
 
 - (void)repositionTiles {
@@ -149,46 +149,6 @@
                               (range.length - 1) *
                               ([noise perlinNoise2:CGPointMake(x/100.0, y/100.0)] + 1.0)/2.0;
             [self setTile:tile at:(vector_int2){x, y}];
-        }
-    }
-}
-
--(void)smoothMapWith:(NSRange)category1Range and:(NSRange)category2Range using:(NSRange)smoothRange {
-    int x,y;
-    
-    for (y=0; y<_height-1; y++) {
-        for (x=0; x<_width-1; x++) {
-            NSInteger mask = 0, orgMask = 0;
-            IsoTileNode *thisTileNode = _map[y][x];
-            IsoTileNode *southTileNode = thisTileNode.south;
-            IsoTileNode *eastTileNode = thisTileNode.east;
-            IsoTile *thisTile = thisTileNode.tile;
-            IsoTile *southTile = southTileNode.tile;
-            IsoTile *eastTile = eastTileNode.tile;
-
-            if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category1Range]) {
-                orgMask = mask = 0b0000;
-                if (NSNotFound != [_tiles indexOfObject:southTile inRange:category2Range]) {
-                    mask |= 0b0011;
-                }
-                if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category2Range]) {
-                    mask |= 0b0101;
-                }
-            }
-            
-            if (NSNotFound != [_tiles indexOfObject:thisTile inRange:category2Range]) {
-                orgMask = mask = 0b1111;
-                if (NSNotFound != [_tiles indexOfObject:southTile inRange:category1Range]) {
-                    mask &= 0b1100;
-                }
-                if (NSNotFound != [_tiles indexOfObject:eastTile inRange:category1Range]) {
-                    mask &= 0b1010;
-                }
-            }
-            
-            if (mask != orgMask) {
-                thisTileNode.tile = _tiles[smoothRange.location + mask-1];
-            }
         }
     }
 }

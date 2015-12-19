@@ -11,22 +11,26 @@
 @interface NCPerlinNoise : NSObject {
     CGFloat _persistance;
     NSInteger _octaves;
+    NSInteger _seed;
 }
 
 -(instancetype)initOctaves:(NSInteger)octaves;
 -(instancetype)initOctaves:(NSInteger)octaves persistance:(CGFloat)persistance;
+-(instancetype)initOctaves:(NSInteger)octaves persistance:(CGFloat)persistance seed:(NSInteger)seed;
+
 +(instancetype)octaves:(NSInteger)octaves;
 +(instancetype)octaves:(NSInteger)octaves persistance:(CGFloat)persistance;
++(instancetype)octaves:(NSInteger)octaves persistance:(CGFloat)persistance seed:(NSInteger)seed;
 
 -(CGFloat)perlinNoise:(CGFloat)x;
 -(CGFloat)perlinNoise2:(CGPoint)coord;
 
-+(CGFloat)interpolate:(CGFloat)v1 and:(CGFloat)v2 with:(CGFloat)fraction;
-+(CGFloat)noise:(int)x;
-+(CGFloat)noise2:(vector_int2)coord;
-+(CGFloat)smoothNoise:(int)x;
-+(CGFloat)smoothNoise2:(vector_int2)coord;
-+(CGFloat)interpolatedNoise:(CGFloat)x;
-+(CGFloat)interpolatedNoise2:(CGPoint)coord;
+-(CGFloat)interpolate:(CGFloat)v1 and:(CGFloat)v2 with:(CGFloat)fraction;
+-(CGFloat)noise:(int)x;
+-(CGFloat)noise2:(vector_int2)coord;
+-(CGFloat)smoothNoise:(int)x;
+-(CGFloat)smoothNoise2:(vector_int2)coord;
+-(CGFloat)interpolatedNoise:(CGFloat)x;
+-(CGFloat)interpolatedNoise2:(CGPoint)coord;
 
 @end

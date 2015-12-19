@@ -25,6 +25,7 @@
         _texture = texture;
         _stepHeight = stepHeight;
         _stepCost = stepCost;
+        _noise = nil;
     }
     return self;
 }
@@ -39,6 +40,19 @@
 
 -(instancetype)initWithImageNamed:(NSString *)name height:(CGFloat)stepHeight cost:(CGFloat)stepCost {
     return [self initWithTexture:[SKTexture textureWithImageNamed:name] height:stepHeight cost:stepCost];
+}
+
+// Must be overridden by subclasses
+-(SKTexture *)clutterAt:(vector_int2)grid {
+    return nil;
+}
+
+-(instancetype)initTile {
+    return nil;
+}
+
++(instancetype)tile {
+    return nil;
 }
 
 @end

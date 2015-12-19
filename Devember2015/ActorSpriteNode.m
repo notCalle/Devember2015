@@ -11,17 +11,6 @@
 
 @implementation ActorSpriteNode
 
--(void)reParent:(IsoTileNode *)newParent {
-    if (newParent) {
-        if (self.parent) {
-            [self removeFromParent];
-        }
-        self.position = CGPointMake(0.0, (newParent.tile.stepHeight) * newParent.size.width / 2.0);
-        self.zPosition = newParent.zPosition;
-        [newParent addChild:self];
-    }
-}
-
 -(IsoTileNode *)tileInDirection:(char)direction {
     IsoTileNode *currentPlace = (IsoTileNode *)[self parent];
     IsoTileNode *newPlace = nil;
@@ -109,8 +98,8 @@
 
 -(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
     if ([self canStepTo:target from:here]) {
-        CGFloat baseCost = (target.tile.stepCost + here.tile.stepCost) / 2.0;
-        CGFloat stepHeight = target.tile.stepHeight - here.tile.stepHeight;
+        CGFloat baseCost = (target.stepCost + here.stepCost) / 2.0;
+        CGFloat stepHeight = target.stepHeight - here.stepHeight;
         return baseCost + stepHeight * stepHeight;
     }
     return CGFLOAT_MAX;

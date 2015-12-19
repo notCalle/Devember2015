@@ -26,7 +26,7 @@
         _light.ambientColor = [NSColor blackColor];
         _light.lightColor = [NSColor blackColor];
         _light.falloff = 2.0;
-        _light.categoryBitMask = 0x1;
+        _light.categoryBitMask = 0x0;
         self.lightingBitMask = 0x0;
         _lightTime = 0.1;
     }
