@@ -14,10 +14,12 @@
 }
 
 @property CGFloat stepHeight;
+@property CGFloat stepSpeed;
 
 -(IsoTileNode *)tileInDirection:(char)direction;
 -(void)move:(char)direction;
 -(void)moveTo:(IsoTileNode *)target;
+-(void)moveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps;
 -(void)addAction:(SKAction *)action;
 -(void)addActionStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 -(BOOL)canStepTo:(IsoTileNode *)target;

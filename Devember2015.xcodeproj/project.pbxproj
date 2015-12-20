@@ -31,6 +31,7 @@
 		EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6331C24C63800E7ED0F /* GrassyMountainTile04.m */; };
 		EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */; };
 		EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */; };
+		EBF7D63F1C27059300E7ED0F /* MobSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RockyMountainTile05.m; sourceTree = "<group>"; };
 		EBF7D6381C24C75F00E7ED0F /* SnowyMountainTile06.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowyMountainTile06.h; sourceTree = "<group>"; };
 		EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowyMountainTile06.m; sourceTree = "<group>"; };
+		EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobSpriteNode.h; sourceTree = "<group>"; };
+		EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobSpriteNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */,
 				EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */,
 				EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */,
+				EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */,
+				EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */,
 				EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */,
 				EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */,
 				EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */,
@@ -376,6 +381,7 @@
 				EB17AED41C25B9E0001B46EA /* ClutterSpriteNode.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
+				EBF7D63F1C27059300E7ED0F /* MobSpriteNode.m in Sources */,
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
 				EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */,
 				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,

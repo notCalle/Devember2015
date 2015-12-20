@@ -40,6 +40,25 @@
     return [[NCPerlinNoise alloc] initOctaves:octaves persistance:persistance seed:seed];
 }
 
+-(CGFloat)perlinNoise:(CGFloat)x {
+    CGFloat sum = 0.0;
+    CGFloat amplitude = 1.0;
+    CGFloat frequency = 1.0;
+    int n;
+    
+    for (n=0; n<_octaves; n++) {
+        sum += [self interpolatedNoise:x * frequency] * amplitude;
+        frequency *= 2;
+        amplitude *= _persistance;
+    }
+    if (sum > 1.0)
+        return 1.0;
+    else if (sum < -1.0)
+        return -1.0;
+    else
+        return sum;
+}
+
 -(CGFloat)perlinNoise2:(CGPoint)coord {
     CGFloat sum = 0.0;
     CGFloat amplitude = 1.0;
@@ -68,6 +87,12 @@
     return [self noise:coord.x + coord.y*57];
 }
 
+-(CGFloat)smoothNoise:(int)x {
+    CGFloat sides = ([self noise:x-1] + [self noise:x+1]) / 4.0;
+    CGFloat center = [self noise:x] / 2.0;
+    return center + sides;
+}
+
 -(CGFloat)smoothNoise2:(vector_int2)coord {
     CGFloat corners = ([self noise2:(vector_int2){coord.x-1, coord.y-1}] +
                        [self noise2:(vector_int2){coord.x+1, coord.y-1}] +
@@ -84,6 +109,15 @@
 -(CGFloat)interpolate:(CGFloat)v1 and:(CGFloat)v2 with:(CGFloat)fraction {
     CGFloat f = (1-cos(fraction*3.1415927)) * 0.5;
     return v1*(1-f) + v2*f;
+}
+
+-(CGFloat)interpolatedNoise:(CGFloat)x {
+    int intX = (int)x;
+    CGFloat fracX = x - intX;
+    CGFloat x1 = [self smoothNoise:intX];
+    CGFloat x2 = [self smoothNoise:intX+1];
+    
+    return [self interpolate:x1 and:x2 with:fracX];
 }
 
 -(CGFloat)interpolatedNoise2:(CGPoint)coord {

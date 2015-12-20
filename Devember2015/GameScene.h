@@ -16,5 +16,6 @@
 
 @property IsoTileMap *tileMap;
 @property PlayerSpriteNode *player;
+@property NSMutableArray<ActorSpriteNode *> *actors;
 
 @end

@@ -42,11 +42,18 @@
 }
 
 -(void)moveTo:(IsoTileNode *)target {
+    [self moveTo:target maxSteps:NSIntegerMax];
+}
+
+-(void)moveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps {
     NCPathFinder *pathFinder = [NCPathFinder finderFor:self on:(IsoTileMap *)target.parent];
     NSArray<IsoTileNode *> *path = [pathFinder findPathTo:target];
     
     if (path) {
-        for (IsoTileNode *tile in path) {
+        if (steps > path.count - 1) {
+            steps = path.count - 1;
+        }
+        for (IsoTileNode *tile in [path subarrayWithRange:NSMakeRange(1,steps)]) {
             if (tile.cameFrom) {
                 [self addActionStepTo:tile from:(IsoTileNode *)tile.cameFrom];
             }
@@ -68,13 +75,13 @@
     
     target.color = [NSColor redColor];
     target.colorBlendFactor = 1.0;
-    [self addAction:[SKAction moveBy:smoothMovement duration:0.2*stepCost]];
+    [self addAction:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
     [self addAction:[SKAction runBlock:^(void){
         [self reParent:target];
         self.position = CGPointMake(self.position.x - smoothMovement.dx, self.position.y - smoothMovement.dy);
         [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
     }]];
-    [self addAction:[SKAction moveBy:smoothMovement duration:0.2*stepCost]];
+    [self addAction:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
 }
 
 -(BOOL)canStepTo:(IsoTileNode *)target {

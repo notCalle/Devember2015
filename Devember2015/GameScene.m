@@ -8,15 +8,17 @@
 
 #import "GameScene.h"
 #import <Carbon/Carbon.h>
+#import "MobSpriteNode.h"
 
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
 
+    _actors = [NSMutableArray array];
 #define W 100
 #define H 100
-    
+
     NSArray<IsoTile *> *tiles = @[[WaterTile00 tile],
                                   [SandTile01 tile],
                                   [GrassTile02 tile],
@@ -33,8 +35,24 @@
     _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
     _player.anchorPoint = CGPointMake(0.5, 0);
     _player.stepHeight = 0.5;
+    _player.stepSpeed = 1.0;
     
     [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
+    [_actors addObject:_player];
+    
+    MobSpriteNode *creepy = [MobSpriteNode withImageNamed:@"Clutter/Creepy" cowardice:5.0 curiosity:10.0];
+    creepy.anchorPoint = CGPointMake(0.5, 0);
+    creepy.stepHeight = 0.5;
+    creepy.stepSpeed = 0.5;
+    [creepy reParent:[_tileMap tileAt:(vector_int2){40,40}]];
+    [_actors addObject:creepy];
+    
+    MobSpriteNode *crawly = [MobSpriteNode withImageNamed:@"Clutter/Crawly" cowardice:2.0 curiosity:20.0];
+    crawly.anchorPoint = CGPointMake(0.5, 0);
+    crawly.stepHeight = 1.0;
+    crawly.stepSpeed = 0.1;
+    [crawly reParent:[_tileMap tileAt:(vector_int2){40,60}]];
+    [_actors addObject:crawly];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
@@ -72,7 +90,9 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    [_player update:currentTime];
+    for (ActorSpriteNode *actor in _actors) {
+        [actor update:currentTime];
+    }
     CGPoint positionInScene = [_player.scene convertPoint:_player.position fromNode:_player.parent];
     CGPoint distanceFromCenter = CGPointMake(positionInScene.x - CGRectGetMidX(self.frame),
                                              positionInScene.y - CGRectGetMidY(self.frame));
