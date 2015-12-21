@@ -36,6 +36,7 @@
     _player.anchorPoint = CGPointMake(0.5, 0);
     _player.stepHeight = 0.5;
     _player.stepSpeed = 1.0;
+    _player.health = 10.0;
     
     [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
     [_actors addObject:_player];
@@ -50,7 +51,7 @@
     MobSpriteNode *crawly = [MobSpriteNode withImageNamed:@"Clutter/Crawly" cowardice:2.0 curiosity:20.0];
     crawly.anchorPoint = CGPointMake(0.5, 0);
     crawly.stepHeight = 1.0;
-    crawly.stepSpeed = 0.1;
+    crawly.stepSpeed = 0.3;
     [crawly reParent:[_tileMap tileAt:(vector_int2){40,60}]];
     [_actors addObject:crawly];
 }
@@ -69,16 +70,16 @@
     
     switch (keycode) {
         case kVK_ANSI_W:
-            [_player move:'N'];
+            [_player move:MOVE_NORTH];
             break;
         case kVK_ANSI_S:
-            [_player move:'S'];
+            [_player move:MOVE_SOUTH];
             break;
         case kVK_ANSI_A:
-            [_player move:'W'];
+            [_player move:MOVE_WEST];
             break;
         case kVK_ANSI_D:
-            [_player move:'E'];
+            [_player move:MOVE_EAST];
             break;
         case kVK_Space:
             [_player addLightNode];

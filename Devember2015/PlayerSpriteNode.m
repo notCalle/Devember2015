@@ -7,6 +7,7 @@
 //
 
 #import "PlayerSpriteNode.h"
+#import "MobSpriteNode.h"
 
 @implementation PlayerSpriteNode
 

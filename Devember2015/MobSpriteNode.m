@@ -31,24 +31,31 @@
     if (![self hasActions]) {
         GameScene *scene = (GameScene *)[self scene];
         ActorSpriteNode *player = (ActorSpriteNode *)scene.player;
-        IsoTileMap *tileMap = scene.tileMap;
         IsoTileNode *myTile = (IsoTileNode *)self.parent;
         IsoTileNode *playerTile = (IsoTileNode *)player.parent;
         NSInteger dx = (myTile.gridPosition.x - playerTile.gridPosition.x);
         NSInteger dy = (myTile.gridPosition.y - playerTile.gridPosition.y);
         CGFloat distance = sqrt(dx*dx + dy*dy);
 
-        if (distance < _cowardice) {
+        if (_aggressor && distance < (_curiosity - _cowardice)) {
+            IsoTileNode *aggressorTile = (IsoTileNode *)_aggressor.parent;
+            [self moveTo:aggressorTile];
+        } else if (distance < _cowardice) {
             // should move away from instead of randomly
             NCPerlinNoise *noise = [NCPerlinNoise octaves:5 persistance:0.5];
-            _direction += [noise perlinNoise:currentTime];
-            [self move:"ENWS"[((int)_direction) & 0x3]];
+            CGFloat directionChange = [noise perlinNoise:currentTime];
+            if (directionChange > 0.0) {
+                _direction += directionChange + 1.0;
+            } else {
+                _direction += directionChange - 1.0;
+            }
+            [self move:((int)_direction) & 0x3];
         } else if (distance < _curiosity) {
             [self moveTo:playerTile maxSteps:1];
         } else {
             NCPerlinNoise *noise = [NCPerlinNoise octaves:5 persistance:0.5];
             _direction += [noise perlinNoise:currentTime];
-            [self move:"ENWS"[((int)_direction) & 0x3]];
+            [self move:((int)_direction) & 0x3];
         }
     }
 }

@@ -8,9 +8,7 @@
 
 #import "ActorSpriteNode.h"
 
-@interface MobSpriteNode : ActorSpriteNode {
-    CGFloat _direction;
-}
+@interface MobSpriteNode : ActorSpriteNode
 
 @property(readonly) CGFloat cowardice;
 @property(readonly) CGFloat curiosity;

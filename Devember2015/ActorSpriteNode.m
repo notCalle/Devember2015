@@ -11,27 +11,51 @@
 
 @implementation ActorSpriteNode
 
--(IsoTileNode *)tileInDirection:(char)direction {
+-(IsoTileNode *)tileInDirection:(ActorMovementDirection)direction {
     IsoTileNode *currentPlace = (IsoTileNode *)[self parent];
     IsoTileNode *newPlace = nil;
     switch (direction) {
-        case 'N':
+        case MOVE_NORTH:
             newPlace = currentPlace.north;
             break;
-        case 'S':
+        case MOVE_SOUTH:
             newPlace = currentPlace.south;
             break;
-        case 'W':
+        case MOVE_WEST:
             newPlace = currentPlace.west;
             break;
-        case 'E':
+        case MOVE_EAST:
             newPlace = currentPlace.east;
             break;
     }
     return newPlace;
 }
 
--(void)move:(char)direction {
+-(void)reParent:(IsoTileNode *)newParent {
+    IsoTileNode *currentParent = (IsoTileNode *)self.parent;
+
+    for (ActorSpriteNode *child in newParent.children) {
+        if ([child isKindOfClass:[ActorSpriteNode class]] &&
+            ![child isKindOfClass:[self class]]) {
+            [child didGetAttackedBy:self];
+            newParent = currentParent;
+            break;
+        }
+    }
+
+    if (newParent == currentParent.north) {
+        _direction = MOVE_NORTH;
+    } else if (newParent == currentParent.south) {
+        _direction = MOVE_SOUTH;
+    } else if (newParent == currentParent.west) {
+        _direction = MOVE_WEST;
+    } else if (newParent == currentParent.east) {
+        _direction = MOVE_EAST;
+    }
+    [super reParent:newParent];
+}
+
+-(void)move:(ActorMovementDirection)direction {
     [self addAction:[SKAction runBlock:^(void) {
         IsoTileNode *target = [self tileInDirection:direction];
         BOOL canStep = [self canStepTo:target];
@@ -119,6 +143,15 @@
         [self runAction:[SKAction sequence:_actions]];
         [_actions removeAllObjects];
     }
+}
+
+-(void)didGetAttackedBy:(ActorSpriteNode *)aggressor {
+    // Remember our most current enemy
+    _aggressor = aggressor;
+    _health -= 1.0;
+    self.color = [NSColor redColor];
+    self.colorBlendFactor = 1.0;
+    [self runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:0.5]];
 }
 
 @end

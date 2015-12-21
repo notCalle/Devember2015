@@ -9,15 +9,25 @@
 @import GameKit;
 #import "ClutterSpriteNode.h"
 
+typedef enum : NSUInteger {
+    MOVE_EAST,
+    MOVE_NORTH,
+    MOVE_WEST,
+    MOVE_SOUTH
+} ActorMovementDirection;
+
 @interface ActorSpriteNode : ClutterSpriteNode {
+    CGFloat _direction;
     NSMutableArray<SKAction *> *_actions;
+    ActorSpriteNode *_aggressor;
 }
 
 @property CGFloat stepHeight;
 @property CGFloat stepSpeed;
+@property CGFloat health;
 
--(IsoTileNode *)tileInDirection:(char)direction;
--(void)move:(char)direction;
+-(IsoTileNode *)tileInDirection:(ActorMovementDirection)direction;
+-(void)move:(ActorMovementDirection)direction;
 -(void)moveTo:(IsoTileNode *)target;
 -(void)moveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps;
 -(void)addAction:(SKAction *)action;
@@ -28,5 +38,7 @@
 -(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 
 -(void)update:(NSTimeInterval)currentTime;
+
+-(void)didGetAttackedBy:(ActorSpriteNode *)aggressor;
 
 @end
