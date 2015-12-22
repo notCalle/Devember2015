@@ -15,17 +15,29 @@
     IsoTileNode *currentPlace = (IsoTileNode *)[self parent];
     IsoTileNode *newPlace = nil;
     switch (direction) {
+        case MOVE_EAST:
+            newPlace = currentPlace.east;
+            break;
+        case MOVE_NORTHEAST:
+            newPlace = currentPlace.northEast;
+            break;
         case MOVE_NORTH:
             newPlace = currentPlace.north;
             break;
-        case MOVE_SOUTH:
-            newPlace = currentPlace.south;
+        case MOVE_NORTHWEST:
+            newPlace = currentPlace.northWest;
             break;
         case MOVE_WEST:
             newPlace = currentPlace.west;
             break;
-        case MOVE_EAST:
-            newPlace = currentPlace.east;
+        case MOVE_SOUTHWEST:
+            newPlace = currentPlace.southWest;
+            break;
+        case MOVE_SOUTH:
+            newPlace = currentPlace.south;
+            break;
+        case MOVE_SOUTHEAST:
+            newPlace = currentPlace.southEast;
             break;
     }
     return newPlace;
@@ -43,14 +55,22 @@
         }
     }
 
-    if (newParent == currentParent.north) {
+    if (newParent == currentParent.east) {
+        _direction = MOVE_EAST;
+    } else if (newParent == currentParent.northEast) {
+        _direction = MOVE_NORTHEAST;
+    } else if (newParent == currentParent.north) {
         _direction = MOVE_NORTH;
-    } else if (newParent == currentParent.south) {
-        _direction = MOVE_SOUTH;
+    } else if (newParent == currentParent.northWest) {
+        _direction = MOVE_NORTHWEST;
     } else if (newParent == currentParent.west) {
         _direction = MOVE_WEST;
-    } else if (newParent == currentParent.east) {
-        _direction = MOVE_EAST;
+    } else if (newParent == currentParent.southWest) {
+        _direction = MOVE_SOUTHWEST;
+    } else if (newParent == currentParent.south) {
+        _direction = MOVE_SOUTH;
+    } else if (newParent == currentParent.southEast) {
+        _direction = MOVE_SOUTHEAST;
     }
     [super reParent:newParent];
 }
@@ -114,10 +134,14 @@
 
 -(BOOL)canStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
     if (target != nil &&
-        (target == here.north ||
-         target == here.south ||
-         target == here.west  ||
-         target == here.east))
+        (target == here.east      ||
+         target == here.northEast ||
+         target == here.north     ||
+         target == here.northWest ||
+         target == here.west      ||
+         target == here.southWest ||
+         target == here.south     ||
+         target == here.southEast))
     {
         CGFloat stepHeight = fabs(target.tile.stepHeight - here.tile.stepHeight);
         return (stepHeight <= _stepHeight);
@@ -131,9 +155,12 @@
 
 -(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
     if ([self canStepTo:target from:here]) {
+        CGFloat xDelta = abs(target.gridPosition.x - here.gridPosition.x);
+        CGFloat yDelta = abs(target.gridPosition.y - here.gridPosition.y);
+        CGFloat distance = (xDelta > yDelta) ? (xDelta + yDelta/2.0) : (xDelta/2.0 + yDelta);
         CGFloat baseCost = (target.stepCost + here.stepCost) / 2.0;
         CGFloat stepHeight = target.stepHeight - here.stepHeight;
-        return baseCost + stepHeight * stepHeight;
+        return baseCost*(distance + stepHeight);
     }
     return CGFLOAT_MAX;
 }

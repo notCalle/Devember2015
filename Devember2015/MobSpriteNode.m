@@ -43,19 +43,19 @@
         } else if (distance < _cowardice) {
             // should move away from instead of randomly
             NCPerlinNoise *noise = [NCPerlinNoise octaves:5 persistance:0.5];
-            CGFloat directionChange = [noise perlinNoise:currentTime];
+            CGFloat directionChange = [noise perlinNoise:currentTime] * 2.0;
             if (directionChange > 0.0) {
                 _direction += directionChange + 1.0;
             } else {
                 _direction += directionChange - 1.0;
             }
-            [self move:((int)_direction) & 0x3];
+            [self move:((int)_direction) & 0x7];
         } else if (distance < _curiosity) {
             [self moveTo:playerTile maxSteps:1];
         } else {
             NCPerlinNoise *noise = [NCPerlinNoise octaves:5 persistance:0.5];
             _direction += [noise perlinNoise:currentTime];
-            [self move:((int)_direction) & 0x3];
+            [self move:((int)_direction) & 0x7];
         }
     }
 }

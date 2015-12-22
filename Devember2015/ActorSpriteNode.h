@@ -11,9 +11,13 @@
 
 typedef enum : NSUInteger {
     MOVE_EAST,
+    MOVE_NORTHEAST,
     MOVE_NORTH,
+    MOVE_NORTHWEST,
     MOVE_WEST,
-    MOVE_SOUTH
+    MOVE_SOUTHWEST,
+    MOVE_SOUTH,
+    MOVE_SOUTHEAST
 } ActorMovementDirection;
 
 @interface ActorSpriteNode : ClutterSpriteNode {

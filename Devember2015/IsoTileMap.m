@@ -70,9 +70,15 @@
     
     if (grid.y>0) {
         sprite.north = _map[grid.y-1][grid.x];
+        if (grid.x<_width-1) {
+            sprite.northEast = _map[grid.y-1][grid.x+1];
+        }
     }
     if (grid.x>0) {
         sprite.west = _map[grid.y][grid.x-1];
+        if (grid.y>0) {
+            sprite.northWest = _map[grid.y-1][grid.x-1];
+        }
     }
     
     sprite.lightingBitMask = 0x1;
@@ -126,7 +132,8 @@
     int xDelta = abs(hereGrid.x - thereGrid.x);
     int yDelta = abs(hereGrid.y - thereGrid.y);
     
-    return _minimum_cost * (xDelta + yDelta);
+    // Pythagoras is approximated by max(dx,dy)+min(dx,dy)/2; diagonal move = 1.5
+    return _minimum_cost * ((xDelta>yDelta) ? (xDelta + yDelta/2.0) : (xDelta/2.0 + yDelta));
 }
 
 -(void)randomizeMap {

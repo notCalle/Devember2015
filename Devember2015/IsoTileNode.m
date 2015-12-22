@@ -36,14 +36,22 @@
 
 -(NSArray<IsoTileNode *> *)neighbors {
     NSMutableArray *array = [NSMutableArray array];
-    if (_north)
-        [array addObject:_north];
-    if (_south)
-        [array addObject:_south];
-    if (_west)
-        [array addObject:_west];
     if (_east)
         [array addObject:_east];
+    if (_northEast)
+        [array addObject:_northEast];
+    if (_north)
+        [array addObject:_north];
+    if (_northWest)
+        [array addObject:_northWest];
+    if (_west)
+        [array addObject:_west];
+    if (_southWest)
+        [array addObject:_southWest];
+    if (_south)
+        [array addObject:_south];
+    if (_southEast)
+        [array addObject:_southEast];
     return array;
 }
 
@@ -53,6 +61,26 @@
     _stepHeight = tile.stepHeight;
     self.texture = tile.texture;
     self.size = tile.texture.size;
+}
+
+-(void)setEast:(IsoTileNode *)east {
+    if (_east != east) {
+        if (_east) {
+            _east.west = nil;
+        }
+        _east = east;
+        east.west = self;
+    }
+}
+
+-(void)setNorthEast:(IsoTileNode *)northEast {
+    if (_northEast != northEast) {
+        if (_northEast) {
+            _northEast.southWest = nil;
+        }
+        _northEast = northEast;
+        northEast.southWest = self;
+    }
 }
 
 -(void)setNorth:(IsoTileNode *)north {
@@ -65,13 +93,13 @@
     }
 }
 
--(void)setSouth:(IsoTileNode *)south {
-    if (_south != south) {
-        if (_south) {
-            _south.north = nil;
+-(void)setNorthWest:(IsoTileNode *)northWest {
+    if (_northWest != northWest) {
+        if (_northWest) {
+            _northWest.southEast = nil;
         }
-        _south = south;
-        south.north = self;
+        _northWest = northWest;
+        northWest.southEast = self;
     }
 }
 
@@ -85,13 +113,33 @@
     }
 }
 
--(void)setEast:(IsoTileNode *)east {
-    if (_east != east) {
-        if (_east) {
-            _east.west = nil;
+-(void)setSouthWest:(IsoTileNode *)southWest {
+    if (_southWest != southWest) {
+        if (_southWest) {
+            _southWest.northEast = nil;
         }
-        _east = east;
-        east.west = self;
+        _southWest = southWest;
+        southWest.northEast = self;
+    }
+}
+
+-(void)setSouth:(IsoTileNode *)south {
+    if (_south != south) {
+        if (_south) {
+            _south.north = nil;
+        }
+        _south = south;
+        south.north = self;
+    }
+}
+
+-(void)setSouthEast:(IsoTileNode *)southEast {
+    if (_southEast != southEast) {
+        if (_southEast) {
+            _southEast.northWest = nil;
+        }
+        _southEast = southEast;
+        southEast.northWest = self;
     }
 }
 

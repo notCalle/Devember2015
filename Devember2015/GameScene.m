@@ -62,6 +62,7 @@
     CGPoint location = [theEvent locationInNode:self];
     vector_int2 grid = [_tileMap gridAtLocation:location];
 
+    [_player removeAllActions];
     [_player moveTo:[_tileMap tileAt:grid]];
 }
 
