@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bump version.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Devember2015.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>EB20BEDD1C0E3A9500A63ED3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB41A7111C2B0EB800E0A2FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

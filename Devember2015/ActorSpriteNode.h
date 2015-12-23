@@ -44,5 +44,7 @@ typedef enum : NSUInteger {
 -(void)update:(NSTimeInterval)currentTime;
 
 -(void)didGetAttackedBy:(ActorSpriteNode *)aggressor;
+-(void)didGetKilledBy:(ActorSpriteNode *)aggressor;
+-(void)didKill:(ActorSpriteNode *)victim;
 
 @end

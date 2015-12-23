@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,10 @@
 		EB20BED81C0E3A9500A63ED3 /* Devember2015Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BED71C0E3A9500A63ED3 /* Devember2015Tests.m */; };
 		EB20BEE31C0E3A9600A63ED3 /* Devember2015UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEE21C0E3A9600A63ED3 /* Devember2015UITests.m */; };
 		EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */; };
+		EB41A7191C2B119F00E0A2FE /* CreepySpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7181C2B119F00E0A2FE /* CreepySpriteNode.m */; };
+		EB41A71D1C2B134100E0A2FE /* CrawlySpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A71C1C2B134100E0A2FE /* CrawlySpriteNode.m */; };
+		EB41A7211C2B199800E0A2FE /* NCConsoleLineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7201C2B199800E0A2FE /* NCConsoleLineNode.m */; };
+		EB41A7241C2B1DFA00E0A2FE /* NCConsoleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7231C2B1DFA00E0A2FE /* NCConsoleNode.m */; };
 		EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4A0B491C12512E00D5C043 /* Assets.xcassets */; };
 		EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */; };
 		EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */; };
@@ -71,6 +75,15 @@
 		EB20BEE41C0E3A9600A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileMap.h; sourceTree = "<group>"; };
 		EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileMap.m; sourceTree = "<group>"; };
+		EB41A7171C2B119F00E0A2FE /* CreepySpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreepySpriteNode.h; sourceTree = "<group>"; };
+		EB41A7181C2B119F00E0A2FE /* CreepySpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreepySpriteNode.m; sourceTree = "<group>"; };
+		EB41A71B1C2B134100E0A2FE /* CrawlySpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrawlySpriteNode.h; sourceTree = "<group>"; };
+		EB41A71C1C2B134100E0A2FE /* CrawlySpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrawlySpriteNode.m; sourceTree = "<group>"; };
+		EB41A71E1C2B138B00E0A2FE /* Actors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Actors.h; sourceTree = "<group>"; };
+		EB41A71F1C2B199800E0A2FE /* NCConsoleLineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConsoleLineNode.h; sourceTree = "<group>"; };
+		EB41A7201C2B199800E0A2FE /* NCConsoleLineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConsoleLineNode.m; sourceTree = "<group>"; };
+		EB41A7221C2B1DFA00E0A2FE /* NCConsoleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConsoleNode.h; sourceTree = "<group>"; };
+		EB41A7231C2B1DFA00E0A2FE /* NCConsoleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConsoleNode.m; sourceTree = "<group>"; };
 		EB4A0B491C12512E00D5C043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileNode.h; sourceTree = "<group>"; };
 		EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileNode.m; sourceTree = "<group>"; };
@@ -173,12 +186,8 @@
 				EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */,
 				EB17AED21C25B9E0001B46EA /* ClutterSpriteNode.h */,
 				EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */,
-				EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */,
-				EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */,
-				EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */,
-				EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */,
-				EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */,
-				EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */,
+				EB41A71E1C2B138B00E0A2FE /* Actors.h */,
+				EB41A71A1C2B11FA00E0A2FE /* Actors */,
 				EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */,
 				EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */,
 				EBF7D61E1C20BEF700E7ED0F /* NCGraphNode.h */,
@@ -186,6 +195,10 @@
 				EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */,
 				EBF7D6211C2214E300E7ED0F /* NCPerlinNoise.h */,
 				EBF7D6221C2214E300E7ED0F /* NCPerlinNoise.m */,
+				EB41A7221C2B1DFA00E0A2FE /* NCConsoleNode.h */,
+				EB41A7231C2B1DFA00E0A2FE /* NCConsoleNode.m */,
+				EB41A71F1C2B199800E0A2FE /* NCConsoleLineNode.h */,
+				EB41A7201C2B199800E0A2FE /* NCConsoleLineNode.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -214,6 +227,23 @@
 				EB20BEE41C0E3A9600A63ED3 /* Info.plist */,
 			);
 			path = Devember2015UITests;
+			sourceTree = "<group>";
+		};
+		EB41A71A1C2B11FA00E0A2FE /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */,
+				EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */,
+				EB762C721C138ABC000BAD2F /* PlayerSpriteNode.h */,
+				EB762C731C138ABC000BAD2F /* PlayerSpriteNode.m */,
+				EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */,
+				EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */,
+				EB41A7171C2B119F00E0A2FE /* CreepySpriteNode.h */,
+				EB41A7181C2B119F00E0A2FE /* CreepySpriteNode.m */,
+				EB41A71B1C2B134100E0A2FE /* CrawlySpriteNode.h */,
+				EB41A71C1C2B134100E0A2FE /* CrawlySpriteNode.m */,
+			);
+			name = Actors;
 			sourceTree = "<group>";
 		};
 		EBF7D6241C24C25F00E7ED0F /* Tiles */ = {
@@ -317,7 +347,7 @@
 				};
 			};
 			buildConfigurationList = EB20BEB61C0E3A9500A63ED3 /* Build configuration list for PBXProject "Devember2015" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -371,12 +401,14 @@
 				EBF7D62E1C24C55900E7ED0F /* GrassTile02.m in Sources */,
 				EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */,
 				EBF7D6271C24C29300E7ED0F /* WaterTile00.m in Sources */,
+				EB41A7191C2B119F00E0A2FE /* CreepySpriteNode.m in Sources */,
 				EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */,
 				EBF7D6311C24C5F600E7ED0F /* GrassTile03.m in Sources */,
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
 				EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */,
 				EBF7D62A1C24C40900E7ED0F /* SandTile01.m in Sources */,
 				EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */,
+				EB41A7211C2B199800E0A2FE /* NCConsoleLineNode.m in Sources */,
 				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
 				EB17AED41C25B9E0001B46EA /* ClutterSpriteNode.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
@@ -385,6 +417,8 @@
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
 				EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */,
 				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,
+				EB41A71D1C2B134100E0A2FE /* CrawlySpriteNode.m in Sources */,
+				EB41A7241C2B1DFA00E0A2FE /* NCConsoleNode.m in Sources */,
 				EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */,
 				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
 				EB762C741C138ABC000BAD2F /* PlayerSpriteNode.m in Sources */,
@@ -518,7 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 60;
 				INFOPLIST_FILE = Devember2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015;
@@ -532,7 +566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 60;
 				INFOPLIST_FILE = Devember2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.bofh.discord.Devember2015;

@@ -11,11 +11,13 @@
 #import "IsoTileMap.h"
 #import "PlayerSpriteNode.h"
 #import "NCPathFinder.h"
+#import "NCConsoleNode.h"
 
 @interface GameScene : SKScene
 
 @property IsoTileMap *tileMap;
 @property PlayerSpriteNode *player;
-@property NSMutableArray<ActorSpriteNode *> *actors;
+@property NSMutableSet<ActorSpriteNode *> *actors;
+@property NCConsoleNode *console;
 
 @end

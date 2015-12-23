@@ -11,10 +11,10 @@
 @implementation ClutterSpriteNode
 
 -(void)reParent:(IsoTileNode *)newParent {
+    if (self.parent) {
+        [self removeFromParent];
+    }
     if (newParent) {
-        if (self.parent) {
-            [self removeFromParent];
-        }
         self.position = CGPointMake(0.0, (newParent.stepHeight - 0.5) * newParent.size.width / 2.0);
         self.zPosition = 0.5;
         [newParent addChild:self];

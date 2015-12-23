@@ -10,8 +10,8 @@
 
 @interface MobSpriteNode : ActorSpriteNode
 
-@property(readonly) CGFloat cowardice;
-@property(readonly) CGFloat curiosity;
+@property CGFloat cowardice;
+@property CGFloat curiosity;
 
 -(instancetype)initWithImageNamed:(NSString *)name cowardice:(CGFloat)cowardice curiosity:(CGFloat)curiosity;
 +(instancetype)withImageNamed:(NSString *)name cowardice:(CGFloat)cowardice curiosity:(CGFloat)curiosity;
