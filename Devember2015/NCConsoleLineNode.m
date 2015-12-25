@@ -15,7 +15,7 @@
     if (self) {
         self.fontName = @"Chalkduster";
         self.fontSize = 12;
-        self.fontColor = [NSColor whiteColor];
+        self.fontColor = [NSColor greenColor];
         self.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
         self.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
     }

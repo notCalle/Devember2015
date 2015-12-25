@@ -183,13 +183,14 @@
 
 -(void)didGetAttackedBy:(ActorSpriteNode *)aggressor {
     GameScene *scene = (GameScene *)self.scene;
+    CGFloat damage = 1.0;
     
     _aggressor = aggressor;
-    _health -= 1.0;
+    _health -= damage;
     self.color = [NSColor redColor];
     self.colorBlendFactor = 1.0;
     [self runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:0.5]];
-    [scene.console addText:[NSString stringWithFormat:@"%@ was hit by %@", self.name, aggressor.name]];
+    [scene.console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %f", self.name, aggressor.name, damage]];
     if (_health < 0.0) {
         [self didGetKilledBy:aggressor];
     }

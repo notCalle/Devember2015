@@ -12,6 +12,7 @@
 
 @property CGFloat cowardice;
 @property CGFloat curiosity;
+@property CGFloat aggressiveness;
 
 -(instancetype)initWithImageNamed:(NSString *)name cowardice:(CGFloat)cowardice curiosity:(CGFloat)curiosity;
 +(instancetype)withImageNamed:(NSString *)name cowardice:(CGFloat)cowardice curiosity:(CGFloat)curiosity;

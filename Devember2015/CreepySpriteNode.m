@@ -20,6 +20,7 @@
         self.stepSpeed = 0.5;
         self.cowardice = 5.0;
         self.curiosity = 10.0;
+        self.aggressiveness = 3.0;
     }
     return self;
 }

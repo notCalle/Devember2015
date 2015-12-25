@@ -37,8 +37,9 @@
         NSInteger dy = (myTile.gridPosition.y - playerTile.gridPosition.y);
         CGFloat distance = sqrt(dx*dx + dy*dy);
 
-        if (_aggressor && distance < (_curiosity - _cowardice)) {
+        if (_aggressor && distance < _aggressiveness) {
             IsoTileNode *aggressorTile = (IsoTileNode *)_aggressor.parent;
+            [scene.console addText:[NSString stringWithFormat:@"%@ is hunting %@...", self.name, _aggressor.name]];
             [self moveTo:aggressorTile];
         } else if (distance < _cowardice) {
             // should move away from instead of randomly

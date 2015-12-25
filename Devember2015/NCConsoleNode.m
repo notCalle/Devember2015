@@ -14,8 +14,9 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self.alpha = 0.5;
+        self.alpha = 0.0;
         self.fillColor = [NSColor blackColor];
+        self.strokeColor = [NSColor darkGrayColor];
     }
     return self;
 }
@@ -47,6 +48,11 @@
             maxWidth = line.frame.size.width;
     }
     self.path = CGPathCreateWithRect(CGRectMake(0.0, 0.0, maxWidth, lineOffset), NULL);
+    self.alpha = 0.8;
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
+                                         [SKAction runBlock:^(void){
+        self.alpha = 0.0;
+    }]]]];
 }
 
 @end
