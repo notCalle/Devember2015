@@ -7,8 +7,8 @@
 //
 
 #import "IsoTileNode.h"
-#import "GameScene.h"
-#import "ClutterSpriteNode.h"
+#import "IsoTile.h"
+#import "NCSpriteNode.h"
 
 @implementation IsoTileNode
 
@@ -146,13 +146,34 @@
 -(void)setGridPosition:(vector_int2)grid {
     _gridPosition = grid;
     self.zPosition = grid.x + grid.y;
-    ClutterSpriteNode *clutter = (ClutterSpriteNode *)[_tile clutterAt:grid];
+    NCSpriteNode *clutter = (NCSpriteNode *)[_tile clutterAt:grid];
     if (clutter) {
         _stepCost *= 2;
-        [clutter reParent:self];
+        clutter.tile = self;
     }
 }
 
+-(IsoTileNode *)tileInDirection:(NCMovementDirection)direction {
+    switch (direction) {
+        case MOVE_EAST:
+            return self.east;
+        case MOVE_NORTHEAST:
+            return self.northEast;
+        case MOVE_NORTH:
+            return self.north;
+        case MOVE_NORTHWEST:
+            return self.northWest;
+        case MOVE_WEST:
+            return self.west;
+        case MOVE_SOUTHWEST:
+            return self.southWest;
+        case MOVE_SOUTH:
+            return self.south;
+        case MOVE_SOUTHEAST:
+            return self.southEast;
+    }
+    return nil;
+}
 
 // NCGraphNode protocol
 

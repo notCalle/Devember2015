@@ -8,7 +8,7 @@
 
 #import "GrassTile03.h"
 #import "NCPerlinNoise.h"
-#import "ClutterSpriteNode.h"
+#import "NCSpriteNode.h"
 
 @implementation GrassTile03
 
@@ -31,7 +31,7 @@
 -(SKSpriteNode *)clutterAt:(vector_int2)grid {
     int rnd = (int)fabs((7 * [_noise perlinNoise2:CGPointMake(grid.x/3.0, grid.y/3.0)]));
     if (rnd < 2) {
-        ClutterSpriteNode *clutter = [ClutterSpriteNode spriteNodeWithTexture:_clutter[rnd]];
+        NCSpriteNode *clutter = [NCSpriteNode spriteNodeWithTexture:_clutter[rnd]];
         clutter.lightingBitMask = 0x1;
         clutter.anchorPoint = CGPointMake(0.5, 0.0);
         return clutter;

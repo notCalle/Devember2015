@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import <GameKit/GameKit.h>
-#import "IsoTileNode.h"
-#import "NCPerlinNoise.h"
+
+@class IsoTile;
+@class IsoTileNode;
+@class NCPerlinNoise;
 
 @interface IsoTileMap : SKSpriteNode {
     CGPoint _position;

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB17AED41C25B9E0001B46EA /* ClutterSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */; };
+		EB17AED41C25B9E0001B46EA /* NCSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB17AED31C25B9E0001B46EA /* NCSpriteNode.m */; };
 		EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */; };
 		EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC21C0E3A9500A63ED3 /* main.m */; };
 		EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEC51C0E3A9500A63ED3 /* GameScene.m */; };
@@ -38,6 +38,7 @@
 		EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */; };
 		EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */; };
 		EBF7D63F1C27059300E7ED0F /* MobSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */; };
+		EBF7D6461C2DD27800E7ED0F /* NCSpriteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6451C2DD27800E7ED0F /* NCSpriteComponent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB17AED21C25B9E0001B46EA /* ClutterSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClutterSpriteNode.h; sourceTree = "<group>"; };
-		EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClutterSpriteNode.m; sourceTree = "<group>"; };
+		EB17AED21C25B9E0001B46EA /* NCSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSpriteNode.h; sourceTree = "<group>"; };
+		EB17AED31C25B9E0001B46EA /* NCSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSpriteNode.m; sourceTree = "<group>"; };
 		EB20BEBB1C0E3A9500A63ED3 /* Devember2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devember2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB20BEBE1C0E3A9500A63ED3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EB20BEBF1C0E3A9500A63ED3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -123,6 +124,9 @@
 		EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowyMountainTile06.m; sourceTree = "<group>"; };
 		EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobSpriteNode.h; sourceTree = "<group>"; };
 		EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobSpriteNode.m; sourceTree = "<group>"; };
+		EBF7D6441C2DD27800E7ED0F /* NCSpriteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSpriteComponent.h; sourceTree = "<group>"; };
+		EBF7D6451C2DD27800E7ED0F /* NCSpriteComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSpriteComponent.m; sourceTree = "<group>"; };
+		EBF7D6471C2DD7E000E7ED0F /* NCMovementDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCMovementDirection.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 				EB20BECB1C0E3A9500A63ED3 /* MainMenu.xib */,
 				EB20BECE1C0E3A9500A63ED3 /* Info.plist */,
 				EB20BEC11C0E3A9500A63ED3 /* Supporting Files */,
+				EBF7D6471C2DD7E000E7ED0F /* NCMovementDirection.h */,
 				EB4A0B521C17850000D5C043 /* IsoTile.h */,
 				EB4A0B531C17850000D5C043 /* IsoTile.m */,
 				EBF7D62B1C24C50B00E7ED0F /* Tiles.h */,
@@ -190,8 +195,9 @@
 				EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */,
 				EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */,
 				EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */,
-				EB17AED21C25B9E0001B46EA /* ClutterSpriteNode.h */,
-				EB17AED31C25B9E0001B46EA /* ClutterSpriteNode.m */,
+				EB17AED21C25B9E0001B46EA /* NCSpriteNode.h */,
+				EB17AED31C25B9E0001B46EA /* NCSpriteNode.m */,
+				EBF7D6401C2DCD0C00E7ED0F /* Components */,
 				EB41A71E1C2B138B00E0A2FE /* Actors.h */,
 				EB41A71A1C2B11FA00E0A2FE /* Actors */,
 				EB41A7251C2DA78200E0A2FE /* Behaviours */,
@@ -283,6 +289,15 @@
 				EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */,
 			);
 			name = Tiles;
+			sourceTree = "<group>";
+		};
+		EBF7D6401C2DCD0C00E7ED0F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EBF7D6441C2DD27800E7ED0F /* NCSpriteComponent.h */,
+				EBF7D6451C2DD27800E7ED0F /* NCSpriteComponent.m */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,8 +444,9 @@
 				EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */,
 				EB41A7211C2B199800E0A2FE /* NCConsoleLineNode.m in Sources */,
 				EB41A72E1C2DA8CA00E0A2FE /* AggressiveTrait.m in Sources */,
+				EBF7D6461C2DD27800E7ED0F /* NCSpriteComponent.m in Sources */,
 				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
-				EB17AED41C25B9E0001B46EA /* ClutterSpriteNode.m in Sources */,
+				EB17AED41C25B9E0001B46EA /* NCSpriteNode.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
 				EBF7D63F1C27059300E7ED0F /* MobSpriteNode.m in Sources */,

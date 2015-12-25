@@ -48,11 +48,8 @@
             maxWidth = line.frame.size.width;
     }
     self.path = CGPathCreateWithRect(CGRectMake(0.0, 0.0, maxWidth, lineOffset), NULL);
-    self.alpha = 0.8;
-    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
-                                         [SKAction runBlock:^(void){
-        self.alpha = 0.0;
-    }]]]];
+    [self runAction:[SKAction sequence:@[[SKAction fadeInWithDuration:0.2],
+                                         [SKAction fadeOutWithDuration:10.0]]]];
 }
 
 @end

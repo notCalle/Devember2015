@@ -7,39 +7,17 @@
 //
 
 @import GameKit;
-#import "ClutterSpriteNode.h"
+#import "NCSpriteNode.h"
 
-typedef enum : NSUInteger {
-    MOVE_EAST,
-    MOVE_NORTHEAST,
-    MOVE_NORTH,
-    MOVE_NORTHWEST,
-    MOVE_WEST,
-    MOVE_SOUTHWEST,
-    MOVE_SOUTH,
-    MOVE_SOUTHEAST
-} ActorMovementDirection;
-
-@interface ActorSpriteNode : ClutterSpriteNode {
-    CGFloat _direction;
+@interface ActorSpriteNode : NCSpriteNode {
     NSMutableArray<SKAction *> *_actions;
     ActorSpriteNode *_aggressor;
 }
 
-@property CGFloat stepHeight;
-@property CGFloat stepSpeed;
 @property CGFloat health;
 
--(IsoTileNode *)tileInDirection:(ActorMovementDirection)direction;
--(void)move:(ActorMovementDirection)direction;
--(void)moveTo:(IsoTileNode *)target;
--(void)moveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps;
 -(void)addAction:(SKAction *)action;
 -(void)addActionStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
--(BOOL)canStepTo:(IsoTileNode *)target;
--(BOOL)canStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
--(CGFloat)costOfStepTo:(IsoTileNode *)target;
--(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 
 -(void)update:(NSTimeInterval)currentTime;
 

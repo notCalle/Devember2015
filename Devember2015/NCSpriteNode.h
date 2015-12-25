@@ -7,10 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "IsoTileNode.h"
 
-@interface ClutterSpriteNode : SKSpriteNode
+@class IsoTileNode;
 
--(void)reParent:(IsoTileNode *)newParent;
+@interface NCSpriteNode : SKSpriteNode
+
+@property IsoTileNode *tile;
 
 @end

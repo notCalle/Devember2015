@@ -7,6 +7,8 @@
 //
 
 #import "IsoTileMap.h"
+#import "IsoTile.h"
+#import "IsoTileNode.h"
 
 @implementation IsoTileMap
 

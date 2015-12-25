@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BehaviouralTrait : NSObject
+@interface GK : NSObject
 
 @end

@@ -8,8 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import <GameKit/GameKit.h>
-#import "IsoTile.h"
+#import "NCMovementDirection.h"
 #import "NCGraphNode.h"
+
+@class IsoTile;
 
 @interface IsoTileNode : SKSpriteNode <NCGraphNode>
 
@@ -27,5 +29,7 @@
 @property CGFloat stepCost;
 
 -(instancetype)initWithTile:(IsoTile *)tile;
+
+-(IsoTileNode *)tileInDirection:(NCMovementDirection)direction;
 
 @end
