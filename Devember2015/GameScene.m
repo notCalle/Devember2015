@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import <Carbon/Carbon.h>
+#import "NCActorEntity.h"
 #import "Actors.h"
 
 @implementation GameScene
@@ -38,20 +39,14 @@
 
     [self addChild:_tileMap];
 
-    _player = [PlayerSpriteNode spriteNodeWithImageNamed:@"Clutter/Player"];
-    _player.name = @"Player";
-    _player.anchorPoint = CGPointMake(0.5, 0);
-    _player.stepHeight = 0.5;
-    _player.stepSpeed = 1.0;
-    _player.health = 10.0;
-    
-    [_player reParent:[_tileMap tileAt:_tileMap.centerTile]];
-    
+    _player = [NCActorEntity playerEntityForScene:self];
+    [_player didSpawnAt:[_tileMap tileAt:(vector_int2){W/2,H/2}]];
+
     MobSpriteNode *creepy = [CreepySpriteNode new];
-    [creepy reParent:[_tileMap tileAt:(vector_int2){40,40}]];
+    creepy.tile = [_tileMap tileAt:(vector_int2){40,40}];
     
     MobSpriteNode *crawly = [CrawlySpriteNode new];
-    [crawly reParent:[_tileMap tileAt:(vector_int2){40,60}]];
+    crawly.tile = [_tileMap tileAt:(vector_int2){40,60}];
     
     
 }
@@ -103,6 +98,11 @@
                                         _tileMap.position.y - distanceFromCenter.y/20.0);
     }
 
+    _daylight = cos(currentTime/60.0)*0.75 + cos(currentTime/600.0)*0.25;
+    if (_daylight > 1.0)
+        _daylight = 1.0;
+    else if (_daylight < 0.0)
+        _daylight = 0.0;
     
 }
 

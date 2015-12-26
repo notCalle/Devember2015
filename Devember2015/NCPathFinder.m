@@ -7,10 +7,15 @@
 //
 
 #import "NCPathFinder.h"
+#import "NCPriorityQueue.h"
+#import "IsoTileMap.h"
+#import "IsoTileNode.h"
+#import "NCBodyComponent.h"
+#import "NCSpriteNode.h"
 
 @implementation NCPathFinder
 
--(id)initWithActor:(ActorSpriteNode *)actor map:(IsoTileMap *)map {
+-(id)initWithActor:(NCBodyComponent *)actor map:(IsoTileMap *)map {
     self = [self init];
     if (self) {
         _actor = actor;
@@ -28,12 +33,12 @@
     return self;
 }
 
-+(instancetype)finderFor:(ActorSpriteNode *)actor on:(IsoTileMap *)map {
++(instancetype)finderFor:(NCBodyComponent *)actor on:(IsoTileMap *)map {
     return [[NCPathFinder alloc] initWithActor:actor map:map];
 }
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there {
-    return [self findPathTo:there from:(IsoTileNode *)_actor.parent];
+    return [self findPathTo:there from:(IsoTileNode *)_actor.sprite.tile];
 }
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there from:(IsoTileNode *)here {

@@ -8,20 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
-#import "NCPriorityQueue.h"
 #import "NCGraphNode.h"
-#import "IsoTileMap.h"
-#import "ActorSpriteNode.h"
+
+@class NCPriorityQueue;
+@class IsoTileMap;
+@class IsoTileNode;
+@class NCBodyComponent;
 
 @interface NCPathFinder : NSObject {
     IsoTileMap *_tileMap;
-    ActorSpriteNode *_actor;
+    NCBodyComponent *_actor;
     NCPriorityQueue<IsoTileNode *> *_openQueue;
     NSMutableArray<IsoTileNode *> *_graph;
 }
 
--initWithActor:(ActorSpriteNode *)actor map:(IsoTileMap *)map;
-+(instancetype)finderFor:(ActorSpriteNode *)actor on:(IsoTileMap *)map;
+-initWithActor:(NCBodyComponent *)actor map:(IsoTileMap *)map;
++(instancetype)finderFor:(NCBodyComponent *)actor on:(IsoTileMap *)map;
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there;
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there from:(IsoTileNode *)here;

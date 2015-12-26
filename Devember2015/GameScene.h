@@ -13,11 +13,16 @@
 #import "NCPathFinder.h"
 #import "NCConsoleNode.h"
 
+@class NCPlayerBrainComponent;
+@class NCActorEntity;
+
 @interface GameScene : SKScene
 
 @property IsoTileMap *tileMap;
-@property PlayerSpriteNode *player;
-@property NSMutableSet<ActorSpriteNode *> *actors;
-@property NCConsoleNode *console;
+@property NCActorEntity *player;
+@property NSMutableSet<NCActorEntity *> *actors;
+@property(readonly) NCConsoleNode *console;
+@property(readonly) CGFloat daylight;
+@property(readonly) NSColor *ambientColor;
 
 @end

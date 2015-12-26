@@ -9,9 +9,13 @@
 #import <SpriteKit/SpriteKit.h>
 
 @class IsoTileNode;
+@class NCActorEntity;
 
 @interface NCSpriteNode : SKSpriteNode
 
 @property IsoTileNode *tile;
+@property(readonly) NCActorEntity *entity;
+
+-(instancetype)initWithEntity:(NCActorEntity *)entity;
 
 @end

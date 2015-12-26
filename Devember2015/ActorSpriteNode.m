@@ -52,13 +52,6 @@
     [super reParent:newParent];
 }
 
--(void)addAction:(SKAction *)action {
-    if (!_actions) {
-        _actions = [NSMutableArray array];
-    }
-    [_actions addObject:action];
-}
-
 -(void)addActionStepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
     CGVector smoothMovement = CGVectorMake((target.position.x - here.position.x) / 2.0,
                                            (target.position.y - here.position.y) / 2.0);
@@ -67,12 +60,12 @@
     target.color = [NSColor redColor];
     target.colorBlendFactor = 1.0;
     [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
-    [self addAction:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
-    [self addAction:[SKAction runBlock:^(void){
+    [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+    [self addMovement:[SKAction runBlock:^(void){
         [self reParent:target];
         self.position = CGPointMake(self.position.x - smoothMovement.dx, self.position.y - smoothMovement.dy);
     }]];
-    [self addAction:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+    [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
 }
 
 -(void)update:(NSTimeInterval)currentTime {
@@ -83,18 +76,6 @@
 }
 
 -(void)didGetAttackedBy:(ActorSpriteNode *)aggressor {
-    GameScene *scene = (GameScene *)self.scene;
-    CGFloat damage = 1.0;
-    
-    _aggressor = aggressor;
-    _health -= damage;
-    self.color = [NSColor redColor];
-    self.colorBlendFactor = 1.0;
-    [self runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:0.5]];
-    [scene.console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %f", self.name, aggressor.name, damage]];
-    if (_health < 0.0) {
-        [self didGetKilledBy:aggressor];
-    }
 }
 
 -(void)didGetKilledBy:(ActorSpriteNode *)aggressor {

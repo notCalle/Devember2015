@@ -7,18 +7,22 @@
 //
 
 #import <GameplayKit/GameplayKit.h>
+#import <SpriteKit/SpriteKit.h>
 #import "NCMovementDirection.h"
+#import "NCActorEntity.h"
 
 @class NCSpriteNode;
 @class IsoTileNode;
 
-@interface NCSpriteComponent : GKComponent
+@interface NCBodyComponent : GKComponent <NCActorInteraction>
 
-@property NSMutableArray<dispatch_block_t> *movement;
 @property NCSpriteNode *sprite;
+@property NSMutableArray<SKAction *> *movement;
+
 @property CGFloat direction;
 @property CGFloat stepHeight;
 @property CGFloat stepSpeed;
+@property CGFloat health;
 
 -(instancetype)initWithSprite:(NCSpriteNode *)sprite;
 

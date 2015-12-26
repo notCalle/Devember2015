@@ -11,6 +11,14 @@
 
 @implementation NCSpriteNode
 
+-(instancetype)initWithEntity:(NCActorEntity *)entity {
+    self = [self init];
+    if (self) {
+        _entity = entity;
+    }
+    return self;
+}
+
 -(void)setTile:(IsoTileNode *)tile {
     if (self.parent) {
         [self removeFromParent];
