@@ -57,6 +57,18 @@
 
 #pragma mark - NCActorInteraction Protocol
 
+-(void)willAttack:(NCActorEntity *)victim {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    if (victim == _aggressor) {
+        [victim didGetAttackedBy:entity for:1.0];
+    }
+}
+
+-(void)didGetAttackedBy:(NCActorEntity *)aggressor {
+    _aggressor = aggressor;
+}
+
 -(void)didKill:(NCActorEntity *)victim {
     if (_aggressor == victim) {
         _aggressor = nil;

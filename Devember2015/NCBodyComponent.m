@@ -41,15 +41,9 @@
 
 #pragma mark - movement
 
--(void)step:(NCMovementDirection)direction {
-    IsoTileNode *here = _sprite.tile;
-    IsoTileNode *target = [here tileInDirection:direction];
-    if ([self canStepTo:target]) {
-        [self stepTo:target from:here];
-    }
-}
-
 -(void)stepTo:(IsoTileNode *)target from:(IsoTileNode *)here {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
     if (target) {
         if (target == here.east) {
             _direction = MOVE_EAST;
@@ -69,49 +63,31 @@
             _direction = MOVE_SOUTHEAST;
         }
 
-        for (NCSpriteNode *child in [target objectForKeyedSubscript:@"NCSpriteNode"]) {
-            [child.entity didGetAttackedBy:(NCActorEntity *)self.entity];
-            target = here;
-        }
-
-        if (target == here) {
-            [_sprite removeActionForKey:@"movement"];
-        } else {
-            CGVector smoothMovement = CGVectorMake((target.position.x - here.position.x) / 2.0,
-                                                   (target.position.y - here.position.y) / 2.0);
-            CGFloat stepCost = [self costOfStepTo:target from:here];
-            
-            target.color = [NSColor redColor];
-            target.colorBlendFactor = 1.0;
-            [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
-            [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
-            [self addMovement:[SKAction runBlock:^(void){
-                _sprite.tile = target;
-                _sprite.position = CGPointMake(_sprite.position.x - smoothMovement.dx, _sprite.position.y - smoothMovement.dy);
-            }]];
-            [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
-        }
-    }
-}
-
--(void)willMoveTo:(IsoTileNode *)target {
-    [self willMoveTo:target maxSteps:NSIntegerMax];
-}
-
--(void)willMoveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps {
-    NCPathFinder *pathFinder = [NCPathFinder finderFor:(NCActorEntity *)self.entity
-                                                    on:(IsoTileMap *)target.parent];
-    NSArray<IsoTileNode *> *path = [pathFinder findPathTo:target];
-    
-    if (path) {
-        if (steps > path.count - 1) {
-            steps = path.count - 1;
-        }
-        for (IsoTileNode *tile in [path subarrayWithRange:NSMakeRange(1,steps)]) {
-            if (tile.cameFrom) {
-                [self stepTo:tile from:(IsoTileNode *)tile.cameFrom];
+        CGVector smoothMovement = CGVectorMake((target.position.x - here.position.x) / 2.0,
+                                               (target.position.y - here.position.y) / 2.0);
+        CGFloat stepCost = [self costOfStepTo:target from:here];
+        
+        target.color = [NSColor redColor];
+        target.colorBlendFactor = 1.0;
+        [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
+        [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+        [self addMovement:[SKAction runBlock:^(void){
+            NSArray<SKNode *> *victims = [target objectForKeyedSubscript:@"NCSpriteNode"];
+            NSInteger victimCount = 0;
+            for (NCSpriteNode *victim in victims) {
+                if (victim.entity) {
+                    [entity willAttack:(NCActorEntity *)victim.entity];
+                    victimCount++;
+                }
             }
-        }
+            if (victimCount > 0) {
+                [_sprite removeActionForKey:@"movement"];
+            } else {
+                _sprite.tile = target;
+            }
+            _sprite.position = CGPointMake(_sprite.position.x - smoothMovement.dx, _sprite.position.y - smoothMovement.dy);
+        }]];
+        [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
     }
 }
 
@@ -152,6 +128,8 @@
     return CGFLOAT_MAX;
 }
 
+#pragma mark - clock tick update
+
 -(void)updateWithDeltaTime:(NSTimeInterval)seconds {
     if ([_sprite actionForKey:@"movement"] == nil &&
         _movement.count > 0)
@@ -170,9 +148,8 @@
     [entity.scene.actors addObject:entity];
 }
 
--(void)didGetAttackedBy:(NCActorEntity *)aggressor {
+-(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
-    CGFloat damage = 1.0;
     
     _health -= damage;
     _sprite.color = [NSColor redColor];
@@ -190,6 +167,35 @@
     [aggressor didKill:entity];
     [_sprite removeFromParent];
     [entity.scene.actors removeObject:entity];
+}
+
+-(void)willMove:(NCMovementDirection)direction {
+    IsoTileNode *here = _sprite.tile;
+    IsoTileNode *target = [here tileInDirection:direction];
+    if ([self canStepTo:target]) {
+        [self stepTo:target from:here];
+    }
+}
+
+-(void)willMoveTo:(IsoTileNode *)target {
+    [self willMoveTo:target maxSteps:NSIntegerMax];
+}
+
+-(void)willMoveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps {
+    NCPathFinder *pathFinder = [NCPathFinder finderFor:(NCActorEntity *)self.entity
+                                                    on:(IsoTileMap *)target.parent];
+    NSArray<IsoTileNode *> *path = [pathFinder findPathTo:target];
+    
+    if (path) {
+        if (steps > path.count - 1) {
+            steps = path.count - 1;
+        }
+        for (IsoTileNode *tile in [path subarrayWithRange:NSMakeRange(1,steps)]) {
+            if (tile.cameFrom) {
+                [self stepTo:tile from:(IsoTileNode *)tile.cameFrom];
+            }
+        }
+    }
 }
 
 @end

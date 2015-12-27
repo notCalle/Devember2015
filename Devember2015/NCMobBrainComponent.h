@@ -9,7 +9,7 @@
 #import <GameplayKit/GameplayKit.h>
 #import "NCActorEntity.h"
 
-@interface NCMobBrainComponent : GKComponent {
+@interface NCMobBrainComponent : GKComponent <NCActorInteraction> {
     NCActorEntity *_aggressor;
 }
 

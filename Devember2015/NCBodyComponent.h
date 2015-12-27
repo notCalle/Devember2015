@@ -26,15 +26,12 @@
 
 -(instancetype)initWithSprite:(NCSpriteNode *)sprite;
 
--(void)step:(NCMovementDirection)direction;
+//-(void)step:(NCMovementDirection)direction;
 -(void)stepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 
 -(BOOL)canStepTo:(IsoTileNode *)target;
 -(BOOL)canStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 -(CGFloat)costOfStepTo:(IsoTileNode *)target;
 -(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
-
--(void)willMoveTo:(IsoTileNode *)target;
--(void)willMoveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps;
 
 @end

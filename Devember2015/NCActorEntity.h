@@ -23,7 +23,8 @@
 -(void)willMoveTo:(IsoTileNode *)tile maxSteps:(NSInteger)steps;
 -(void)willMove:(NCMovementDirection)direction;
 
--(void)didGetAttackedBy:(NCActorEntity *)aggressor;
+-(void)willAttack:(NCActorEntity *)victim;
+-(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage;
 -(void)didGetKilledBy:(NCActorEntity *)aggressor;
 -(void)didKill:(NCActorEntity *)victim;
 

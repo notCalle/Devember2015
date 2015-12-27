@@ -8,19 +8,29 @@
 
 #import "NCPlayerBrainComponent.h"
 #import "NCTorchComponent.h"
+#import "NCActorEntity.h"
 
 @implementation NCPlayerBrainComponent
 
 -(void)willLightTorch {
-    NCTorchComponent *torch = (NCTorchComponent *)[self.entity componentForClass:[NCTorchComponent class]];
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    NCTorchComponent *torch = (NCTorchComponent *)[entity componentForClass:[NCTorchComponent class]];
     if (torch) {
-        if (torch.isBurnedOut) {
-            [torch didReplaceTorch];
-        }
-        if (!torch.isLit) {
-            [torch didLightTorch:YES];
+        if (torch.isLit) {
+            [entity didLightTorch:NO];
+        } else {
+            if (torch.burnOut > 0.5) {
+                [entity didReplaceTorch];
+            }
+            [entity didLightTorch:YES];
         }
     }
+}
+
+-(void)willAttack:(NCActorEntity *)victim {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    [victim didGetAttackedBy:entity for:1.0];
 }
 
 @end

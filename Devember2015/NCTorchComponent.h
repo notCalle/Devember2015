@@ -18,5 +18,6 @@
 @property NSColor *lightColor;
 @property(readonly) BOOL isLit;
 @property(readonly) BOOL isBurnedOut;
+@property(readonly) CGFloat burnOut;
 
 @end
