@@ -65,7 +65,7 @@
     }
 }
 
--(void)didGetAttackedBy:(NCActorEntity *)aggressor {
+-(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
     _aggressor = aggressor;
 }
 
