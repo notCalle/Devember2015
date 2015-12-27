@@ -22,6 +22,7 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    _ambientColor = [NSColor colorWithCalibratedRed:0.05 green:0.05 blue:0.1 alpha:1.0];
     _lastTime = 0.0;
     _actors = [NSMutableSet new];
     _console = [NCConsoleNode withCapacity:5];
@@ -112,7 +113,8 @@
     if (_lastTime > 0.0) {
         NSTimeInterval deltaTime = currentTime - _lastTime;
 
-        for (NCActorEntity *actor in _actors) {
+        // Need to enumerate a copy, in case an actor gets killed and removes itself during the update
+        for (NCActorEntity *actor in [_actors copy]) {
             [actor updateWithDeltaTime:deltaTime];
         }
     }
