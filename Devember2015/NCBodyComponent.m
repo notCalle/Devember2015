@@ -165,7 +165,7 @@
     [_sprite runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:0.5] withKey:@"damage"];
     [entity.scene.console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %f", entity.name, aggressor.name, damage]];
     if (_health < 0.0) {
-        [self didGetKilledBy:aggressor];
+        [entity didGetKilledBy:aggressor];
     }
 }
 

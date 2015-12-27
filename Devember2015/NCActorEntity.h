@@ -17,8 +17,10 @@
 @optional
 
 -(void)didSpawnAt:(IsoTileNode *)tile;
+
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor;
 -(void)didGetKilledBy:(NCActorEntity *)aggressor;
+-(void)didKill:(NCActorEntity *)victim;
 
 -(void)didLightTorch:(BOOL)isLit;
 -(void)didReplaceTorch;
@@ -33,5 +35,7 @@
 -(instancetype)initWithName:(NSString *)name;
 
 +(instancetype)playerEntityForScene:(GameScene *)scene;
++(instancetype)creepyEntityForScene:(GameScene *)scene;
++(instancetype)crawlyEntityForScene:(GameScene *)scene;
 
 @end

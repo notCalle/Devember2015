@@ -75,9 +75,6 @@
     }
 }
 
--(void)didGetAttackedBy:(ActorSpriteNode *)aggressor {
-}
-
 -(void)didGetKilledBy:(ActorSpriteNode *)aggressor {
     GameScene *scene = (GameScene *)self.scene;
     [scene.console addText:[NSString stringWithFormat:@"%@ was killed by %@", self.name, aggressor.name]];
@@ -85,10 +82,5 @@
     [aggressor didKill:self];
 }
 
--(void)didKill:(ActorSpriteNode *)victim {
-    if (_aggressor == victim) {
-        _aggressor = nil;
-    }
-}
 
 @end
