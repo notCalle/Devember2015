@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import <Carbon/Carbon.h>
+#import "NCDirection.h"
 #import "NCActorEntity.h"
 #import "NCPlayerEntity.h"
 #import "NCCreepyEntity.h"

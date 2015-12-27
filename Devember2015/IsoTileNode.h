@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import <GameKit/GameKit.h>
-#import "NCMovementDirection.h"
+#import "NCDirection.h"
 #import "NCGraphNode.h"
 
 @class IsoTile;

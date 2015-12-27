@@ -7,7 +7,7 @@
 //
 
 #import <GameplayKit/GameplayKit.h>
-#import "NCMovementDirection.h"
+#import "NCDirection.h"
 
 @class NCActorEntity;
 @class GameScene;

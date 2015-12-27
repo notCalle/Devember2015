@@ -155,6 +155,8 @@
 
 -(IsoTileNode *)tileInDirection:(NCMovementDirection)direction {
     switch (direction) {
+        case MOVE_NOWHERE:
+            return self;
         case MOVE_EAST:
             return self.east;
         case MOVE_NORTHEAST:

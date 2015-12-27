@@ -8,7 +8,7 @@
 
 #import <GameplayKit/GameplayKit.h>
 #import <SpriteKit/SpriteKit.h>
-#import "NCMovementDirection.h"
+#import "NCDirection.h"
 #import "NCActorEntity.h"
 
 @class NCSpriteNode;
