@@ -13,6 +13,7 @@
 #import "NCPathFinder.h"
 #import "NCActorEntity.h"
 #import "GameScene.h"
+#import "NCConsoleNode.h"
 
 @implementation NCBodyComponent
 
@@ -27,6 +28,8 @@
 -(instancetype)initWithSprite:(NCSpriteNode *)sprite {
     self = [self init];
     if (self) {
+        sprite.size = sprite.texture.size;
+        sprite.anchorPoint = CGPointMake(0.5, 0.0);
         _sprite = sprite;
     }
     return self;
@@ -71,28 +74,33 @@
             target = here;
         }
 
-        CGVector smoothMovement = CGVectorMake((target.position.x - here.position.x) / 2.0,
-                                               (target.position.y - here.position.y) / 2.0);
-        CGFloat stepCost = [self costOfStepTo:target from:here];
-        
-        target.color = [NSColor redColor];
-        target.colorBlendFactor = 1.0;
-        [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
-        [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
-        [self addMovement:[SKAction runBlock:^(void){
-            _sprite.tile = target;
-            _sprite.position = CGPointMake(_sprite.position.x - smoothMovement.dx, _sprite.position.y - smoothMovement.dy);
-        }]];
-        [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+        if (target == here) {
+            [_sprite removeActionForKey:@"movement"];
+        } else {
+            CGVector smoothMovement = CGVectorMake((target.position.x - here.position.x) / 2.0,
+                                                   (target.position.y - here.position.y) / 2.0);
+            CGFloat stepCost = [self costOfStepTo:target from:here];
+            
+            target.color = [NSColor redColor];
+            target.colorBlendFactor = 1.0;
+            [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
+            [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+            [self addMovement:[SKAction runBlock:^(void){
+                _sprite.tile = target;
+                _sprite.position = CGPointMake(_sprite.position.x - smoothMovement.dx, _sprite.position.y - smoothMovement.dy);
+            }]];
+            [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+        }
     }
 }
 
--(void)moveTo:(IsoTileNode *)target {
-    [self moveTo:target maxSteps:NSIntegerMax];
+-(void)willMoveTo:(IsoTileNode *)target {
+    [self willMoveTo:target maxSteps:NSIntegerMax];
 }
 
--(void)moveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps {
-    NCPathFinder *pathFinder = [NCPathFinder finderFor:self on:(IsoTileMap *)target.parent];
+-(void)willMoveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps {
+    NCPathFinder *pathFinder = [NCPathFinder finderFor:(NCActorEntity *)self.entity
+                                                    on:(IsoTileMap *)target.parent];
     NSArray<IsoTileNode *> *path = [pathFinder findPathTo:target];
     
     if (path) {
@@ -148,12 +156,19 @@
     if ([_sprite actionForKey:@"movement"] == nil &&
         _movement.count > 0)
     {
-        [_sprite runAction:[SKAction sequence:_movement]];
+        [_sprite runAction:[SKAction sequence:_movement] withKey:@"movement"];
         [_movement removeAllObjects];
     }
 }
 
 #pragma mark - NCActorInteraction Protocol
+
+-(void)didSpawnAt:(IsoTileNode *)tile {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    _sprite.tile = tile;
+    [entity.scene.actors addObject:entity];
+}
 
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
@@ -167,6 +182,14 @@
     if (_health < 0.0) {
         [entity didGetKilledBy:aggressor];
     }
+}
+
+-(void)didGetKilledBy:(NCActorEntity *)aggressor {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+
+    [aggressor didKill:entity];
+    [_sprite removeFromParent];
+    [entity.scene.actors removeObject:entity];
 }
 
 @end

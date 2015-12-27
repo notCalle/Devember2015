@@ -7,7 +7,20 @@
 //
 
 #import "NCPlayerBrainComponent.h"
+#import "NCTorchComponent.h"
 
 @implementation NCPlayerBrainComponent
+
+-(void)willLightTorch {
+    NCTorchComponent *torch = (NCTorchComponent *)[self.entity componentForClass:[NCTorchComponent class]];
+    if (torch) {
+        if (torch.isBurnedOut) {
+            [torch didReplaceTorch];
+        }
+        if (!torch.isLit) {
+            [torch didLightTorch:YES];
+        }
+    }
+}
 
 @end

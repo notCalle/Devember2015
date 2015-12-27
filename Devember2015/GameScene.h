@@ -7,14 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "Tiles.h"
-#import "IsoTileMap.h"
-#import "PlayerSpriteNode.h"
-#import "NCPathFinder.h"
-#import "NCConsoleNode.h"
 
+@class IsoTileMap;
 @class NCPlayerBrainComponent;
 @class NCActorEntity;
+@class NCConsoleNode;
 
 @interface GameScene : SKScene
 
@@ -24,5 +21,6 @@
 @property(readonly) NCConsoleNode *console;
 @property(readonly) CGFloat daylight;
 @property(readonly) NSColor *ambientColor;
+@property(readonly) NSTimeInterval lastTime;
 
 @end

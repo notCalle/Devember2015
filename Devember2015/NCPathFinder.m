@@ -10,12 +10,13 @@
 #import "NCPriorityQueue.h"
 #import "IsoTileMap.h"
 #import "IsoTileNode.h"
+#import "NCActorEntity.h"
 #import "NCBodyComponent.h"
 #import "NCSpriteNode.h"
 
 @implementation NCPathFinder
 
--(id)initWithActor:(NCBodyComponent *)actor map:(IsoTileMap *)map {
+-(id)initWithActor:(NCActorEntity *)actor map:(IsoTileMap *)map {
     self = [self init];
     if (self) {
         _actor = actor;
@@ -33,16 +34,17 @@
     return self;
 }
 
-+(instancetype)finderFor:(NCBodyComponent *)actor on:(IsoTileMap *)map {
++(instancetype)finderFor:(NCActorEntity *)actor on:(IsoTileMap *)map {
     return [[NCPathFinder alloc] initWithActor:actor map:map];
 }
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there {
-    return [self findPathTo:there from:(IsoTileNode *)_actor.sprite.tile];
+    return [self findPathTo:there from:(IsoTileNode *)_actor.body.sprite.tile];
 }
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there from:(IsoTileNode *)here {
     NSMutableArray<IsoTileNode *> *path = [NSMutableArray array];
+    NCBodyComponent *body = _actor.body;
 
     [_openQueue addObject:here];
     here.bestPathCost = 0.0;
@@ -63,10 +65,10 @@
             for (IsoTileNode *neighbor in current.neighbors) {
                 if (neighbor.visited)
                     continue;
-                if (![_actor canStepTo:neighbor from:current])
+                if (![body canStepTo:neighbor from:current])
                     continue;
 
-                CGFloat tentativePathCost = current.bestPathCost + [_actor costOfStepTo:neighbor from:current];
+                CGFloat tentativePathCost = current.bestPathCost + [body costOfStepTo:neighbor from:current];
 
                 if (tentativePathCost < neighbor.bestPathCost) {
                     neighbor.cameFrom = current;

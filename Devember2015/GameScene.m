@@ -9,13 +9,20 @@
 #import "GameScene.h"
 #import <Carbon/Carbon.h>
 #import "NCActorEntity.h"
-#import "Actors.h"
+#import "NCPlayerEntity.h"
+#import "NCCreepyEntity.h"
+#import "NCCrawlyEntity.h"
+#import "NCBodyComponent.h"
+#import "Tiles.h"
+#import "IsoTileMap.h"
+#import "NCConsoleNode.h"
+#import "NCSpriteNode.h"
 
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-
+    _lastTime = 0.0;
     _actors = [NSMutableSet new];
     _console = [NCConsoleNode withCapacity:5];
     _console.zPosition = 1000.0;
@@ -39,14 +46,14 @@
 
     [self addChild:_tileMap];
 
-    _player = [NCActorEntity playerEntityForScene:self];
+    _player = [NCPlayerEntity entityForScene:self];
     [_player didSpawnAt:[_tileMap tileAt:(vector_int2){W/2,H/2}]];
 
-    MobSpriteNode *creepy = [CreepySpriteNode new];
-    creepy.tile = [_tileMap tileAt:(vector_int2){40,40}];
+    NCActorEntity *creepy = [NCCreepyEntity entityForScene:self];
+    [creepy didSpawnAt:[_tileMap tileAt:(vector_int2){40,40}]];
     
-    MobSpriteNode *crawly = [CrawlySpriteNode new];
-    crawly.tile = [_tileMap tileAt:(vector_int2){40,60}];
+    NCActorEntity *crawly = [NCCrawlyEntity entityForScene:self];
+    [crawly didSpawnAt:[_tileMap tileAt:(vector_int2){40,60}]];
     
     
 }
@@ -57,8 +64,7 @@
     CGPoint location = [theEvent locationInNode:self];
     vector_int2 grid = [_tileMap gridAtLocation:location];
 
-    [_player removeAllActions];
-    [_player moveTo:[_tileMap tileAt:grid]];
+    [_player willMoveTo:[_tileMap tileAt:grid]];
 }
 
 -(void)keyDown:(NSEvent *)theEvent {
@@ -66,19 +72,19 @@
     
     switch (keycode) {
         case kVK_ANSI_W:
-            [_player move:MOVE_NORTH];
+            [_player willMove:MOVE_NORTH];
             break;
         case kVK_ANSI_S:
-            [_player move:MOVE_SOUTH];
+            [_player willMove:MOVE_SOUTH];
             break;
         case kVK_ANSI_A:
-            [_player move:MOVE_WEST];
+            [_player willMove:MOVE_WEST];
             break;
         case kVK_ANSI_D:
-            [_player move:MOVE_EAST];
+            [_player willMove:MOVE_EAST];
             break;
         case kVK_Space:
-            [_player addLightNode];
+            [_player willLightTorch];
             break;
         default:
             break;
@@ -87,23 +93,30 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    for (ActorSpriteNode *actor in _actors) {
-        [actor update:currentTime];
-    }
-    CGPoint positionInScene = [_player.scene convertPoint:_player.position fromNode:_player.parent];
+
+    CGPoint positionInScene = [_player.scene convertPoint:_player.body.sprite.position
+                                                 fromNode:_player.body.sprite.parent];
     CGPoint distanceFromCenter = CGPointMake(positionInScene.x - CGRectGetMidX(self.frame),
                                              positionInScene.y - CGRectGetMidY(self.frame));
     if (!CGPointEqualToPoint(distanceFromCenter, CGPointZero)) {
         _tileMap.position = CGPointMake(_tileMap.position.x - distanceFromCenter.x/10.0,
                                         _tileMap.position.y - distanceFromCenter.y/20.0);
     }
-
+    
     _daylight = cos(currentTime/60.0)*0.75 + cos(currentTime/600.0)*0.25;
     if (_daylight > 1.0)
         _daylight = 1.0;
     else if (_daylight < 0.0)
         _daylight = 0.0;
     
+    if (_lastTime > 0.0) {
+        NSTimeInterval deltaTime = currentTime - _lastTime;
+
+        for (NCActorEntity *actor in _actors) {
+            [actor updateWithDeltaTime:deltaTime];
+        }
+    }
+    _lastTime = currentTime;
 }
 
 @end

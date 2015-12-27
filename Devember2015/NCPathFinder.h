@@ -13,17 +13,17 @@
 @class NCPriorityQueue;
 @class IsoTileMap;
 @class IsoTileNode;
-@class NCBodyComponent;
+@class NCActorEntity;
 
 @interface NCPathFinder : NSObject {
     IsoTileMap *_tileMap;
-    NCBodyComponent *_actor;
+    NCActorEntity *_actor;
     NCPriorityQueue<IsoTileNode *> *_openQueue;
     NSMutableArray<IsoTileNode *> *_graph;
 }
 
--initWithActor:(NCBodyComponent *)actor map:(IsoTileMap *)map;
-+(instancetype)finderFor:(NCBodyComponent *)actor on:(IsoTileMap *)map;
+-initWithActor:(NCActorEntity *)actor map:(IsoTileMap *)map;
++(instancetype)finderFor:(NCActorEntity *)actor on:(IsoTileMap *)map;
 
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there;
 -(NSArray<IsoTileNode *> *)findPathTo:(IsoTileNode *)there from:(IsoTileNode *)here;

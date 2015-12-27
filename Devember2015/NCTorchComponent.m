@@ -18,7 +18,7 @@
     if (self) {
         _isLit = NO;
         _burnTime = 0.0;
-        _burnoutTime = 60.0;
+        _burnOutTime = 60.0;
         _lightColor = [NSColor colorWithCalibratedRed:0.75 green:0.65 blue:0.25 alpha:1.0];
         _light = [SKLightNode new];
         _light.ambientColor = [NSColor blackColor];
@@ -35,14 +35,18 @@
     
     _light.ambientColor = [entity.scene.ambientColor blendedColorWithFraction:daylight ofColor:[NSColor whiteColor]];
     
-    if (_isLit && _burnTime < _burnoutTime) {
-            CGFloat burnout = (_burnTime*_burnTime) / (_burnoutTime*_burnoutTime);
+    if (_isLit && _burnTime < _burnOutTime) {
+            CGFloat burnout = (_burnTime*_burnTime) / (_burnOutTime*_burnOutTime);
         _light.lightColor = [_lightColor blendedColorWithFraction:burnout>daylight?burnout:daylight
                                                           ofColor:[NSColor blackColor]];
         _burnTime += seconds;
     } else {
         _isLit = NO;
     }
+}
+
+-(BOOL)isBurnedOut {
+    return _burnTime < _burnOutTime;
 }
 
 -(void)didLightTorch:(BOOL)isLit {

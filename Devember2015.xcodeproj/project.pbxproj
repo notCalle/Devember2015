@@ -18,9 +18,12 @@
 		EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */; };
 		EB41A7211C2B199800E0A2FE /* NCConsoleLineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7201C2B199800E0A2FE /* NCConsoleLineNode.m */; };
 		EB41A7241C2B1DFA00E0A2FE /* NCConsoleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7231C2B1DFA00E0A2FE /* NCConsoleNode.m */; };
+		EB41A7311C304BF300E0A2FE /* NCConsoleComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7301C304BF300E0A2FE /* NCConsoleComponent.m */; };
+		EB41A7341C30700600E0A2FE /* NCPlayerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7331C30700600E0A2FE /* NCPlayerEntity.m */; };
+		EB41A7371C30711400E0A2FE /* NCCreepyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7361C30711400E0A2FE /* NCCreepyEntity.m */; };
+		EB41A73A1C30734C00E0A2FE /* NCCrawlyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7391C30734C00E0A2FE /* NCCrawlyEntity.m */; };
 		EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4A0B491C12512E00D5C043 /* Assets.xcassets */; };
 		EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */; };
-		EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */; };
 		EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B531C17850000D5C043 /* IsoTile.m */; };
 		EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6161C1DE56300E7ED0F /* NCPathFinder.m */; };
 		EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */; };
@@ -32,7 +35,6 @@
 		EBF7D6341C24C63800E7ED0F /* GrassyMountainTile04.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6331C24C63800E7ED0F /* GrassyMountainTile04.m */; };
 		EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */; };
 		EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */; };
-		EBF7D63F1C27059300E7ED0F /* MobSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */; };
 		EBF7D6461C2DD27800E7ED0F /* NCBodyComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6451C2DD27800E7ED0F /* NCBodyComponent.m */; };
 		EBF7D64A1C2ECAB200E7ED0F /* NCActorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6491C2ECAB200E7ED0F /* NCActorEntity.m */; };
 		EBF7D64D1C2ED74300E7ED0F /* NCTorchComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D64C1C2ED74300E7ED0F /* NCTorchComponent.m */; };
@@ -77,16 +79,21 @@
 		EB20BEE41C0E3A9600A63ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB20BEF31C0E437A00A63ED3 /* IsoTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileMap.h; sourceTree = "<group>"; };
 		EB20BEF41C0E437A00A63ED3 /* IsoTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileMap.m; sourceTree = "<group>"; };
-		EB41A71E1C2B138B00E0A2FE /* Actors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Actors.h; sourceTree = "<group>"; };
 		EB41A71F1C2B199800E0A2FE /* NCConsoleLineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConsoleLineNode.h; sourceTree = "<group>"; };
 		EB41A7201C2B199800E0A2FE /* NCConsoleLineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConsoleLineNode.m; sourceTree = "<group>"; };
 		EB41A7221C2B1DFA00E0A2FE /* NCConsoleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConsoleNode.h; sourceTree = "<group>"; };
 		EB41A7231C2B1DFA00E0A2FE /* NCConsoleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConsoleNode.m; sourceTree = "<group>"; };
+		EB41A72F1C304BF300E0A2FE /* NCConsoleComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConsoleComponent.h; sourceTree = "<group>"; };
+		EB41A7301C304BF300E0A2FE /* NCConsoleComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConsoleComponent.m; sourceTree = "<group>"; };
+		EB41A7321C30700600E0A2FE /* NCPlayerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPlayerEntity.h; sourceTree = "<group>"; };
+		EB41A7331C30700600E0A2FE /* NCPlayerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPlayerEntity.m; sourceTree = "<group>"; };
+		EB41A7351C30711400E0A2FE /* NCCreepyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCreepyEntity.h; sourceTree = "<group>"; };
+		EB41A7361C30711400E0A2FE /* NCCreepyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCreepyEntity.m; sourceTree = "<group>"; };
+		EB41A7381C30734C00E0A2FE /* NCCrawlyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCrawlyEntity.h; sourceTree = "<group>"; };
+		EB41A7391C30734C00E0A2FE /* NCCrawlyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCrawlyEntity.m; sourceTree = "<group>"; };
 		EB4A0B491C12512E00D5C043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileNode.h; sourceTree = "<group>"; };
 		EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileNode.m; sourceTree = "<group>"; };
-		EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorSpriteNode.h; sourceTree = "<group>"; };
-		EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorSpriteNode.m; sourceTree = "<group>"; };
 		EB4A0B521C17850000D5C043 /* IsoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTile.h; sourceTree = "<group>"; };
 		EB4A0B531C17850000D5C043 /* IsoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTile.m; sourceTree = "<group>"; };
 		EBF7D6151C1DE56300E7ED0F /* NCPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPathFinder.h; sourceTree = "<group>"; };
@@ -111,8 +118,6 @@
 		EBF7D6361C24C6C300E7ED0F /* RockyMountainTile05.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RockyMountainTile05.m; sourceTree = "<group>"; };
 		EBF7D6381C24C75F00E7ED0F /* SnowyMountainTile06.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowyMountainTile06.h; sourceTree = "<group>"; };
 		EBF7D6391C24C75F00E7ED0F /* SnowyMountainTile06.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowyMountainTile06.m; sourceTree = "<group>"; };
-		EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobSpriteNode.h; sourceTree = "<group>"; };
-		EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobSpriteNode.m; sourceTree = "<group>"; };
 		EBF7D6441C2DD27800E7ED0F /* NCBodyComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCBodyComponent.h; sourceTree = "<group>"; };
 		EBF7D6451C2DD27800E7ED0F /* NCBodyComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCBodyComponent.m; sourceTree = "<group>"; };
 		EBF7D6471C2DD7E000E7ED0F /* NCMovementDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCMovementDirection.h; sourceTree = "<group>"; };
@@ -195,7 +200,6 @@
 				EB17AED21C25B9E0001B46EA /* NCSpriteNode.h */,
 				EB17AED31C25B9E0001B46EA /* NCSpriteNode.m */,
 				EBF7D6401C2DCD0C00E7ED0F /* Components */,
-				EB41A71E1C2B138B00E0A2FE /* Actors.h */,
 				EB41A71A1C2B11FA00E0A2FE /* Actors */,
 				EBF7D61B1C1F6AA600E7ED0F /* NCPriorityQueue.h */,
 				EBF7D61C1C1F6AA600E7ED0F /* NCPriorityQueue.m */,
@@ -241,12 +245,14 @@
 		EB41A71A1C2B11FA00E0A2FE /* Actors */ = {
 			isa = PBXGroup;
 			children = (
-				EB4A0B4E1C1626F200D5C043 /* ActorSpriteNode.h */,
-				EB4A0B4F1C1626F200D5C043 /* ActorSpriteNode.m */,
-				EBF7D63D1C27059300E7ED0F /* MobSpriteNode.h */,
-				EBF7D63E1C27059300E7ED0F /* MobSpriteNode.m */,
 				EBF7D6481C2ECAB200E7ED0F /* NCActorEntity.h */,
 				EBF7D6491C2ECAB200E7ED0F /* NCActorEntity.m */,
+				EB41A7321C30700600E0A2FE /* NCPlayerEntity.h */,
+				EB41A7331C30700600E0A2FE /* NCPlayerEntity.m */,
+				EB41A7351C30711400E0A2FE /* NCCreepyEntity.h */,
+				EB41A7361C30711400E0A2FE /* NCCreepyEntity.m */,
+				EB41A7381C30734C00E0A2FE /* NCCrawlyEntity.h */,
+				EB41A7391C30734C00E0A2FE /* NCCrawlyEntity.m */,
 			);
 			name = Actors;
 			sourceTree = "<group>";
@@ -283,6 +289,8 @@
 				EBF7D6521C2EE54800E7ED0F /* NCPlayerBrainComponent.m */,
 				EBF7D6541C3001DB00E7ED0F /* NCMobBrainComponent.h */,
 				EBF7D6551C3001DB00E7ED0F /* NCMobBrainComponent.m */,
+				EB41A72F1C304BF300E0A2FE /* NCConsoleComponent.h */,
+				EB41A7301C304BF300E0A2FE /* NCConsoleComponent.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -420,6 +428,7 @@
 			files = (
 				EBF7D6531C2EE54800E7ED0F /* NCPlayerBrainComponent.m in Sources */,
 				EBF7D62E1C24C55900E7ED0F /* GrassTile02.m in Sources */,
+				EB41A7341C30700600E0A2FE /* NCPlayerEntity.m in Sources */,
 				EBF7D61D1C1F6AA600E7ED0F /* NCPriorityQueue.m in Sources */,
 				EBF7D6271C24C29300E7ED0F /* WaterTile00.m in Sources */,
 				EBF7D6561C3001DB00E7ED0F /* NCMobBrainComponent.m in Sources */,
@@ -434,16 +443,17 @@
 				EBF7D6461C2DD27800E7ED0F /* NCBodyComponent.m in Sources */,
 				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
 				EB17AED41C25B9E0001B46EA /* NCSpriteNode.m in Sources */,
+				EB41A7371C30711400E0A2FE /* NCCreepyEntity.m in Sources */,
 				EB20BEC61C0E3A9500A63ED3 /* GameScene.m in Sources */,
 				EB20BEF51C0E437A00A63ED3 /* IsoTileMap.m in Sources */,
-				EBF7D63F1C27059300E7ED0F /* MobSpriteNode.m in Sources */,
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
-				EB4A0B501C1626F200D5C043 /* ActorSpriteNode.m in Sources */,
+				EB41A7311C304BF300E0A2FE /* NCConsoleComponent.m in Sources */,
 				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,
 				EBF7D64D1C2ED74300E7ED0F /* NCTorchComponent.m in Sources */,
 				EB41A7241C2B1DFA00E0A2FE /* NCConsoleNode.m in Sources */,
 				EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */,
 				EB20BEC01C0E3A9500A63ED3 /* AppDelegate.m in Sources */,
+				EB41A73A1C30734C00E0A2FE /* NCCrawlyEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

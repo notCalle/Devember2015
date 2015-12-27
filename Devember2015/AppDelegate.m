@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "GameScene.h"
-#import "IsoTileMap.h"
 
 @implementation SKScene (Unarchive)
 

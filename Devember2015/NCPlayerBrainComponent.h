@@ -7,7 +7,8 @@
 //
 
 #import <GameplayKit/GameplayKit.h>
+#import "NCActorEntity.h"
 
-@interface NCPlayerBrainComponent : GKComponent
+@interface NCPlayerBrainComponent : GKComponent <NCActorInteraction>
 
 @end

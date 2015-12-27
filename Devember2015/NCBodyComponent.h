@@ -34,7 +34,7 @@
 -(CGFloat)costOfStepTo:(IsoTileNode *)target;
 -(CGFloat)costOfStepTo:(IsoTileNode *)target from:(IsoTileNode *)here;
 
--(void)moveTo:(IsoTileNode *)target;
--(void)moveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps;
+-(void)willMoveTo:(IsoTileNode *)target;
+-(void)willMoveTo:(IsoTileNode *)target maxSteps:(NSInteger)steps;
 
 @end

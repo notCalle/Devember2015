@@ -7,35 +7,37 @@
 //
 
 #import <GameplayKit/GameplayKit.h>
+#import "NCMovementDirection.h"
 
 @class NCActorEntity;
 @class GameScene;
 @class IsoTileNode;
+@class NCBodyComponent;
 
 @protocol NCActorInteraction <NSObject>
 
 @optional
 
 -(void)didSpawnAt:(IsoTileNode *)tile;
+-(void)willMoveTo:(IsoTileNode *)tile;
+-(void)willMoveTo:(IsoTileNode *)tile maxSteps:(NSInteger)steps;
+-(void)willMove:(NCMovementDirection)direction;
 
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor;
 -(void)didGetKilledBy:(NCActorEntity *)aggressor;
 -(void)didKill:(NCActorEntity *)victim;
 
+-(void)willLightTorch;
 -(void)didLightTorch:(BOOL)isLit;
 -(void)didReplaceTorch;
 
 @end
 
 @interface NCActorEntity : GKEntity <NCActorInteraction>
-
 @property(readonly) NSString *name;
 @property GameScene *scene;
+@property(readonly) NCBodyComponent *body;
 
 -(instancetype)initWithName:(NSString *)name;
-
-+(instancetype)playerEntityForScene:(GameScene *)scene;
-+(instancetype)creepyEntityForScene:(GameScene *)scene;
-+(instancetype)crawlyEntityForScene:(GameScene *)scene;
 
 @end

@@ -13,9 +13,10 @@
 @interface NCTorchComponent : GKComponent <NCActorInteraction>
 
 @property(readonly) CGFloat burnTime;
-@property(readonly) CGFloat burnoutTime;
+@property(readonly) CGFloat burnOutTime;
 @property(readonly) SKLightNode *light;
 @property NSColor *lightColor;
-@property BOOL isLit;
+@property(readonly) BOOL isLit;
+@property(readonly) BOOL isBurnedOut;
 
 @end
