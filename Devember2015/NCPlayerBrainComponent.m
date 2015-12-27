@@ -7,8 +7,10 @@
 //
 
 #import "NCPlayerBrainComponent.h"
+#import "NCBodyComponent.h"
 #import "NCTorchComponent.h"
 #import "NCActorEntity.h"
+#import "NCSpriteNode.h"
 
 @implementation NCPlayerBrainComponent
 

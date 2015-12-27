@@ -20,6 +20,9 @@
     if (this) {
         this.scene = scene;
         
+        NCConsoleComponent *console = [[NCConsoleComponent alloc] initWithConsole:scene.console];
+        [this addComponent:console];
+
         NCSpriteNode *sprite = [[NCSpriteNode alloc] initWithEntity:this];
         sprite.texture = [SKTexture textureWithImageNamed:@"Clutter/Creepy"];
         

@@ -20,11 +20,19 @@
     return self;
 }
 
+-(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+
+    [_console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %f",
+                       entity.name, aggressor.name, damage]];
+
+}
+
 -(void)didGetKilledBy:(NCActorEntity *)aggressor {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
     [_console addText:[NSString stringWithFormat:@"%@ was killed by %@",
-                                   entity.name, aggressor.name]];
+                       entity.name, aggressor.name]];
 }
 
 -(void)didLightTorch:(BOOL)isLit {
@@ -44,6 +52,13 @@
     
     [_console addText:[NSString stringWithFormat:@"%@ replaced their torch",
                        entity.name]];
+}
+
+-(void)willAttack:(NCActorEntity *)victim {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    [_console addText:[NSString stringWithFormat:@"%@ takes a swing at %@",
+                       entity.name, victim.name]];
 }
 
 @end

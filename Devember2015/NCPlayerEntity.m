@@ -20,6 +20,9 @@
     NCPlayerEntity *this = [[NCPlayerEntity alloc] initWithName:@"Player"];
     if (this) {
         this.scene = scene;
+
+        NCConsoleComponent *console = [[NCConsoleComponent alloc] initWithConsole:scene.console];
+        [this addComponent:console];
         
         NCSpriteNode *sprite = [[NCSpriteNode alloc] initWithEntity:this];
         sprite.texture = [SKTexture textureWithImageNamed:@"Clutter/Player"];
@@ -36,9 +39,6 @@
         
         NCPlayerBrainComponent *brain = [NCPlayerBrainComponent new];
         [this addComponent:brain];
-        
-        NCConsoleComponent *console = [[NCConsoleComponent alloc] initWithConsole:scene.console];
-        [this addComponent:console];
     }
     return this;
 }
