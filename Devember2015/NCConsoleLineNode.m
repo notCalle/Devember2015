@@ -13,6 +13,7 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
+        _age = 0.0;
         self.fontName = @"Chalkduster";
         self.fontSize = 12;
         self.fontColor = [NSColor greenColor];
@@ -26,6 +27,10 @@
     NCConsoleLineNode *node = [NCConsoleLineNode new];
     node.text = text;
     return node;
+}
+
+-(void)updateWithDeltaTime:(NSTimeInterval)seconds {
+    _age += seconds;
 }
 
 @end

@@ -16,5 +16,7 @@
 +(instancetype)withCapacity:(NSInteger)lines;
 
 -(void)addText:(NSString *)text;
+-(void)resize;
+-(void)updateWithDeltaTime:(NSTimeInterval)seconds;
 
 @end

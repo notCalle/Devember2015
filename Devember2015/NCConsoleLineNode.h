@@ -10,6 +10,10 @@
 
 @interface NCConsoleLineNode : SKLabelNode
 
+@property NSTimeInterval age;
+
 +(instancetype)lineWithText:(NSString *)text;
+
+-(void)updateWithDeltaTime:(NSTimeInterval)seconds;
 
 @end

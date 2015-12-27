@@ -32,13 +32,7 @@
     return [[NCConsoleNode alloc] initWithCapacity:lines];
 }
 
--(void)addText:(NSString *)text {
-    NCConsoleLineNode *line = [NCConsoleLineNode lineWithText:text];
-    if (self.children.count >= _maxLines) {
-        [self removeChildrenInArray:[[self children] subarrayWithRange:NSMakeRange(0, 1)]];
-    }
-    [self addChild:line];
-    
+-(void)resize {
     CGFloat lineOffset = 0.0;
     CGFloat maxWidth = 0.0;
     for (NCConsoleLineNode *line in self.children) {
@@ -48,8 +42,27 @@
             maxWidth = line.frame.size.width;
     }
     self.path = CGPathCreateWithRect(CGRectMake(0.0, 0.0, maxWidth, lineOffset), NULL);
-    [self runAction:[SKAction sequence:@[[SKAction fadeInWithDuration:0.2],
-                                         [SKAction fadeOutWithDuration:10.0]]]];
+}
+
+-(void)addText:(NSString *)text {
+    NCConsoleLineNode *line = [NCConsoleLineNode lineWithText:text];
+    if (self.children.count >= _maxLines) {
+        [self removeChildrenInArray:[[self children] subarrayWithRange:NSMakeRange(0, 1)]];
+    }
+    [self addChild:line];
+    [self resize];
+    [self runAction:[SKAction sequence:@[[SKAction fadeAlphaTo:0.8 duration:0.5],
+                                         [SKAction fadeAlphaTo:0.2 duration:10.0]]]];
+}
+
+-(void)updateWithDeltaTime:(NSTimeInterval)seconds {
+    for (NCConsoleLineNode *line in self.children) {
+        [line updateWithDeltaTime:seconds];
+        if (line.age > 60.0) {
+            [line removeFromParent];
+            [self resize];
+        }
+    }
 }
 
 @end
