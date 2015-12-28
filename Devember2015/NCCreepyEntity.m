@@ -33,9 +33,9 @@
         [this addComponent:body];
         
         NCMobBrainComponent *brain = [NCMobBrainComponent new];
-        brain.cowardice = 5.0;
-        brain.curiosity = 10.0;
-        brain.aggressiveness = 3.0;
+        brain.cowardice = 0.5;
+        brain.curiosity = 1.0;
+        brain.aggressiveness = 0.3;
         [this addComponent:brain];
     }
     return this;

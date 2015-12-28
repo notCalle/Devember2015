@@ -16,5 +16,6 @@
 @property CGFloat cowardice;
 @property CGFloat curiosity;
 @property CGFloat aggressiveness;
+@property(readonly) GKRuleSystem *ruleSystem;
 
 @end

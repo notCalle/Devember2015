@@ -21,6 +21,10 @@
 
 @implementation GameScene
 
+-(CGFloat)light {
+    return _torchlight > _daylight ? _torchlight : _daylight;
+}
+
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     

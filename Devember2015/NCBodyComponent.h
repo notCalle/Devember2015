@@ -14,7 +14,9 @@
 @class NCSpriteNode;
 @class IsoTileNode;
 
-@interface NCBodyComponent : GKComponent <NCActorInteraction>
+@interface NCBodyComponent : GKComponent <NCActorInteraction> {
+    CGFloat _maxHealth;
+}
 
 @property NCSpriteNode *sprite;
 @property NSMutableArray<SKAction *> *movement;
@@ -22,7 +24,8 @@
 @property CGFloat direction;
 @property CGFloat stepHeight;
 @property CGFloat stepSpeed;
-@property CGFloat health;
+@property(nonatomic) CGFloat health;
+@property(readonly) CGFloat healthGrade;
 
 -(instancetype)initWithSprite:(NCSpriteNode *)sprite;
 

@@ -20,6 +20,8 @@
 @property NSMutableSet<NCActorEntity *> *actors;
 @property(readonly) NCConsoleNode *console;
 @property(readonly) CGFloat daylight;
+@property CGFloat torchlight;
+@property(readonly) CGFloat light;
 @property(readonly) NSColor *ambientColor;
 @property(readonly) NSTimeInterval lastTime;
 

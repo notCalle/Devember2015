@@ -37,10 +37,12 @@
     
     if ([self isLit] && ![self isBurnedOut]) {
         CGFloat burnout = [self burnOut];
+        entity.scene.torchlight = 1.0-burnout;
         _light.lightColor = [_lightColor blendedColorWithFraction:burnout>daylight?burnout:daylight
                                                           ofColor:[NSColor blackColor]];
         _burnTime += seconds;
     } else {
+        entity.scene.torchlight = 0.0;
         _light.lightColor = [NSColor blackColor];
         _isLit = NO;
     }

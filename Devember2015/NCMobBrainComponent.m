@@ -17,6 +17,47 @@
 
 @implementation NCMobBrainComponent
 
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        _ruleSystem = [GKRuleSystem new];
+        NSArray<GKRule *> *rules =
+        @[
+          [GKRule ruleWithBlockPredicate:^BOOL(GKRuleSystem *rs) {
+              NSNumber *health = rs.state[@"health"];
+              return (health.floatValue < 0.5);
+          } action:^(GKRuleSystem *rs) {
+              NSNumber *health = rs.state[@"health"];
+              [rs assertFact:@"flee" grade:(0.5-health.floatValue)*2.0];
+          }],
+          [GKRule ruleWithBlockPredicate:^BOOL(GKRuleSystem *rs) {
+              NSNumber *distance = rs.state[@"playerDistance"];
+              return (distance.floatValue < 10.0);
+          } action:^(GKRuleSystem *rs) {
+              NSNumber *distance = rs.state[@"playerDistance"];
+              NSNumber *light = rs.state[@"light"];
+              [rs assertFact:@"hunt" grade:(1.0-light.floatValue/2.0) * (10.0-distance.floatValue)/10.0];
+              [rs assertFact:@"flee" grade:(0.5+light.floatValue/2.0) * (10.0-distance.floatValue)/10.0];
+              [rs assertFact:@"seek" grade:distance.floatValue/10.0];
+          }],
+          [GKRule ruleWithBlockPredicate:^BOOL(GKRuleSystem *rs) {
+              NSNumber *distance = rs.state[@"playerDistance"];
+              return (distance.floatValue >= 10.0);
+          } action:^(GKRuleSystem *rs) {
+              NSNumber *distance = rs.state[@"playerDistance"];
+              [rs assertFact:@"seek" grade:10.0/distance.floatValue];
+          }]
+          ];
+        [_ruleSystem addRulesFromArray:rules];
+    }
+    return self;
+}
+
+-(void)setValue:(id)value forKey:(NSString *)key {
+    [super setValue:value forKeyPath:key];
+    _ruleSystem.state[key] = value;
+}
+
 -(void)updateWithDeltaTime:(NSTimeInterval)seconds {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
@@ -29,13 +70,22 @@
         NSInteger dy = (myTile.gridPosition.y - playerTile.gridPosition.y);
         CGFloat distance = sqrt(dx*dx + dy*dy);
         CGFloat direction = entity.body.direction;
+
+        _ruleSystem.state[@"health"] = @(entity.body.healthGrade);
+        _ruleSystem.state[@"playerDistance"] = @(distance);
+        _ruleSystem.state[@"light"] = @(scene.light);
+
+        [_ruleSystem reset];
+        [_ruleSystem evaluate];
+
+        CGFloat huntGrade = [_ruleSystem gradeForFact:@"hunt"];
+        CGFloat fleeGrade = [_ruleSystem gradeForFact:@"flee"];
+        CGFloat seekGrade = [_ruleSystem gradeForFact:@"seek"];
+
+        [scene.console addText:[NSString stringWithFormat:@"%@ hunt:%.1f flee:%.1f seek:%.1f",
+                                entity.name, huntGrade, fleeGrade, seekGrade]];
         
-        if (_aggressor && distance < _aggressiveness) {
-            IsoTileNode *aggressorTile = _aggressor.body.sprite.tile;
-            [scene.console addText:[NSString stringWithFormat:@"%@ is hunting %@...",
-                                    entity.name, _aggressor.name]];
-            [entity willMoveTo:aggressorTile];
-        } else if (distance < _cowardice) {
+        if (fleeGrade > 1.0 - _cowardice) {
             // should move away from instead of randomly
             NCPerlinNoise *noise = [NCPerlinNoise octaves:5 persistance:0.5];
             CGFloat directionChange = [noise perlinNoise:scene.lastTime] * 2.0;
@@ -45,7 +95,9 @@
                 direction += directionChange - 1.0;
             }
             [entity willMove:((int)direction) & 0x7];
-        } else if (distance < _curiosity) {
+        } else if (huntGrade > 1.0 - _aggressiveness) {
+            [entity willMoveTo:playerTile];
+        } else if (seekGrade > 1.0 - _curiosity) {
             [entity willMoveTo:playerTile maxSteps:1];
         } else {
             NCPerlinNoise *noise = [NCPerlinNoise octaves:5 persistance:0.5];

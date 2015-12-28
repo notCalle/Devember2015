@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
         _movement = [NSMutableArray array];
+        _maxHealth = 0.0;
     }
     return self;
 }
@@ -37,6 +38,16 @@
 
 -(void)addMovement:(SKAction *)action {
     [_movement addObject:action];
+}
+
+-(void)setHealth:(CGFloat)health {
+    _health = health;
+    if (health > _maxHealth)
+        _maxHealth = health;
+}
+
+-(CGFloat)healthGrade {
+    return _health/_maxHealth;
 }
 
 #pragma mark - movement
