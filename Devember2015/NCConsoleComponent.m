@@ -23,7 +23,7 @@
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
 
-    [_console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %f",
+    [_console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %.1f",
                        entity.name, aggressor.name, damage]];
 
 }

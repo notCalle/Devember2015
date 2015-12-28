@@ -82,8 +82,8 @@
         CGFloat fleeGrade = [_ruleSystem gradeForFact:@"flee"];
         CGFloat seekGrade = [_ruleSystem gradeForFact:@"seek"];
 
-        [scene.console addText:[NSString stringWithFormat:@"%@ hunt:%.1f flee:%.1f seek:%.1f",
-                                entity.name, huntGrade, fleeGrade, seekGrade]];
+//        [scene.console addText:[NSString stringWithFormat:@"%@ hunt:%.1f flee:%.1f seek:%.1f",
+//                                entity.name, huntGrade, fleeGrade, seekGrade]];
         
         if (fleeGrade > 1.0 - _cowardice) {
             // should move away from instead of randomly
@@ -112,9 +112,7 @@
 -(void)willAttack:(NCActorEntity *)victim {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
-    if (victim == _aggressor) {
-        [victim didGetAttackedBy:entity for:1.0];
-    }
+    [victim didGetAttackedBy:entity for:1.0];
 }
 
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {

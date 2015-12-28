@@ -15,8 +15,8 @@
     self = [super init];
     if (self) {
         self.alpha = 0.0;
-        self.fillColor = [NSColor blackColor];
-        self.strokeColor = [NSColor darkGrayColor];
+        self.fillColor = [NSColor darkGrayColor];
+        self.strokeColor = [NSColor blackColor];
     }
     return self;
 }
@@ -37,11 +37,11 @@
     CGFloat maxWidth = 0.0;
     for (NCConsoleLineNode *line in self.children) {
         line.position = CGPointMake(0.0, lineOffset);
-        lineOffset -= line.frame.size.height;
+        lineOffset -= line.frame.size.height + 1.0;
         if (line.frame.size.width > maxWidth)
             maxWidth = line.frame.size.width;
     }
-    self.path = CGPathCreateWithRect(CGRectMake(0.0, 0.0, maxWidth, lineOffset), NULL);
+    self.path = CGPathCreateWithRect(CGRectMake(0.0, 0.0, maxWidth + 2.0, lineOffset + 1.0), NULL);
 }
 
 -(void)addText:(NSString *)text {
