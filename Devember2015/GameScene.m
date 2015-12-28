@@ -107,13 +107,15 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
 
-    CGPoint positionInScene = [_player.scene convertPoint:_player.body.sprite.position
-                                                 fromNode:_player.body.sprite.parent];
-    CGPoint distanceFromCenter = CGPointMake(positionInScene.x - CGRectGetMidX(self.frame),
-                                             positionInScene.y - CGRectGetMidY(self.frame));
-    if (!CGPointEqualToPoint(distanceFromCenter, CGPointZero)) {
-        _tileMap.position = CGPointMake(_tileMap.position.x - distanceFromCenter.x/10.0,
-                                        _tileMap.position.y - distanceFromCenter.y/20.0);
+    if (_player) {
+        CGPoint positionInScene = [_player.scene convertPoint:_player.body.sprite.position
+                                                     fromNode:_player.body.sprite.parent];
+        CGPoint distanceFromCenter = CGPointMake(positionInScene.x - CGRectGetMidX(self.frame),
+                                                 positionInScene.y - CGRectGetMidY(self.frame));
+        if (!CGPointEqualToPoint(distanceFromCenter, CGPointZero)) {
+            _tileMap.position = CGPointMake(_tileMap.position.x - distanceFromCenter.x/10.0,
+                                            _tileMap.position.y - distanceFromCenter.y/20.0);
+        }
     }
     
     _daylight = cos(currentTime/60.0)*0.75 + cos(currentTime/600.0)*0.25;

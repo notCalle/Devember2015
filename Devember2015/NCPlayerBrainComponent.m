@@ -11,6 +11,8 @@
 #import "NCTorchComponent.h"
 #import "NCActorEntity.h"
 #import "NCSpriteNode.h"
+#import "GameScene.h"
+#import "IsoTileMap.h"
 
 @implementation NCPlayerBrainComponent
 
@@ -33,6 +35,13 @@
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
     [victim didGetAttackedBy:entity for:1.0];
+}
+
+-(void)didGetKilledBy:(NCActorEntity *)aggressor {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    entity.scene.player = nil;
+    [entity.scene.tileMap runAction:[SKAction fadeOutWithDuration:10.0]];
 }
 
 @end
