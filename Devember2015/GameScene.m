@@ -23,14 +23,21 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    
     _ambientColor = [NSColor colorWithCalibratedRed:0.05 green:0.05 blue:0.1 alpha:1.0];
     _lastTime = 0.0;
     _actors = [NSMutableSet new];
+
     _console = [NCConsoleNode withCapacity:20];
     _console.zPosition = 1000.0;
     _console.position = CGPointMake(self.frame.size.width/-2.1, self.frame.size.height/2.1);
     [self addChild:_console];
-    [_console addText:@"Initializing..."];
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    [_console addText:info[@"NSHumanReadableCopyright"]];
+    [_console addText:[NSString stringWithFormat:@"Initializing... %@ version %@ build %@",
+                       info[@"CFBundleName"],
+                       info[@"CFBundleShortVersionString"],
+                       info[@"CFBundleVersion"]]];
     
 #define W 100
 #define H 100
