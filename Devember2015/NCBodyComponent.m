@@ -196,7 +196,7 @@
                                                     on:(IsoTileMap *)target.parent];
     NSArray<IsoTileNode *> *path = [pathFinder findPathTo:target];
     
-    if (path) {
+    if (path && path.count > 1) {
         if (steps > path.count - 1) {
             steps = path.count - 1;
         }
