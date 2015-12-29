@@ -13,6 +13,7 @@
 @class GameScene;
 @class IsoTileNode;
 @class NCBodyComponent;
+@class NCRandomResolver;
 
 @protocol NCActorInteraction <NSObject>
 
@@ -25,6 +26,7 @@
 
 -(void)willAttack:(NCActorEntity *)victim;
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage;
+-(void)didAvoidAttackBy:(NCActorEntity *)aggressor;
 -(void)didGetKilledBy:(NCActorEntity *)aggressor;
 -(void)didKill:(NCActorEntity *)victim;
 
@@ -38,6 +40,7 @@
 @property(readonly) NSString *name;
 @property GameScene *scene;
 @property(readonly) NCBodyComponent *body;
+@property(readonly) NCRandomResolver *resolve;
 
 -(instancetype)initWithName:(NSString *)name;
 

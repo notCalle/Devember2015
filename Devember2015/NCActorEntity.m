@@ -14,6 +14,8 @@
 #import "NCMobBrainComponent.h"
 #import "NCConsoleComponent.h"
 #import "GameScene.h"
+#import "NCPriorityQueue.h"
+#import "NCRandomResolver.h"
 
 @implementation NCActorEntity
 
@@ -21,6 +23,7 @@
     self = [super init];
     if (self) {
         _name = self.className;
+        _resolve = [NCRandomResolver new];
     }
     return self;
 }
@@ -48,7 +51,7 @@
 -(void)forwardInvocation:(NSInvocation *)anInvocation {
     SEL aSelector = anInvocation.selector;
     
-    for (GKComponent *component in self.components) {
+    for (GKComponent *component in [[NCPriorityQueue alloc] initWithArray:self.components]) {
         if ([component respondsToSelector:aSelector]) {
             [anInvocation invokeWithTarget:component];
         }

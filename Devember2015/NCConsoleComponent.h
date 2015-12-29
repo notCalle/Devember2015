@@ -6,12 +6,11 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import <GameplayKit/GameplayKit.h>
-#import "NCActorEntity.h"
+#import "NCComponent.h"
 
 @class NCConsoleNode;
 
-@interface NCConsoleComponent : GKComponent <NCActorInteraction>
+@interface NCConsoleComponent : NCComponent
 
 @property(readonly) NCConsoleNode *console;
 

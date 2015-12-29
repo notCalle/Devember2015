@@ -6,13 +6,12 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import <GameplayKit/GameplayKit.h>
+#import "NCComponent.h"
 #import <SpriteKit/SpriteKit.h>
-#import "NCActorEntity.h"
 
 @class NCBodyComponent;
 
-@interface NCHealthBarComponent : GKComponent <NCActorInteraction>
+@interface NCHealthBarComponent : NCComponent
 
 @property(readonly) SKShapeNode *healthBar;
 @property(readonly) SKShapeNode *healthBox;

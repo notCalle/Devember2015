@@ -16,13 +16,12 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        CGRect outer = CGRectMake(0.0, 0.0, 64.0, 8.0);
-        CGRect inner = CGRectMake(2.0, 2.0, 60.0, 4.0);
+        _priority = 0.0;
+        CGRect outer = CGRectMake(0.0, 0.0, 64.0, 4.0);
+        CGRect inner = CGRectMake(0.0, 0.0, 64.0, 4.0);
         _healthBar = [SKShapeNode shapeNodeWithRect:inner];
         _healthBar.fillColor = [NSColor greenColor];
-        _healthBar.strokeColor = _healthBar.fillColor;
-        _healthBar.glowWidth = 1.0;
-        _healthBar.lineWidth = 1.0;
+        _healthBar.lineWidth = 0.0;
         _healthBox = [SKShapeNode shapeNodeWithRect:outer];
         _healthBox.fillColor = [NSColor blackColor];
         _healthBox.strokeColor = _healthBox.fillColor;
@@ -54,11 +53,10 @@
 #pragma mark - clock tick update
 
 -(void)updateWithDeltaTime:(NSTimeInterval)seconds {
-    CGRect inner = CGRectMake(2.0, 2.0, 60.0*_body.healthGrade, 4.0);
+    CGRect inner = CGRectMake(0.0, 0.0, 64.0*_body.healthGrade, 4.0);
     _healthBar.path = CGPathCreateWithRect(inner, nil);
     _healthBar.fillColor = [[NSColor redColor] blendedColorWithFraction:_body.healthGrade
                                                                 ofColor:[NSColor greenColor]];
-    _healthBar.strokeColor = _healthBar.fillColor;
 }
 
 #pragma mark - NCActorInteraction Protocol

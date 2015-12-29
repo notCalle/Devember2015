@@ -6,15 +6,14 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import <GameplayKit/GameplayKit.h>
+#import "NCComponent.h"
 #import <SpriteKit/SpriteKit.h>
 #import "NCDirection.h"
-#import "NCActorEntity.h"
 
 @class NCSpriteNode;
 @class IsoTileNode;
 
-@interface NCBodyComponent : GKComponent <NCActorInteraction> {
+@interface NCBodyComponent : NCComponent {
     CGFloat _maxHealth;
 }
 
@@ -23,7 +22,9 @@
 
 @property CGFloat direction;
 @property CGFloat stepHeight;
-@property CGFloat stepSpeed;
+@property(readonly) CGFloat stepSpeed;
+@property(nonatomic) CGFloat strength;
+@property(nonatomic) CGFloat agility;
 @property(nonatomic) CGFloat health;
 @property(readonly) CGFloat healthGrade;
 

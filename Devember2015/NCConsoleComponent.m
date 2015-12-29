@@ -13,6 +13,14 @@
 
 @implementation NCConsoleComponent
 
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        _priority = 20.0;
+    }
+    return self;
+}
+
 -(instancetype)initWithConsole:(NCConsoleNode *)console {
     self = [self init];
     if (self) {
@@ -21,12 +29,21 @@
     return self;
 }
 
+#pragma mark - NCActorInteraction Protocol
+
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
 
     [_console addText:[NSString stringWithFormat:@"%@ was hit by %@ for %.1f",
                        entity.name, aggressor.name, damage]];
 
+}
+
+-(void)didAvoidAttackBy:(NCActorEntity *)aggressor {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    [_console addText:[NSString stringWithFormat:@"%@ ducks %@'s feeble attempt",
+                       entity.name, aggressor.name]];
 }
 
 -(void)didGetKilledBy:(NCActorEntity *)aggressor {

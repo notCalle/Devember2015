@@ -42,6 +42,8 @@
 		EBF7D6531C2EE54800E7ED0F /* NCPlayerBrainComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6521C2EE54800E7ED0F /* NCPlayerBrainComponent.m */; };
 		EBF7D6561C3001DB00E7ED0F /* NCMobBrainComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6551C3001DB00E7ED0F /* NCMobBrainComponent.m */; };
 		EBF7D6591C3093D300E7ED0F /* NCDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6581C3093D300E7ED0F /* NCDirection.m */; };
+		EBF7D65C1C33206F00E7ED0F /* NCComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D65B1C33206F00E7ED0F /* NCComponent.m */; };
+		EBF7D6621C3325C200E7ED0F /* NCRandomResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6611C3325C200E7ED0F /* NCRandomResolver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,10 @@
 		EBF7D6551C3001DB00E7ED0F /* NCMobBrainComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCMobBrainComponent.m; sourceTree = "<group>"; };
 		EBF7D6571C3093D300E7ED0F /* NCDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDirection.h; sourceTree = "<group>"; };
 		EBF7D6581C3093D300E7ED0F /* NCDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDirection.m; sourceTree = "<group>"; };
+		EBF7D65A1C33206F00E7ED0F /* NCComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCComponent.h; sourceTree = "<group>"; };
+		EBF7D65B1C33206F00E7ED0F /* NCComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCComponent.m; sourceTree = "<group>"; };
+		EBF7D6601C3325C200E7ED0F /* NCRandomResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCRandomResolver.h; sourceTree = "<group>"; };
+		EBF7D6611C3325C200E7ED0F /* NCRandomResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCRandomResolver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +224,8 @@
 				EB41A7231C2B1DFA00E0A2FE /* NCConsoleNode.m */,
 				EB41A71F1C2B199800E0A2FE /* NCConsoleLineNode.h */,
 				EB41A7201C2B199800E0A2FE /* NCConsoleLineNode.m */,
+				EBF7D6601C3325C200E7ED0F /* NCRandomResolver.h */,
+				EBF7D6611C3325C200E7ED0F /* NCRandomResolver.m */,
 			);
 			path = Devember2015;
 			sourceTree = "<group>";
@@ -287,6 +295,8 @@
 		EBF7D6401C2DCD0C00E7ED0F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EBF7D65A1C33206F00E7ED0F /* NCComponent.h */,
+				EBF7D65B1C33206F00E7ED0F /* NCComponent.m */,
 				EBF7D6441C2DD27800E7ED0F /* NCBodyComponent.h */,
 				EBF7D6451C2DD27800E7ED0F /* NCBodyComponent.m */,
 				EBF7D64B1C2ED74300E7ED0F /* NCTorchComponent.h */,
@@ -460,6 +470,7 @@
 				EBF7D6561C3001DB00E7ED0F /* NCMobBrainComponent.m in Sources */,
 				EBF7D6371C24C6C300E7ED0F /* RockyMountainTile05.m in Sources */,
 				EBF7D6311C24C5F600E7ED0F /* GrassTile03.m in Sources */,
+				EBF7D65C1C33206F00E7ED0F /* NCComponent.m in Sources */,
 				EB20BEC31C0E3A9500A63ED3 /* main.m in Sources */,
 				EBF7D6171C1DE56300E7ED0F /* NCPathFinder.m in Sources */,
 				EBF7D62A1C24C40900E7ED0F /* SandTile01.m in Sources */,
@@ -468,6 +479,7 @@
 				EBF7D64A1C2ECAB200E7ED0F /* NCActorEntity.m in Sources */,
 				EBF7D6461C2DD27800E7ED0F /* NCBodyComponent.m in Sources */,
 				EBF7D6231C2214E300E7ED0F /* NCPerlinNoise.m in Sources */,
+				EBF7D6621C3325C200E7ED0F /* NCRandomResolver.m in Sources */,
 				EB17AED41C25B9E0001B46EA /* NCSpriteNode.m in Sources */,
 				EB41A7371C30711400E0A2FE /* NCCreepyEntity.m in Sources */,
 				EBF7D6591C3093D300E7ED0F /* NCDirection.m in Sources */,

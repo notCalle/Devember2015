@@ -53,7 +53,7 @@
     [self addChild:line];
     [self resize];
     [self runAction:[SKAction sequence:@[[SKAction fadeAlphaTo:0.8 duration:0.5],
-                                         [SKAction fadeAlphaTo:0.2 duration:10.0]]]];
+                                         [SKAction fadeAlphaTo:0.3 duration:10.0]]]];
 }
 
 -(void)updateWithDeltaTime:(NSTimeInterval)seconds {

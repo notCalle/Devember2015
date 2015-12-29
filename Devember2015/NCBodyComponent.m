@@ -20,6 +20,7 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
+        _priority = 0.0;
         _movement = [NSMutableArray array];
         _maxHealth = 0.0;
     }
@@ -38,6 +39,16 @@
 
 -(void)addMovement:(SKAction *)action {
     [_movement addObject:action];
+}
+
+-(void)setStrength:(CGFloat)strength {
+    _strength = strength;
+    _stepSpeed = _strength * _agility;
+}
+
+-(void)setAgility:(CGFloat)agility {
+    _agility = agility;
+    _stepSpeed = _strength * _agility;
 }
 
 -(void)setHealth:(CGFloat)health {

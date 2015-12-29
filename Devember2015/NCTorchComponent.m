@@ -16,6 +16,7 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
+        _priority = 0.0;
         _isLit = NO;
         _burnTime = 0.0;
         _burnOutTime = 60.0;

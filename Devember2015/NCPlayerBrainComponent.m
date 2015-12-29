@@ -13,8 +13,19 @@
 #import "NCSpriteNode.h"
 #import "GameScene.h"
 #import "IsoTileMap.h"
+#import "NCRandomResolver.h"
 
 @implementation NCPlayerBrainComponent
+
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        _priority = 10.0;
+    }
+    return self;
+}
+
+#pragma mark - NCActorInteraction Protocol
 
 -(void)willLightTorch {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
@@ -33,8 +44,13 @@
 
 -(void)willAttack:(NCActorEntity *)victim {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
+    CGFloat success = [entity.resolve successGrade:entity.body.health vs:victim.body.health];
     
-    [victim didGetAttackedBy:entity for:entity.body.healthGrade];
+    if (success > 0.0) {
+        [victim didGetAttackedBy:entity for:entity.body.healthGrade * success];
+    } else {
+        [victim didAvoidAttackBy:entity];
+    }
 }
 
 -(void)didGetKilledBy:(NCActorEntity *)aggressor {

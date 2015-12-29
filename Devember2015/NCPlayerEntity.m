@@ -30,12 +30,13 @@
         
         NCBodyComponent *body = [[NCBodyComponent alloc] initWithSprite:sprite];
         body.stepHeight = 0.5;
-        body.stepSpeed = 1.0;
-        body.health = 10.0;
+        body.strength = 1.0;
+        body.agility = 1.0;
+        body.health = 5.0;
         [this addComponent:body];
         
         NCHealthBarComponent *health = [[NCHealthBarComponent alloc] initWithBody:body];
-        health.fadeToAlpha = 0.5;
+        health.fadeToAlpha = 0.8;
         [this addComponent:health];
         
         NCTorchComponent *torch = [NCTorchComponent new];

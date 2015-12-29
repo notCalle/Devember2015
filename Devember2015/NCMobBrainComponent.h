@@ -6,10 +6,9 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import <GameplayKit/GameplayKit.h>
-#import "NCActorEntity.h"
+#import "NCComponent.h"
 
-@interface NCMobBrainComponent : GKComponent <NCActorInteraction> {
+@interface NCMobBrainComponent : NCComponent {
     NCActorEntity *_aggressor;
 }
 

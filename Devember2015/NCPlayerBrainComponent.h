@@ -6,9 +6,8 @@
 //  Copyright © 2015 Calle Englund. All rights reserved.
 //
 
-#import <GameplayKit/GameplayKit.h>
-#import "NCActorEntity.h"
+#import "NCComponent.h"
 
-@interface NCPlayerBrainComponent : GKComponent <NCActorInteraction>
+@interface NCPlayerBrainComponent : NCComponent
 
 @end

@@ -18,6 +18,14 @@
     return self;
 }
 
+-(instancetype)initWithCapacity:(NSUInteger)numItems {
+    self = [super init];
+    if (self) {
+        _queue = [NSMutableArray arrayWithCapacity:numItems];
+    }
+    return self;
+}
+
 +(instancetype)queue {
     return [[NCPriorityQueue alloc] init];
 }
