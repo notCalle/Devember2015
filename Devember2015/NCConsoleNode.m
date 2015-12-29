@@ -15,8 +15,9 @@
     self = [super init];
     if (self) {
         self.alpha = 0.0;
-        self.fillColor = [NSColor darkGrayColor];
+        self.fillColor = [NSColor blackColor];
         self.strokeColor = [NSColor blackColor];
+        self.glowWidth = 5.0;
     }
     return self;
 }
