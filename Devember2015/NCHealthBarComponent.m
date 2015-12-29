@@ -51,14 +51,19 @@
     _healthBox.alpha = fadeToAlpha;
 }
 
-#pragma mark - NCActorInteraction Protocol
+#pragma mark - clock tick update
 
--(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
-    CGRect inner = CGRectMake(2.0, 2.0, 36.0*_body.healthGrade, 4.0);
+-(void)updateWithDeltaTime:(NSTimeInterval)seconds {
+    CGRect inner = CGRectMake(2.0, 2.0, 60.0*_body.healthGrade, 4.0);
     _healthBar.path = CGPathCreateWithRect(inner, nil);
     _healthBar.fillColor = [[NSColor redColor] blendedColorWithFraction:_body.healthGrade
                                                                 ofColor:[NSColor greenColor]];
     _healthBar.strokeColor = _healthBar.fillColor;
+}
+
+#pragma mark - NCActorInteraction Protocol
+
+-(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
     _healthBox.alpha = 0.8;
     [_healthBox runAction:[SKAction fadeAlphaTo:_fadeToAlpha duration:30.0]];
 }

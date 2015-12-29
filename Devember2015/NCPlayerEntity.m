@@ -35,7 +35,7 @@
         [this addComponent:body];
         
         NCHealthBarComponent *health = [[NCHealthBarComponent alloc] initWithBody:body];
-        health.fadeToAlpha = 0.8;
+        health.fadeToAlpha = 0.5;
         [this addComponent:health];
         
         NCTorchComponent *torch = [NCTorchComponent new];

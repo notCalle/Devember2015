@@ -34,7 +34,7 @@
 -(void)willAttack:(NCActorEntity *)victim {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
-    [victim didGetAttackedBy:entity for:1.0];
+    [victim didGetAttackedBy:entity for:entity.body.healthGrade];
 }
 
 -(void)didGetKilledBy:(NCActorEntity *)aggressor {

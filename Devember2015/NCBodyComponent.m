@@ -169,10 +169,13 @@
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
     _health -= damage;
+    if (_health < 0.0) {
+        _health = 0.0;
+    }
     _sprite.color = [NSColor redColor];
     _sprite.colorBlendFactor = 1.0;
     [_sprite runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:0.5] withKey:@"damage"];
-    if (_health < 0.0) {
+    if (_health == 0.0) {
         [entity didGetKilledBy:aggressor];
     }
 }
