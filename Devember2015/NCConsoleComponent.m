@@ -9,6 +9,7 @@
 #import "NCConsoleComponent.h"
 #import "GameScene.h"
 #import "NCConsoleNode.h"
+#import "IsoTileNode.h"
 
 @implementation NCConsoleComponent
 
@@ -59,6 +60,13 @@
     
     [_console addText:[NSString stringWithFormat:@"%@ takes a swing at %@",
                        entity.name, victim.name]];
+}
+
+-(void)didSpawnAt:(IsoTileNode *)tile {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+
+    [_console addText:[NSString stringWithFormat:@"%@ spawned at %d,%d",
+                       entity.name, tile.gridPosition.x, tile.gridPosition.y]];
 }
 
 @end

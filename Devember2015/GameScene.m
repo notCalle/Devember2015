@@ -38,7 +38,7 @@
     [self addChild:_console];
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     [_console addText:info[@"NSHumanReadableCopyright"]];
-    [_console addText:[NSString stringWithFormat:@"Initializing... %@ version %@ build %@",
+    [_console addText:[NSString stringWithFormat:@"%@ version %@ build %@",
                        info[@"CFBundleName"],
                        info[@"CFBundleShortVersionString"],
                        info[@"CFBundleVersion"]]];

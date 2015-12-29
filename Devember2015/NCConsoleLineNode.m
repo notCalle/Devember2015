@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         _age = 0.0;
-        self.fontName = @"Chalkduster";
+        self.fontName = @"Skia Black";
         self.fontSize = 12;
         self.fontColor = [NSColor greenColor];
         self.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
