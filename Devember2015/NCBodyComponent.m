@@ -148,6 +148,12 @@
         [_sprite runAction:[SKAction sequence:_movement] withKey:@"movement"];
         [_movement removeAllObjects];
     }
+    
+    if (_health < _maxHealth) {
+        _health += seconds * (_maxHealth / 100.0);
+        if (_health > _maxHealth)
+            _health = _maxHealth;
+    }
 }
 
 #pragma mark - NCActorInteraction Protocol

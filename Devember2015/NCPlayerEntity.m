@@ -9,6 +9,7 @@
 #import "NCPlayerEntity.h"
 #import "NCSpriteNode.h"
 #import "NCBodyComponent.h"
+#import "NCHealthBarComponent.h"
 #import "NCTorchComponent.h"
 #import "NCPlayerBrainComponent.h"
 #import "NCConsoleComponent.h"
@@ -32,6 +33,10 @@
         body.stepSpeed = 1.0;
         body.health = 10.0;
         [this addComponent:body];
+        
+        NCHealthBarComponent *health = [[NCHealthBarComponent alloc] initWithBody:body];
+        health.fadeToAlpha = 0.8;
+        [this addComponent:health];
         
         NCTorchComponent *torch = [NCTorchComponent new];
         [sprite addChild:torch.light];

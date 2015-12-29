@@ -9,6 +9,7 @@
 #import "NCCreepyEntity.h"
 #import "NCSpriteNode.h"
 #import "NCBodyComponent.h"
+#import "NCHealthBarComponent.h"
 #import "NCMobBrainComponent.h"
 #import "NCConsoleComponent.h"
 #import "GameScene.h"
@@ -31,6 +32,9 @@
         body.stepSpeed = 0.5;
         body.health = 2.0;
         [this addComponent:body];
+        
+        NCHealthBarComponent *health = [[NCHealthBarComponent alloc] initWithBody:body];
+        [this addComponent:health];
         
         NCMobBrainComponent *brain = [NCMobBrainComponent new];
         brain.cowardice = 0.5;

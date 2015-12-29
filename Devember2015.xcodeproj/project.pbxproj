@@ -22,6 +22,7 @@
 		EB41A7341C30700600E0A2FE /* NCPlayerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7331C30700600E0A2FE /* NCPlayerEntity.m */; };
 		EB41A7371C30711400E0A2FE /* NCCreepyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7361C30711400E0A2FE /* NCCreepyEntity.m */; };
 		EB41A73A1C30734C00E0A2FE /* NCCrawlyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A7391C30734C00E0A2FE /* NCCrawlyEntity.m */; };
+		EB41A7401C32C19A00E0A2FE /* NCHealthBarComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41A73F1C32C19A00E0A2FE /* NCHealthBarComponent.m */; };
 		EB4A0B4A1C12512E00D5C043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4A0B491C12512E00D5C043 /* Assets.xcassets */; };
 		EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */; };
 		EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4A0B531C17850000D5C043 /* IsoTile.m */; };
@@ -92,6 +93,8 @@
 		EB41A7361C30711400E0A2FE /* NCCreepyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCreepyEntity.m; sourceTree = "<group>"; };
 		EB41A7381C30734C00E0A2FE /* NCCrawlyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCrawlyEntity.h; sourceTree = "<group>"; };
 		EB41A7391C30734C00E0A2FE /* NCCrawlyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCrawlyEntity.m; sourceTree = "<group>"; };
+		EB41A73E1C32C19900E0A2FE /* NCHealthBarComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCHealthBarComponent.h; sourceTree = "<group>"; };
+		EB41A73F1C32C19A00E0A2FE /* NCHealthBarComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCHealthBarComponent.m; sourceTree = "<group>"; };
 		EB4A0B491C12512E00D5C043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoTileNode.h; sourceTree = "<group>"; };
 		EB4A0B4C1C147AB700D5C043 /* IsoTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoTileNode.m; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 				EBF7D6551C3001DB00E7ED0F /* NCMobBrainComponent.m */,
 				EB41A72F1C304BF300E0A2FE /* NCConsoleComponent.h */,
 				EB41A7301C304BF300E0A2FE /* NCConsoleComponent.m */,
+				EB41A73E1C32C19900E0A2FE /* NCHealthBarComponent.h */,
+				EB41A73F1C32C19A00E0A2FE /* NCHealthBarComponent.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				EB4A0B4D1C147AB700D5C043 /* IsoTileNode.m in Sources */,
 				EB41A7311C304BF300E0A2FE /* NCConsoleComponent.m in Sources */,
 				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,
+				EB41A7401C32C19A00E0A2FE /* NCHealthBarComponent.m in Sources */,
 				EBF7D64D1C2ED74300E7ED0F /* NCTorchComponent.m in Sources */,
 				EB41A7241C2B1DFA00E0A2FE /* NCConsoleNode.m in Sources */,
 				EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */,
