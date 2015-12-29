@@ -14,7 +14,6 @@
 #import "IsoTileNode.h"
 #import "NCConsoleNode.h"
 #import "NCPerlinNoise.h"
-#import "NCRandomResolver.h"
 
 @implementation NCMobBrainComponent
 
@@ -110,17 +109,6 @@
 }
 
 #pragma mark - NCActorInteraction Protocol
-
--(void)willAttack:(NCActorEntity *)victim {
-    NCActorEntity *entity = (NCActorEntity *)self.entity;
-    CGFloat success = [entity.resolve successGrade:entity.body.agility vs:victim.body.agility];
-    
-    if (success > 0.0) {
-        [victim didGetAttackedBy:entity for:entity.body.strength * success];
-    } else {
-        [victim didAvoidAttackBy:entity];
-    }
-}
 
 -(void)didGetAttackedBy:(NCActorEntity *)aggressor for:(CGFloat)damage {
     _aggressor = aggressor;

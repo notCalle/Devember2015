@@ -14,6 +14,7 @@
 #import "NCActorEntity.h"
 #import "GameScene.h"
 #import "NCConsoleNode.h"
+#import "NCRandomResolver.h"
 
 @implementation NCBodyComponent
 
@@ -197,6 +198,17 @@
     [aggressor didKill:entity];
     [_sprite removeFromParent];
     [entity.scene.actors removeObject:entity];
+}
+
+-(void)willAttack:(NCActorEntity *)victim {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    CGFloat success = [entity.resolve successGrade:entity.body.agility vs:victim.body.agility];
+    
+    if (success > 0.0) {
+        [victim didGetAttackedBy:entity for:entity.body.strength * success];
+    } else {
+        [victim didAvoidAttackBy:entity];
+    }
 }
 
 -(void)willMove:(NCMovementDirection)direction {

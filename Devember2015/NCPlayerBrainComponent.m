@@ -13,7 +13,6 @@
 #import "NCSpriteNode.h"
 #import "GameScene.h"
 #import "IsoTileMap.h"
-#import "NCRandomResolver.h"
 
 @implementation NCPlayerBrainComponent
 
@@ -39,17 +38,6 @@
             }
             [entity didLightTorch:YES];
         }
-    }
-}
-
--(void)willAttack:(NCActorEntity *)victim {
-    NCActorEntity *entity = (NCActorEntity *)self.entity;
-    CGFloat success = [entity.resolve successGrade:entity.body.health vs:victim.body.health];
-    
-    if (success > 0.0) {
-        [victim didGetAttackedBy:entity for:entity.body.healthGrade * success];
-    } else {
-        [victim didAvoidAttackBy:entity];
     }
 }
 
