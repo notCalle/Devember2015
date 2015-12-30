@@ -211,12 +211,14 @@
 
 -(void)willAttack:(NCActorEntity *)victim {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
-    CGFloat success = [entity.resolve successGrade:entity.body.agility vs:victim.body.agility];
+    if (![victim isKindOfClass:entity.class]) {
+        CGFloat success = [entity.resolve successGrade:entity.body.agility vs:victim.body.agility];
     
-    if (success > 0.0) {
-        [victim didGetAttackedBy:entity for:entity.body.strength * success];
-    } else {
-        [victim didAvoidAttackBy:entity];
+        if (success > 0.0) {
+            [victim didGetAttackedBy:entity for:entity.body.strength * success];
+        } else {
+            [victim didAvoidAttackBy:entity];
+        }
     }
 }
 
