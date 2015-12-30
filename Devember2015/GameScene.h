@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <GameplayKit/GameplayKit.h>
 
 @class IsoTileMap;
 @class NCPlayerBrainComponent;
@@ -24,5 +25,6 @@
 @property(readonly) CGFloat light;
 @property(readonly) NSColor *ambientColor;
 @property(readonly) NSTimeInterval lastTime;
+@property(readonly) GKARC4RandomSource *randomSource;
 
 @end

@@ -42,6 +42,8 @@
                        info[@"CFBundleName"],
                        info[@"CFBundleShortVersionString"],
                        info[@"CFBundleVersion"]]];
+
+    _randomSource = [GKARC4RandomSource new];
     
 #define W 100
 #define H 100
@@ -62,11 +64,11 @@
     _player = [NCPlayerEntity entityForScene:self];
     [_player didSpawnAt:[_tileMap tileAt:(vector_int2){W/2,H/2}]];
 
-    NCActorEntity *creepy = [NCCreepyEntity entityForScene:self];
-    [creepy didSpawnAt:[_tileMap tileAt:(vector_int2){40,40}]];
-    
-    NCActorEntity *crawly = [NCCrawlyEntity entityForScene:self];
-    [crawly didSpawnAt:[_tileMap tileAt:(vector_int2){40,60}]];
+//    NCActorEntity *creepy = [NCCreepyEntity entityForScene:self];
+//    [creepy didSpawnAt:[_tileMap tileAt:(vector_int2){40,40}]];
+//    
+//    NCActorEntity *crawly = [NCCrawlyEntity entityForScene:self];
+//    [crawly didSpawnAt:[_tileMap tileAt:(vector_int2){40,60}]];
     
     
 }
@@ -112,7 +114,7 @@
         _daylight = 1.0;
     else if (_daylight < 0.0)
         _daylight = 0.0;
-    
+
     if (_lastTime > 0.0) {
         NSTimeInterval deltaTime = currentTime - _lastTime;
 
@@ -131,7 +133,19 @@
                 _tileMap.position = CGPointMake(_tileMap.position.x - distanceFromCenter.x*deltaTime,
                                                 _tileMap.position.y - distanceFromCenter.y*deltaTime/2.0);
             }
-        }
+
+            if (_randomSource.nextUniform > _daylight && _randomSource.nextUniform < 0.01) {
+                int x = ((unsigned int)_randomSource.nextInt) % W;
+                int y = ((unsigned int)_randomSource.nextInt) % H;
+                if (_randomSource.nextBool) {
+                    NCActorEntity *creepy = [NCCreepyEntity entityForScene:self];
+                    [creepy didSpawnAt:[_tileMap tileAt:(vector_int2){x,y}]];
+                } else {
+                    NCActorEntity *crawly = [NCCrawlyEntity entityForScene:self];
+                    [crawly didSpawnAt:[_tileMap tileAt:(vector_int2){x,y}]];
+                }
+            }
+}
     }
     _lastTime = currentTime;
 }
