@@ -93,6 +93,11 @@
         target.color = [NSColor redColor];
         target.colorBlendFactor = 1.0;
         [target runAction:[SKAction colorizeWithColorBlendFactor:0.0 duration:1.0]];
+
+        CGFloat deltaZ = fabs(target.zPosition - here.zPosition) + 1.0;
+        [self addMovement:[SKAction runBlock:^{
+            _sprite.zPosition += deltaZ;
+        }]];
         [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
         [self addMovement:[SKAction runBlock:^(void){
             NSArray<SKNode *> *victims = [target objectForKeyedSubscript:@"NCSpriteNode"];
@@ -107,10 +112,14 @@
                 [_sprite removeActionForKey:@"movement"];
             } else {
                 _sprite.tile = target;
+                _sprite.zPosition += deltaZ;
             }
             _sprite.position = CGPointMake(_sprite.position.x - smoothMovement.dx, _sprite.position.y - smoothMovement.dy);
         }]];
         [self addMovement:[SKAction moveBy:smoothMovement duration:0.1*stepCost/_stepSpeed]];
+        [self addMovement:[SKAction runBlock:^{
+            _sprite.zPosition -= deltaZ;
+        }]];
     }
 }
 
