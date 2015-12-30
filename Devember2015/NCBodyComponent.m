@@ -240,4 +240,9 @@
     }
 }
 
+-(void)didGainLevel:(NSInteger)levelDelta {
+    _maxHealth += levelDelta;
+    _health += levelDelta;
+}
+
 @end

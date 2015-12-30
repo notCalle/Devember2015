@@ -75,8 +75,10 @@
 -(void)willAttack:(NCActorEntity *)victim {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
-    [_console addText:[NSString stringWithFormat:@"%@ takes a swing at %@",
-                       entity.name, victim.name]];
+    if (![victim isKindOfClass:entity.class]) {
+        [_console addText:[NSString stringWithFormat:@"%@ takes a swing at %@",
+                           entity.name, victim.name]];
+    }
 }
 
 -(void)didSpawnAt:(IsoTileNode *)tile {
@@ -84,6 +86,13 @@
 
     [_console addText:[NSString stringWithFormat:@"%@ spawned at %d,%d",
                        entity.name, tile.gridPosition.x, tile.gridPosition.y]];
+}
+
+-(void)didGainLevel:(NSInteger)levelDelta {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+    
+    [_console addText:[NSString stringWithFormat:@"%@ level up!",
+                       entity.name]];
 }
 
 @end

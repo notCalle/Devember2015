@@ -10,4 +10,7 @@
 
 @interface NCPlayerBrainComponent : NCComponent
 
+@property(readonly) NSInteger experiencePoints;
+@property(readonly) NSInteger characterLevel;
+
 @end

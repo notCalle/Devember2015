@@ -20,6 +20,8 @@
     self = [super init];
     if (self) {
         _priority = 10.0;
+        _experiencePoints = 0;
+        _characterLevel = 1;
     }
     return self;
 }
@@ -33,7 +35,7 @@
         if (torch.isLit) {
             [entity didLightTorch:NO];
         } else {
-            if (torch.burnOut > 0.5) {
+            if (torch.burnOut > 0.8) {
                 [entity didReplaceTorch];
             }
             [entity didLightTorch:YES];
@@ -46,6 +48,17 @@
     
     entity.scene.player = nil;
     [entity.scene.tileMap runAction:[SKAction fadeOutWithDuration:10.0]];
+}
+
+-(void)didKill:(NCActorEntity *)victim {
+    NCActorEntity *entity = (NCActorEntity *)self.entity;
+
+    _experiencePoints += 1;
+    if (_experiencePoints > (1 << _characterLevel)) {
+        _characterLevel += 1;
+        [entity didGainLevel:1];
+    }
+    [entity didGainXP:1];
 }
 
 @end
