@@ -9,14 +9,19 @@
 #import "NCComponent.h"
 #import <SpriteKit/SpriteKit.h>
 
+@class NCBodyComponent;
+
 @interface NCTorchComponent : NCComponent
 
 @property(readonly) CGFloat burnTime;
 @property(readonly) CGFloat burnOutTime;
 @property(readonly) SKLightNode *light;
+@property(readonly) SKSpriteNode *torch;
 @property NSColor *lightColor;
 @property(readonly) BOOL isLit;
 @property(readonly) BOOL isBurnedOut;
 @property(readonly) CGFloat burnOut;
+
+-(instancetype)initWithBody:(NCBodyComponent *)body;
 
 @end

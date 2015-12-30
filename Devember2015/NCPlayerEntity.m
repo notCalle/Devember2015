@@ -39,8 +39,7 @@
         health.fadeToAlpha = 0.8;
         [this addComponent:health];
         
-        NCTorchComponent *torch = [NCTorchComponent new];
-        [sprite addChild:torch.light];
+        NCTorchComponent *torch = [[NCTorchComponent alloc] initWithBody:body];
         [this addComponent:torch];
         
         NCPlayerBrainComponent *brain = [NCPlayerBrainComponent new];

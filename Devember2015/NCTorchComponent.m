@@ -26,6 +26,20 @@
         _light.lightColor = [NSColor blackColor];
         _light.falloff = 2.0;
         _light.categoryBitMask = 0x1;
+
+        _torch = [SKSpriteNode spriteNodeWithImageNamed:@"Clutter/Torch"];
+        _torch.anchorPoint = CGPointMake(0.5, 0.0);
+        _torch.hidden = YES;
+        _torch.lightingBitMask = 0x1;
+    }
+    return self;
+}
+
+-(instancetype)initWithBody:(NCBodyComponent *)body {
+    self = [self init];
+    if (self) {
+        [body.sprite addChild:_torch];
+        [body.sprite addChild:_light];
     }
     return self;
 }
@@ -41,11 +55,13 @@
         entity.scene.torchlight = 1.0-burnout;
         _light.lightColor = [_lightColor blendedColorWithFraction:burnout>daylight?burnout:daylight
                                                           ofColor:[NSColor blackColor]];
+        _torch.hidden = NO;
         _burnTime += seconds;
     } else {
         entity.scene.torchlight = 0.0;
         _light.lightColor = [NSColor blackColor];
         _isLit = NO;
+        _torch.hidden = YES;
     }
 }
 
