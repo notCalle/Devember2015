@@ -54,7 +54,7 @@
     NCActorEntity *entity = (NCActorEntity *)self.entity;
 
     _experiencePoints += 1;
-    if (_experiencePoints > (1 << _characterLevel)) {
+    if (_experiencePoints >= (1 << _characterLevel)) {
         _characterLevel += 1;
         [entity didGainLevel:1];
     }

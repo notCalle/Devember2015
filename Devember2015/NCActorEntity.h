@@ -32,6 +32,7 @@
 
 -(void)didGainXP:(NSInteger)experienceDelta;
 -(void)didGainLevel:(NSInteger)levelDelta;
+
 -(void)willLightTorch;
 -(void)didLightTorch:(BOOL)isLit;
 -(void)didReplaceTorch;
