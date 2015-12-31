@@ -29,9 +29,9 @@
         
         NCBodyComponent *body = [[NCBodyComponent alloc] initWithSprite:sprite];
         body.stepHeight = 1.0;
-        body.strength = 0.5;
-        body.agility = 0.5;
-        body.health = 3.0;
+        body.strength = 10.0;
+        body.agility = 5.0;
+        body.health = 7.0;
         [this addComponent:body];
         
         NCHealthBarComponent *health = [[NCHealthBarComponent alloc] initWithBody:body];

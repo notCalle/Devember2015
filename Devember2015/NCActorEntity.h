@@ -31,7 +31,7 @@
 -(void)didKill:(NCActorEntity *)victim;
 
 -(void)didGainXP:(NSInteger)experienceDelta;
--(void)didGainLevel:(NSInteger)levelDelta;
+-(void)didGainLevel:(NSInteger)level;
 
 -(void)willLightTorch;
 -(void)didLightTorch:(BOOL)isLit;

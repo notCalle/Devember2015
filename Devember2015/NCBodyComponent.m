@@ -44,12 +44,12 @@
 
 -(void)setStrength:(CGFloat)strength {
     _strength = strength;
-    _stepSpeed = _strength * _agility;
+    _stepSpeed = (_strength * _agility) / 100.0;
 }
 
 -(void)setAgility:(CGFloat)agility {
     _agility = agility;
-    _stepSpeed = _strength * _agility;
+    _stepSpeed = (_strength * _agility) / 100.0;
 }
 
 -(void)setHealth:(CGFloat)health {
@@ -212,10 +212,10 @@
 -(void)willAttack:(NCActorEntity *)victim {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     if (![victim isKindOfClass:entity.class]) {
-        CGFloat success = [entity.resolve successGrade:entity.body.agility vs:victim.body.agility];
+        CGFloat success = [entity.resolve successGrade:entity.body.strength vs:victim.body.agility];
     
         if (success > 0.0) {
-            [victim didGetAttackedBy:entity for:entity.body.strength * success];
+            [victim didGetAttackedBy:entity for:success];
         } else {
             [victim didAvoidAttackBy:entity];
         }
@@ -251,9 +251,24 @@
     }
 }
 
--(void)didGainLevel:(NSInteger)levelDelta {
-    _maxHealth += levelDelta;
-    _health += levelDelta;
+-(void)didGainLevel:(NSInteger)level; {
+    switch (level % 3) {
+        case 0:
+            _maxHealth += 1;
+            _health += 1;
+            break;
+            
+        case 1:
+            _strength += 1;
+            break;
+            
+        case 2:
+            _agility += 1;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

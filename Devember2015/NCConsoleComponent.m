@@ -65,11 +65,11 @@
                        entity.name]];
 }
 
--(void)didGainLevel:(NSInteger)levelDelta {
+-(void)didGainLevel:(NSInteger)level {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
-    [_console addText:[NSString stringWithFormat:@"%@ level up!",
-                       entity.name]];
+    [_console addText:[NSString stringWithFormat:@"%@ level up: %ld",
+                       entity.name, (long)level]];
 }
 
 @end
