@@ -39,13 +39,6 @@
 
 }
 
--(void)didAvoidAttackBy:(NCActorEntity *)aggressor {
-    NCActorEntity *entity = (NCActorEntity *)self.entity;
-    
-    [_console addText:[NSString stringWithFormat:@"%@ ducks %@'s feeble attempt",
-                       entity.name, aggressor.name]];
-}
-
 -(void)didGetKilledBy:(NCActorEntity *)aggressor {
     NCActorEntity *entity = (NCActorEntity *)self.entity;
     
@@ -70,22 +63,6 @@
     
     [_console addText:[NSString stringWithFormat:@"%@ replaced their torch",
                        entity.name]];
-}
-
--(void)willAttack:(NCActorEntity *)victim {
-    NCActorEntity *entity = (NCActorEntity *)self.entity;
-    
-    if (![victim isKindOfClass:entity.class]) {
-        [_console addText:[NSString stringWithFormat:@"%@ takes a swing at %@",
-                           entity.name, victim.name]];
-    }
-}
-
--(void)didSpawnAt:(IsoTileNode *)tile {
-    NCActorEntity *entity = (NCActorEntity *)self.entity;
-
-    [_console addText:[NSString stringWithFormat:@"%@ spawned at %d,%d",
-                       entity.name, tile.gridPosition.x, tile.gridPosition.y]];
 }
 
 -(void)didGainLevel:(NSInteger)levelDelta {
