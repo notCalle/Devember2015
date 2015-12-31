@@ -134,7 +134,7 @@
                                                 _tileMap.position.y - distanceFromCenter.y*deltaTime/2.0);
             }
 
-            if (_randomSource.nextUniform > _daylight && _randomSource.nextUniform < 0.01) {
+            if (_randomSource.nextUniform > _daylight && _randomSource.nextUniform < 0.01 / _actors.count) {
                 int x = ((unsigned int)_randomSource.nextInt) % W;
                 int y = ((unsigned int)_randomSource.nextInt) % H;
                 if (_randomSource.nextBool) {
