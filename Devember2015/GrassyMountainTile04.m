@@ -11,7 +11,7 @@
 @implementation GrassyMountainTile04
 
 +(instancetype)tile {
-    return (GrassyMountainTile04 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/04-Grassy mountains" height:2.0 cost:1.5];
+    return (GrassyMountainTile04 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/04-Grassy mountains" height:0.9 cost:2.0];
 }
 
 @end

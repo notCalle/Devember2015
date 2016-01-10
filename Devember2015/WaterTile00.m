@@ -11,7 +11,7 @@
 @implementation WaterTile00
 
 +(instancetype)tile {
-    return (WaterTile00 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/00-Water" height:0 cost:5.0];
+    return (WaterTile00 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/0000-Water" height:0.3 cost:5.0];
 }
 
 @end

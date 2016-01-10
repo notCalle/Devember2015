@@ -13,7 +13,7 @@
 @implementation GrassTile03
 
 -(instancetype)initTile {
-    self = [self initWithImageNamed:@"Terrain/03-Grass" height:1.5 cost:1.0];
+    self = [self initWithImageNamed:@"Terrain/03-Grass" height:0.6 cost:1.5];
     if (self) {
         _noise = [NCPerlinNoise octaves:3 persistance:1.0 seed:0xdeadbeef];
         _clutter = @[

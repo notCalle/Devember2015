@@ -11,7 +11,7 @@
 @implementation RockyMountainTile05
 
 +(instancetype)tile {
-    return (RockyMountainTile05 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/05-Rocky mountains" height:2.5 cost:1.5];
+    return (RockyMountainTile05 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/05-Rocky mountains" height:0.9 cost:3.0];
 }
 
 @end

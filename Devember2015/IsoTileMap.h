@@ -32,6 +32,7 @@
 -(instancetype)initWithTiles:(NSArray<IsoTile *> *)tiles width:(NSInteger)width height:(NSInteger)height;
 -(IsoTileNode *)tileAt:(vector_int2)grid;
 -(void)setTile:(NSInteger)index at:(vector_int2)grid;
+-(void)setSSTile:(uint16_t)sub at:(vector_int2)grid;
 -(void)addChild:(SKSpriteNode *)sprite toTileAt:(vector_int2)grid;
 -(void)positionTile:(IsoTileNode *)sprite at:(vector_int2)grid;
 -(void)repositionTiles;
@@ -40,5 +41,6 @@
 
 -(void)randomizeMap;
 -(void)randomizeMapUsingTiles:(NSRange)range;
+-(void)randomizeMapUsingSubsample:(NSRange)range;
 
 @end

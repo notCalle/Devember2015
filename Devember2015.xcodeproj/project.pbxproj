@@ -44,6 +44,7 @@
 		EBF7D6591C3093D300E7ED0F /* NCDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6581C3093D300E7ED0F /* NCDirection.m */; };
 		EBF7D65C1C33206F00E7ED0F /* NCComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D65B1C33206F00E7ED0F /* NCComponent.m */; };
 		EBF7D6621C3325C200E7ED0F /* NCRandomResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6611C3325C200E7ED0F /* NCRandomResolver.m */; };
+		EBF7D6651C396C9200E7ED0F /* SubsampledTile.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF7D6641C396C9200E7ED0F /* SubsampledTile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,8 @@
 		EBF7D65B1C33206F00E7ED0F /* NCComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCComponent.m; sourceTree = "<group>"; };
 		EBF7D6601C3325C200E7ED0F /* NCRandomResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCRandomResolver.h; sourceTree = "<group>"; };
 		EBF7D6611C3325C200E7ED0F /* NCRandomResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCRandomResolver.m; sourceTree = "<group>"; };
+		EBF7D6631C396C9200E7ED0F /* SubsampledTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubsampledTile.h; sourceTree = "<group>"; };
+		EBF7D6641C396C9200E7ED0F /* SubsampledTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubsampledTile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +206,8 @@
 				EBF7D6571C3093D300E7ED0F /* NCDirection.h */,
 				EBF7D6581C3093D300E7ED0F /* NCDirection.m */,
 				EB4A0B531C17850000D5C043 /* IsoTile.m */,
+				EBF7D6631C396C9200E7ED0F /* SubsampledTile.h */,
+				EBF7D6641C396C9200E7ED0F /* SubsampledTile.m */,
 				EBF7D62B1C24C50B00E7ED0F /* Tiles.h */,
 				EBF7D6241C24C25F00E7ED0F /* Tiles */,
 				EB4A0B4B1C147AB700D5C043 /* IsoTileNode.h */,
@@ -489,6 +494,7 @@
 				EB41A7311C304BF300E0A2FE /* NCConsoleComponent.m in Sources */,
 				EB4A0B541C17850000D5C043 /* IsoTile.m in Sources */,
 				EB41A7401C32C19A00E0A2FE /* NCHealthBarComponent.m in Sources */,
+				EBF7D6651C396C9200E7ED0F /* SubsampledTile.m in Sources */,
 				EBF7D64D1C2ED74300E7ED0F /* NCTorchComponent.m in Sources */,
 				EB41A7241C2B1DFA00E0A2FE /* NCConsoleNode.m in Sources */,
 				EBF7D63A1C24C75F00E7ED0F /* SnowyMountainTile06.m in Sources */,
@@ -557,7 +563,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -600,7 +606,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -624,6 +630,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = Devember2015/Info.plist;
@@ -639,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = Devember2015/Info.plist;
@@ -653,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = Devember2015Tests/Info.plist;
@@ -667,6 +676,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Devember2015Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -679,6 +689,7 @@
 		EB20BEEE1C0E3A9600A63ED3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = Devember2015UITests/Info.plist;
@@ -693,6 +704,7 @@
 		EB20BEEF1C0E3A9600A63ED3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Devember2015UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

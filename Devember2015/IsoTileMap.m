@@ -8,6 +8,7 @@
 
 #import "IsoTileMap.h"
 #import "IsoTile.h"
+#import "SubsampledTile.h"
 #import "IsoTileNode.h"
 
 @implementation IsoTileMap
@@ -64,6 +65,35 @@
 
 - (void)setTile:(NSInteger)index at:(vector_int2)grid {
     IsoTileNode *sprite = [[IsoTileNode alloc] initWithTile:_tiles[index]];
+    
+    if (sprite.size.width > _gridsize)
+        _gridsize = sprite.size.width;
+    if (sprite.tile.stepCost < _minimum_cost)
+        _minimum_cost = sprite.tile.stepCost;
+    
+    if (grid.y>0) {
+        sprite.north = _map[grid.y-1][grid.x];
+        if (grid.x<_width-1) {
+            sprite.northEast = _map[grid.y-1][grid.x+1];
+        }
+    }
+    if (grid.x>0) {
+        sprite.west = _map[grid.y][grid.x-1];
+        if (grid.y>0) {
+            sprite.northWest = _map[grid.y-1][grid.x-1];
+        }
+    }
+    
+    sprite.lightingBitMask = 0x1;
+    [self addChild:sprite];
+    
+    _map[grid.y][grid.x] = sprite;
+    [self positionTile:sprite at:grid];
+}
+
+- (void)setSSTile:(uint16_t)sub at:(vector_int2)grid {
+    SubsampledTile *tile = [SubsampledTile tileWith:sub];
+    IsoTileNode *sprite = [[IsoTileNode alloc] initWithTile:tile];
     
     if (sprite.size.width > _gridsize)
         _gridsize = sprite.size.width;
@@ -157,6 +187,32 @@
                               (range.length - 1) *
                               ([noise perlinNoise2:CGPointMake(x/100.0, y/100.0)] + 1.0)/2.0;
             [self setTile:tile at:(vector_int2){x, y}];
+        }
+    }
+}
+
+-(void)randomizeMapUsingSubsample:(NSRange)range {
+    int x,y;
+    
+    NCPerlinNoise *noise = [NCPerlinNoise octaves:7];
+    
+    for (y=0; y<_height; y++) {
+        for (x=0; x<_width; x++) {
+            NSInteger ss1 = range.location +
+            (range.length - 1) *
+            ([noise perlinNoise2:CGPointMake(x/100.0, y/100.0)] + 1.0)/2.0;
+            NSInteger ss2 = range.location +
+            (range.length - 1) *
+            ([noise perlinNoise2:CGPointMake(x/100.0, (y+1)/100.0)] + 1.0)/2.0;
+            NSInteger ss3 = range.location +
+            (range.length - 1) *
+            ([noise perlinNoise2:CGPointMake((x+1)/100.0, y/100.0)] + 1.0)/2.0;
+            NSInteger ss4 = range.location +
+            (range.length - 1) *
+            ([noise perlinNoise2:CGPointMake((x+1)/100.0, (y+1)/100.0)] + 1.0)/2.0;
+
+            uint16_t subsample = ss1<<12 | ss2<<8 | ss3<<4 | ss4;
+            [self setSSTile:subsample at:(vector_int2){x, y}];
         }
     }
 }

@@ -11,7 +11,7 @@
 @implementation GrassTile02
 
 +(instancetype)tile {
-    return (GrassTile02 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/02-Grass" height:1.0 cost:1.0];
+    return (GrassTile02 *)[[IsoTile alloc] initWithImageNamed:@"Terrain/1111-Ground" height:0.6 cost:1.0];
 }
 
 @end

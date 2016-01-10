@@ -57,8 +57,9 @@
                                   [SnowyMountainTile06 tile]];
     
     _tileMap = [[IsoTileMap alloc] initWithTiles:tiles width:W height:H];
-    [_tileMap randomizeMap];
-
+//    [_tileMap randomizeMap];
+    [_tileMap randomizeMapUsingSubsample:NSMakeRange(0, 5)];
+    
     [self addChild:_tileMap];
 
     _player = [NCPlayerEntity entityForScene:self];
